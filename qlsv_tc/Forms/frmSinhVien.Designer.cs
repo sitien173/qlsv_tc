@@ -73,6 +73,7 @@ namespace qlsv_tc.Forms
             this.colDANGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPASSWORD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.svgImageBox1 = new DevExpress.XtraEditors.SvgImageBox();
             this.groupGioiTinh = new System.Windows.Forms.GroupBox();
             this.rbtnNam = new System.Windows.Forms.RadioButton();
             this.rbtnNu = new System.Windows.Forms.RadioButton();
@@ -83,7 +84,6 @@ namespace qlsv_tc.Forms
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtHo = new System.Windows.Forms.TextBox();
             this.txtMaSv = new System.Windows.Forms.TextBox();
-            this.svgImageBox1 = new DevExpress.XtraEditors.SvgImageBox();
             this.bdsDangKy = new System.Windows.Forms.BindingSource(this.components);
             this.dANGKYTableAdapter = new qlsv_tc.QLDSV_TCDataSetTableAdapters.DANGKYTableAdapter();
             mASVLabel = new System.Windows.Forms.Label();
@@ -103,10 +103,10 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).BeginInit();
             this.groupGioiTinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgaySinh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDangKy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -376,7 +376,7 @@ namespace qlsv_tc.Forms
             // 
             this.sINHVIENGridControl.DataSource = this.bdsSinhVien;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sINHVIENGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sINHVIENGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 135);
             this.sINHVIENGridControl.MainView = this.gridView1;
             this.sINHVIENGridControl.MenuManager = this.barManager1;
@@ -505,6 +505,15 @@ namespace qlsv_tc.Forms
             this.panelControl2.Size = new System.Drawing.Size(1778, 257);
             this.panelControl2.TabIndex = 10;
             // 
+            // svgImageBox1
+            // 
+            this.svgImageBox1.Location = new System.Drawing.Point(83, 72);
+            this.svgImageBox1.Name = "svgImageBox1";
+            this.svgImageBox1.Size = new System.Drawing.Size(191, 160);
+            this.svgImageBox1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox1.SvgImage")));
+            this.svgImageBox1.TabIndex = 20;
+            this.svgImageBox1.Text = "svgImageBox1";
+            // 
             // groupGioiTinh
             // 
             this.groupGioiTinh.Controls.Add(this.rbtnNam);
@@ -600,15 +609,6 @@ namespace qlsv_tc.Forms
             this.txtMaSv.Size = new System.Drawing.Size(208, 27);
             this.txtMaSv.TabIndex = 1;
             // 
-            // svgImageBox1
-            // 
-            this.svgImageBox1.Location = new System.Drawing.Point(83, 72);
-            this.svgImageBox1.Name = "svgImageBox1";
-            this.svgImageBox1.Size = new System.Drawing.Size(191, 160);
-            this.svgImageBox1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgImageBox1.SvgImage")));
-            this.svgImageBox1.TabIndex = 20;
-            this.svgImageBox1.Text = "svgImageBox1";
-            // 
             // bdsDangKy
             // 
             this.bdsDangKy.DataMember = "FK_CTLTC_SINHVIEN";
@@ -649,10 +649,10 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).EndInit();
             this.groupGioiTinh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtNgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgaySinh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDangKy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -64,5 +64,18 @@ namespace qlsv_tc
                 f.Show();
             }
         }
+
+        private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            Form frm = CheckExists(typeof(frmMoLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmMoLTC f = new frmMoLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

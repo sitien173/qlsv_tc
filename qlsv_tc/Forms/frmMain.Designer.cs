@@ -41,10 +41,12 @@ namespace qlsv_tc
             this.btnLapNhapXuatNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnInPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_danhmuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_nghiepvu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_baocao = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -72,10 +74,11 @@ namespace qlsv_tc
             this.btnNV,
             this.btnLapNhapXuatNV,
             this.btnInPhieuNV,
-            this.btnPhieuNV});
+            this.btnPhieuNV,
+            this.btnMoLTC});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 10;
+            this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -133,6 +136,14 @@ namespace qlsv_tc
             this.btnPhieuNV.Id = 9;
             this.btnPhieuNV.Name = "btnPhieuNV";
             // 
+            // btnMoLTC
+            // 
+            this.btnMoLTC.Caption = "Mở LTC";
+            this.btnMoLTC.Id = 10;
+            this.btnMoLTC.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1066146;
+            this.btnMoLTC.Name = "btnMoLTC";
+            this.btnMoLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMoLTC_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -150,7 +161,8 @@ namespace qlsv_tc
             // rb_danhmuc
             // 
             this.rb_danhmuc.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup6});
             this.rb_danhmuc.Name = "rb_danhmuc";
             this.rb_danhmuc.Text = "Danh mục";
             this.rb_danhmuc.Visible = false;
@@ -159,6 +171,11 @@ namespace qlsv_tc
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnNV, true);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnMoLTC, true);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // rb_nghiepvu
             // 
@@ -273,6 +290,8 @@ namespace qlsv_tc
         public System.Windows.Forms.ToolStripStatusLabel MANV;
         public System.Windows.Forms.ToolStripStatusLabel HOTEN;
         public System.Windows.Forms.ToolStripStatusLabel NHOM;
+        private DevExpress.XtraBars.BarButtonItem btnMoLTC;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
     }
 }
 
