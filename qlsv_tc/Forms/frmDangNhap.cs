@@ -38,6 +38,7 @@ namespace qlsv_tc
             // đóng kết nối
             conn_publisher.Close();
 
+            
             // đưa dữ liệu từ view(lúc này đã lưu vào dataTable) vào đối tượng BindingSource
             Program.bds_dspm.DataSource = dataTable;
 
@@ -49,9 +50,7 @@ namespace qlsv_tc
                     DisplayMember: chứa dữ liệu của 1 field trong view trả về. 
                     ValueMember: chứa dữ liệu của field view luôn. Nhưng khi chọn click vào 1 field tương ứng thì nó sẽ trả về dữ liệu cột kế theo nó. Ví dụ click vào khoa CNTT thì ValueMember = tên server tương ứng với khoa cntt
              */
-            cboxKhoa.DataSource = Program.bds_dspm;
-            cboxKhoa.DisplayMember = "TENKHOA";
-            cboxKhoa.ValueMember = "TENSERVER";
+            Ultils.BindingDataToComBo(cboxKhoa, dataTable);
 
         }
 
@@ -154,7 +153,15 @@ namespace qlsv_tc
             Program.frmMain.HOTEN.Text = "HỌ TÊN: " + Program.mHoten;
             Program.frmMain.NHOM.Text = "NHÓM: " + Program.mGroup;
 
+            // đóng cửa sổ đăng nhập
+            Close();
+
+            // tắt nút đăng nhập
+            btnDangNhap.Enabled = false;
+
+            // hiển thị main
             Program.frmMain.HienThiMenu();
+
 
         }
 

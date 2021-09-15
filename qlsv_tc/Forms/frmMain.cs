@@ -47,6 +47,7 @@ namespace qlsv_tc
             rb_baocao.Visible = true;
         }
 
+        
         public frmMain()
         {
             InitializeComponent();
