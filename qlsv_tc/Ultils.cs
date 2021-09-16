@@ -53,5 +53,34 @@ namespace qlsv_tc
                 Program.password = Program.mPasswordDN;
             }
         }
+
+        public static string ShowPromt(string text, string caption)
+        {
+            Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 250,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            textLabel.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            textBox.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Button cancelConfirm = new Button() { Text = "Cancel", Left = 250, Width = 100,Height = 40, Top = 100, DialogResult = DialogResult.Cancel };
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Height = 40, Top = 100, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            cancelConfirm.Click += (sender, e) => { prompt.Close(); };
+
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(cancelConfirm);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
     }
+
 }

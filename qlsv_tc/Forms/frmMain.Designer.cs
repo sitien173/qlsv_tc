@@ -42,6 +42,7 @@ namespace qlsv_tc
             this.btnInPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDangKyLTC = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_danhmuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -75,10 +76,11 @@ namespace qlsv_tc
             this.btnLapNhapXuatNV,
             this.btnInPhieuNV,
             this.btnPhieuNV,
-            this.btnMoLTC});
+            this.btnMoLTC,
+            this.btnDangKyLTC});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 11;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -108,6 +110,7 @@ namespace qlsv_tc
             this.btnDangXuat.Id = 4;
             this.btnDangXuat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.ImageOptions.Image")));
             this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
             // 
             // btnNV
             // 
@@ -144,6 +147,14 @@ namespace qlsv_tc
             this.btnMoLTC.Name = "btnMoLTC";
             this.btnMoLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMoLTC_ItemClick);
             // 
+            // btnDangKyLTC
+            // 
+            this.btnDangKyLTC.Caption = "Đăng Ký LTC";
+            this.btnDangKyLTC.Id = 12;
+            this.btnDangKyLTC.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._942748;
+            this.btnDangKyLTC.Name = "btnDangKyLTC";
+            this.btnDangKyLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKyLTC_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -175,6 +186,7 @@ namespace qlsv_tc
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.btnMoLTC, true);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnDangKyLTC, true);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // rb_nghiepvu
@@ -292,6 +304,7 @@ namespace qlsv_tc
         public System.Windows.Forms.ToolStripStatusLabel NHOM;
         private DevExpress.XtraBars.BarButtonItem btnMoLTC;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.BarButtonItem btnDangKyLTC;
     }
 }
 

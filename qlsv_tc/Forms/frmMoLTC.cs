@@ -31,7 +31,7 @@ namespace qlsv_tc.Forms
         {
             this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
             this.tableAdapterLTC.Fill(this.DS.LOPTINCHI);
-
+            
             // TODO: This line of code loads data into the 'DS.DANGKY' table. You can move, or remove it, as needed.
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
             this.tableAdapterDK.Fill(this.DS.DANGKY);

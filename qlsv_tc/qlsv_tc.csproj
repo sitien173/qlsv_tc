@@ -59,6 +59,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDangKyLTC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDangKyLTC.Designer.cs">
+      <DependentUpon>frmDangKyLTC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
       <DependentUpon>QLDSV_TCDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Ultils.cs" />
+    <EmbeddedResource Include="Forms\frmDangKyLTC.resx">
+      <DependentUpon>frmDangKyLTC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +179,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\classroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\942748.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

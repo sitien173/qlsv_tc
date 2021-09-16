@@ -45,9 +45,35 @@ namespace qlsv_tc
             rb_nghiepvu.Visible = true;
             // 
             rb_baocao.Visible = true;
+
+            if(Program.mGroup == Program.role.SV.ToString())
+            {
+                btnTaoTaiKhoan.Enabled = false;
+                rb_danhmuc.Visible = true;
+
+                btnDangKyLTC.Enabled = true;
+
+                rb_nghiepvu.Visible = false;
+                rb_baocao.Visible = false;
+            }
         }
 
-        
+        public void Dangxuat()
+        {
+            MANV.Text = "MÃ NV: ";
+            HOTEN.Text = "HỌ TÊN: ";
+            NHOM.Text = "NHÓM: ";
+
+
+            Program.connstr = Program.rootConnstr;
+
+           
+            rb_danhmuc.Visible = false;
+            rb_nghiepvu.Visible = false;
+            rb_baocao.Visible = false;
+        }
+
+
         public frmMain()
         {
             InitializeComponent();
@@ -74,6 +100,26 @@ namespace qlsv_tc
             else
             {
                 frmMoLTC f = new frmMoLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Dangxuat();
+
+            btnDangNhap_ItemClick(sender, e);
+        }
+
+    
+        private void btnDangKyLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmDangKyLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDangKyLTC f = new frmDangKyLTC();
                 f.MdiParent = this;
                 f.Show();
             }
