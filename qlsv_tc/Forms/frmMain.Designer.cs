@@ -43,13 +43,13 @@ namespace qlsv_tc
             this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKyLTC = new DevExpress.XtraBars.BarButtonItem();
+            this.btnHocPhi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rb_danhmuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rb_quantri = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rb_nghiepvu = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rb_hocphi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_baocao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -77,15 +77,15 @@ namespace qlsv_tc
             this.btnInPhieuNV,
             this.btnPhieuNV,
             this.btnMoLTC,
-            this.btnDangKyLTC});
+            this.btnDangKyLTC,
+            this.btnHocPhi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 13;
+            this.ribbonControl1.MaxItemId = 15;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.rb_danhmuc,
-            this.rb_nghiepvu,
+            this.rb_quantri,
             this.rb_baocao});
             this.ribbonControl1.Size = new System.Drawing.Size(1137, 231);
             // 
@@ -155,6 +155,14 @@ namespace qlsv_tc
             this.btnDangKyLTC.Name = "btnDangKyLTC";
             this.btnDangKyLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKyLTC_ItemClick);
             // 
+            // btnHocPhi
+            // 
+            this.btnHocPhi.Caption = "Học Phí";
+            this.btnHocPhi.Id = 13;
+            this.btnHocPhi.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.hocphi;
+            this.btnHocPhi.Name = "btnHocPhi";
+            this.btnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHocPhi_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -169,14 +177,15 @@ namespace qlsv_tc
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDangXuat);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
-            // rb_danhmuc
+            // rb_quantri
             // 
-            this.rb_danhmuc.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rb_quantri.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
-            this.ribbonPageGroup6});
-            this.rb_danhmuc.Name = "rb_danhmuc";
-            this.rb_danhmuc.Text = "Danh mục";
-            this.rb_danhmuc.Visible = false;
+            this.ribbonPageGroup6,
+            this.rb_hocphi});
+            this.rb_quantri.Name = "rb_quantri";
+            this.rb_quantri.Text = "Quản trị";
+            this.rb_quantri.Visible = false;
             // 
             // ribbonPageGroup2
             // 
@@ -189,18 +198,10 @@ namespace qlsv_tc
             this.ribbonPageGroup6.ItemLinks.Add(this.btnDangKyLTC, true);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
-            // rb_nghiepvu
+            // rb_hocphi
             // 
-            this.rb_nghiepvu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
-            this.rb_nghiepvu.Name = "rb_nghiepvu";
-            this.rb_nghiepvu.Text = "Nghiệp vụ";
-            this.rb_nghiepvu.Visible = false;
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnLapNhapXuatNV, true);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.rb_hocphi.ItemLinks.Add(this.btnHocPhi, true);
+            this.rb_hocphi.Name = "rb_hocphi";
             // 
             // rb_baocao
             // 
@@ -291,10 +292,8 @@ namespace qlsv_tc
         private DevExpress.XtraBars.BarButtonItem btnLapNhapXuatNV;
         private DevExpress.XtraBars.BarButtonItem btnInPhieuNV;
         private DevExpress.XtraBars.BarButtonItem btnPhieuNV;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rb_danhmuc;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rb_quantri;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rb_nghiepvu;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPage rb_baocao;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
@@ -305,6 +304,8 @@ namespace qlsv_tc
         private DevExpress.XtraBars.BarButtonItem btnMoLTC;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnDangKyLTC;
+        private DevExpress.XtraBars.BarButtonItem btnHocPhi;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rb_hocphi;
     }
 }
 

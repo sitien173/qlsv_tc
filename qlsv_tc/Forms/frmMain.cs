@@ -41,19 +41,17 @@ namespace qlsv_tc
 
             // phân quyền
             // dựa vào Program.mGroup để bật tắt các module cần thiết
-            rb_danhmuc.Visible = true;
-            rb_nghiepvu.Visible = true;
+            rb_quantri.Visible = true;
             // 
             rb_baocao.Visible = true;
 
             if(Program.mGroup == Program.role.SV.ToString())
             {
                 btnTaoTaiKhoan.Enabled = false;
-                rb_danhmuc.Visible = true;
+                rb_quantri.Visible = true;
 
                 btnDangKyLTC.Enabled = true;
 
-                rb_nghiepvu.Visible = false;
                 rb_baocao.Visible = false;
             }
         }
@@ -68,8 +66,7 @@ namespace qlsv_tc
             Program.connstr = Program.rootConnstr;
 
            
-            rb_danhmuc.Visible = false;
-            rb_nghiepvu.Visible = false;
+            rb_quantri.Visible = false;
             rb_baocao.Visible = false;
         }
 
@@ -123,6 +120,11 @@ namespace qlsv_tc
                 f.MdiParent = this;
                 f.Show();
             }
+        }
+
+        private void btnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
