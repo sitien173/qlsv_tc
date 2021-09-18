@@ -41,11 +41,35 @@ namespace qlsv_tc
 
             // phân quyền
             // dựa vào Program.mGroup để bật tắt các module cần thiết
-            rb_danhmuc.Visible = true;
-            rb_nghiepvu.Visible = true;
+            rb_quantri.Visible = true;
             // 
             rb_baocao.Visible = true;
+
+            if(Program.mGroup == Program.role.SV.ToString())
+            {
+                btnTaoTaiKhoan.Enabled = false;
+                rb_quantri.Visible = true;
+
+                btnDangKyLTC.Enabled = true;
+
+                rb_baocao.Visible = false;
+            }
         }
+
+        public void Dangxuat()
+        {
+            MANV.Text = "MÃ NV: ";
+            HOTEN.Text = "HỌ TÊN: ";
+            NHOM.Text = "NHÓM: ";
+
+
+            Program.connstr = Program.rootConnstr;
+
+           
+            rb_quantri.Visible = false;
+            rb_baocao.Visible = false;
+        }
+
 
         public frmMain()
         {
@@ -63,6 +87,44 @@ namespace qlsv_tc
                 f.MdiParent = this;
                 f.Show();
             }
+        }
+
+        private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            Form frm = CheckExists(typeof(frmMoLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmMoLTC f = new frmMoLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Dangxuat();
+
+            btnDangNhap_ItemClick(sender, e);
+        }
+
+    
+        private void btnDangKyLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmDangKyLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDangKyLTC f = new frmDangKyLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

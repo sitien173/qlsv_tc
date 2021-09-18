@@ -2,6 +2,7 @@
 using DevExpress.UserSkins;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,24 +17,34 @@ namespace qlsv_tc
         public static SqlConnection conn = new SqlConnection();
         public static SqlDataAdapter da;
         public static SqlDataReader myReader;
-        public static String servername = "DESKTOP-M6JC7UB";
-        public static String username;
-        public static String password;
-        public static String database = "QLDSV_TC";
-        public static String mlogin;
-        public static String mGroup;
-        public static String mHoten;
+        public static string servername = "DESKTOP-M6JC7UB";
+        public static string username;
+        public static string password;
+        public static string database = "QLDSV_TC";
+        public static string mlogin;
+        public static string mGroup;
+        public static string mHoten;
         public static int mKhoa;
-        public static String mloginDN = "";
-        public static String mPasswordDN = "";
-        public static String connstr = "Data Source=" + Program.servername + ";Initial Catalog=" + Program.database + ";Integrated Security=true";
+        public static string mloginDN = "";
+        public static string mPasswordDN = "";
+        public static string rootConnstr = "Data Source=" + Program.servername + ";Initial Catalog=" + Program.database + ";Integrated Security=true";
+        public static string connstr = rootConnstr;
 
-
+        public static string remoteLogin = "HTKN";
+        public static string remotePassword = "123";
 
         public static BindingSource bds_dspm = new BindingSource();
         public static frmMain frmMain; 
 
-      
+        public enum role
+        {
+            PGV,
+            KHOA,
+            SV,
+            PKT
+        }
+
+
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == System.Data.ConnectionState.Open) Program.conn.Close();
@@ -85,19 +96,19 @@ namespace qlsv_tc
             }
         }
 
-        public static System.Data.DataTable ExecSqlQuery(String cmd, String connectionstring)
+        public static System.Data.DataTable ExecSqlQuery(String query)
         {
-            System.Data.DataTable dt1 = new System.Data.DataTable();
-            conn = new SqlConnection(connectionstring);
-            da = new SqlDataAdapter(cmd, conn);
-            da.Fill(dt1);
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            conn.Close();
+            return dt;
 
             /*
               Có thể sử dụng SqlCommand gồm 2 tham số như ở trên và load dữ liệu vào dataTable bằng phương thước loadData
               cách này thường sử dụng khi dữ liệu đã được tải từ trc và dưới dạng là SqlDataReader và mình muốn chuyển về DataTable
              */
-            return dt1;
-
         }
 
 
@@ -127,15 +138,7 @@ namespace qlsv_tc
                 return 0;
             }
         }
-        public static void SetEnableOfButton(Form frm, Boolean Active)
-        {
-
-            foreach (Control ctl in frm.Controls)
-                if ((ctl) is Button)
-                    ctl.Enabled = Active;
-        }
-
-
+      
         [STAThread]
         static void Main()
         {
