@@ -14,12 +14,12 @@ namespace qlsv_tc
         public static SqlDataAdapter da;
         public static SqlDataReader myReader;
         public static string servername = "DESKTOP-M6JC7UB";
-        public static string username;
+        public static string username = "";
         public static string password;
         public static string database = "QLDSV_TC";
         public static string mlogin;
         public static string mGroup;
-        public static string mHoten;
+        public static string mHoten = "";
         public static int mKhoa;
         public static string mloginDN = "";
         public static string mPasswordDN = "";

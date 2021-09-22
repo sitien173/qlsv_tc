@@ -108,11 +108,41 @@ namespace qlsv_tc
             Program.mlogin = txtTaiKhoan.Text;
             Program.password = txtMatKhau.Text;
 
+
             // nếu kết nối thất bại thì thoát
             if (Program.KetNoi() == 0) return;
 
+            
+
             Program.mloginDN = Program.mlogin;
             Program.mPasswordDN = Program.password;
+
+
+            // đăng nhập với Sinh viên. Mọi sinh viên đều dùng chung 1 tài khoản
+            if(Program.mlogin == "SV")
+            {
+                // kiểm tra kết nối tới server
+                conn_publisher.ConnectionString = Program.connstr;
+                try
+                {
+                    conn_publisher.Open();
+                    conn_publisher.Close();
+
+                    Program.mGroup = "SV";
+                    Program.frmMain.HienThiMenu();
+                    // đóng cửa sổ đăng nhập
+                    Close();
+
+                    return;
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Đăng nhập thất bại.\nVui lòng nhập đúng tài khoản được cấp cho Sinh Viên");
+                    return;
+                }
+            }
+
+
 
             // đoạn ở trên dùng để kết nối vào server với tài khoản tương ứng
 
@@ -146,12 +176,7 @@ namespace qlsv_tc
             Program.mGroup = Program.myReader.GetString(2);
 
             Program.myReader.Close();
-
             Program.conn.Close();
-
-            Program.frmMain.MANV.Text = "MÃ NV: " + Program.username;
-            Program.frmMain.HOTEN.Text = "HỌ TÊN: " + Program.mHoten;
-            Program.frmMain.NHOM.Text = "NHÓM: " + Program.mGroup;
 
             // đóng cửa sổ đăng nhập
             Close();

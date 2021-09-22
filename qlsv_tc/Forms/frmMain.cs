@@ -42,17 +42,12 @@ namespace qlsv_tc
             // phân quyền
             // dựa vào Program.mGroup để bật tắt các module cần thiết
             rb_quantri.Visible = true;
-            // 
-            rb_baocao.Visible = true;
-
             if(Program.mGroup == Program.role.SV.ToString())
             {
                 btnTaoTaiKhoan.Enabled = false;
-                rb_quantri.Visible = true;
-
                 btnDangKyLTC.Enabled = true;
-
                 rb_baocao.Visible = false;
+                btnDangKyLTC.Enabled = true;
             }
         }
 

@@ -115,6 +115,7 @@ namespace qlsv_tc
             // btnNV
             // 
             this.btnNV.Caption = "Sinh Viên";
+            this.btnNV.Enabled = false;
             this.btnNV.Id = 6;
             this.btnNV.ImageOptions.Image = global::qlsv_tc.Properties.Resources.sinhvien;
             this.btnNV.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.sinhvien;
@@ -142,6 +143,7 @@ namespace qlsv_tc
             // btnMoLTC
             // 
             this.btnMoLTC.Caption = "Mở LTC";
+            this.btnMoLTC.Enabled = false;
             this.btnMoLTC.Id = 10;
             this.btnMoLTC.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1066146;
             this.btnMoLTC.Name = "btnMoLTC";
@@ -158,6 +160,7 @@ namespace qlsv_tc
             // btnHocPhi
             // 
             this.btnHocPhi.Caption = "Học Phí";
+            this.btnHocPhi.Enabled = false;
             this.btnHocPhi.Id = 13;
             this.btnHocPhi.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.hocphi;
             this.btnHocPhi.Name = "btnHocPhi";

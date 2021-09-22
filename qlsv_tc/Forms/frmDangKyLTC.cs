@@ -15,7 +15,6 @@ namespace qlsv_tc.Forms
     {
         private static DataTable dataTableDKLTC = new DataTable();
         private static DataTable dataTableDADK = new DataTable();
-        private List<string> MALTCDADK; // tạo mảng để lưu khoá LTC để khi bấm đăng ký thì kiểm tra đã tồn tại hay chưa trc khi thêm vào bảng danh sách đăng ký
         public frmDangKyLTC()
         {
             InitializeComponent();
@@ -25,7 +24,6 @@ namespace qlsv_tc.Forms
             pnThongTinSV.Enabled = false;
             pnThongTinLTC.Visible = false;
             pnRight.Visible = false;
-            this.loadDataGridViewDADK(dataGridViewDADK);
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -55,12 +53,15 @@ namespace qlsv_tc.Forms
                         txtTen.Text = datareader.GetString(1);
                         txtMaLop.Text = datareader.GetString(2);
                         pnThongTinLTC.Visible = true;
-                        btnLuuDangKy.Enabled = btnXoa.Enabled = false;
+                    }else
+                    {
+                        MessageBox.Show("Mã SV Không Tồn Tại");
                     }
 
                 }
             }
         }
+
 
         private void loadDataGridViewDSMH(DataGridView dataGridView)
         {
@@ -70,9 +71,10 @@ namespace qlsv_tc.Forms
                 MessageBox.Show("Kết nối tới csdl thất bại");
                 return;
             }
-            string sql = "SELECT LTC.MALTC,LTC.MAMH, \n" +
-                         " MH.TENMH, \n" +
-                         " LTC.NHOM, \n" +
+            string sql = "SELECT LTC.MALTC,LTC.MAMH," +
+                         " MH.TENMH," +
+                         " LTC.NHOM," +
+                         " GV.MAGV," +
                          " (GV.HO + ' ' + GV.TEN) AS GV,\n" +
                          " (LTC.SOSVTOITHIEU - COUNT(DK.MASV)) AS CON\n" +
                          " FROM dbo.LOPTINCHI AS LTC\n" +
@@ -81,7 +83,7 @@ namespace qlsv_tc.Forms
                          " LEFT JOIN dbo.DANGKY DK ON DK.MALTC = LTC.MALTC\n" +
                          " LEFT JOIN dbo.SINHVIEN SV ON SV.MASV = DK.MASV\n" +
                          " WHERE LTC.HUYLOP = 0 AND (LTC.NIENKHOA = '" + txtNienKhoa.Text + "' AND LTC.HOCKY = " + spHocKi.Text + ")\n" +
-                         " GROUP BY  LTC.MALTC,LTC.SOSVTOITHIEU,LTC.MAMH,LTC.NHOM,GV.HO,GV.TEN,MH.TENMH;\n";
+                         " GROUP BY  LTC.MALTC,LTC.SOSVTOITHIEU,LTC.MAMH,LTC.NHOM,GV.MAGV,GV.HO,GV.TEN,MH.TENMH;\n";
 
 
             dataTableDKLTC = Program.ExecSqlQuery(sql);
@@ -96,17 +98,20 @@ namespace qlsv_tc.Forms
             dataGridViewDKLTC.DataSource = dataTableDKLTC;
 
             dataGridViewDKLTC.Columns["MALTC"].Visible = false;
+            dataGridViewDKLTC.Columns["MAGV"].Visible = false;
 
             dataGridViewDKLTC.Columns["DANGKY"].HeaderText = "ĐĂNG KÝ";
             dataGridViewDKLTC.Columns["DANGKY"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
+            dataTableDKLTC.PrimaryKey = new DataColumn[] { dataTableDKLTC.Columns["MALTC"] };
 
-            int length = dataGridViewDKLTC.Rows.Count;
-
-            for (int i = 0; i < length - 1; i++)
-                if (MALTCDADK.IndexOf(dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value.ToString()) != -1)
-                    dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = true;
-
+            // Nếu tìm thấy cùng lớp tín chỉ đã đki trước đó của sinh viên thì đánh dấu vào checkbox DANGKY
+            for (int i = 0; i < dataGridViewDKLTC.Rows.Count; i++)
+            {
+                DataRow dataRow = dataTableDADK.Rows.Find(dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value);
+                if (dataRow != null)
+                    dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = true;       
+            }
         }
 
         private void loadDataGridViewDADK(DataGridView dataGridview)
@@ -118,7 +123,8 @@ namespace qlsv_tc.Forms
             }
             string sql = "SELECT LTC.MALTC,LTC.MAMH, \n" +
                          " MH.TENMH, \n" +
-                         " LTC.NHOM, \n" +
+                         " LTC.NHOM," +
+                         " GV.MAGV," +
                          " (GV.HO + ' ' + GV.TEN) AS GV\n" +
                          " FROM dbo.LOPTINCHI AS LTC\n" +
                          " LEFT JOIN dbo.MONHOC MH ON MH.MAMH = LTC.MAMH\n" +
@@ -126,29 +132,34 @@ namespace qlsv_tc.Forms
                          " LEFT JOIN dbo.DANGKY DK ON DK.MALTC = LTC.MALTC\n" +
                          " LEFT JOIN dbo.SINHVIEN SV ON SV.MASV = DK.MASV\n" +
                          " WHERE (SV.MASV = '" + txtMaSv.Text + "' AND DK.HUYDANGKY = 0) AND (LTC.NIENKHOA = '" + txtNienKhoa.Text + "' AND LTC.HOCKY = " + spHocKi.Text + ")" +
-                         " GROUP BY  LTC.MALTC,LTC.MAMH,LTC.NHOM,GV.HO,GV.TEN,MH.TENMH;\n";
+                         " GROUP BY  LTC.MALTC,LTC.MAMH,LTC.NHOM,GV.MAGV,GV.HO,GV.TEN,MH.TENMH;\n";
 
             dataTableDADK = Program.ExecSqlQuery(sql);
             dataGridViewDADK.DataSource = dataTableDADK;
             dataGridViewDADK.Columns["MALTC"].Visible = false;
+            dataGridViewDADK.Columns["MAGV"].Visible = false;
 
-            MALTCDADK = new List<string>();
-            for (int i = 0; i < dataTableDADK.Rows.Count; i++)
-                MALTCDADK.Add(dataGridViewDADK.Rows[i].Cells["MALTC"].Value.ToString());
+            dataTableDADK.PrimaryKey = new DataColumn[] { dataTableDADK.Columns["MALTC"] };
+
+            if (dataTableDADK.Rows.Count > 0)
+            {
+                dataGridViewDADK.ClearSelection();
+                dataGridViewDADK.CurrentCell = null;  
+            }
+            this.setEnableButtonLuuVaXoa(false);
+
         }
 
         private void btnTimLTC_Click_1(object sender, EventArgs e)
         {
-
-
             if (Program.KetNoi() != 1)
             {
                 MessageBox.Show("Kết nối tới csdl thất bại");
                 return;
             }
 
-            this.loadDataGridViewDSMH(dataGridViewDKLTC);
             this.loadDataGridViewDADK(dataGridViewDADK);
+            this.loadDataGridViewDSMH(dataGridViewDKLTC);
 
             if (dataGridViewDKLTC.RowCount > 0)
             {
@@ -162,63 +173,72 @@ namespace qlsv_tc.Forms
 
         }
 
+        // True Bật. False Tắt
+        private void setEnableButtonLuuVaXoa(Boolean status)
+        {
+            btnLuuDangKy.Enabled = btnXoa.Enabled = status;
+        }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string MALTC = dataGridViewDADK.CurrentRow.Cells["MALTC"].Value.ToString();
-            int index = MALTCDADK.IndexOf(MALTC);
-            if (index != -1)
-            {
-                dataTableDADK.Rows[index].Delete();
-                dataTableDADK.AcceptChanges();
-                dataGridViewDADK.DataSource = dataTableDADK;
+            // xoá khỏi hàng danh sách đăng ký môn
+            deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, MALTC);
 
+            // bỏ check đăng kí ở bảng danh sách môn học
+            int length = dataGridViewDKLTC.Rows.Count;
+            for (int i = 0; i < length; i++)
+                if (dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value.ToString().Equals(MALTC))
+                    dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = false;
 
-                int length = dataGridViewDKLTC.Rows.Count;
-
-                for (int i = 0; i < length; i++)
-                    if (dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value.ToString().Equals(MALTC))
-                        dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = false;
-
-                // xoa khoa MALTC
-                MALTCDADK.Remove(MALTC);
-            }
-
+           this.setEnableButtonLuuVaXoa(!(dataTableDADK.Rows.Count == 0));
         }
 
-        private int posDuplicated(string MAMH,int nhom)
+        private void DeleteDuplicatedDataGridViewDK(string MAMH,string MAGV,int NHOM)
         {
-            int pos = -1;
-            int length = dataGridViewDADK.Rows.Count;
-            for (int i = 0; i < length; i++)
-                if (dataGridViewDADK.Rows[i].Cells["MAMH"].Value.Equals(MAMH) && !Convert.ToInt32(dataGridViewDADK.Rows[i].Cells["NHOM"].Value).Equals(nhom))
-                    pos = i;
-
-            length = dataTableDKLTC.Rows.Count;
-            // bỏ checkbox đăng kí các nhóm còn lại
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < dataGridViewDADK.Rows.Count; i++)
             {
-                if (dataGridViewDKLTC.Rows[i].Cells["MAMH"].Value.Equals(MAMH) && !Convert.ToInt32(dataGridViewDKLTC.Rows[i].Cells["NHOM"].Value).Equals(nhom))
+                // nếu cùng môn học cùng giáo viên dạy mà khác nhóm thì chỉ cho đăng kí 1 nhóm
+                if (dataGridViewDADK.Rows[i].Cells["MAMH"].Value.Equals(MAMH) &&
+                    dataGridViewDADK.Rows[i].Cells["MAGV"].Value.Equals(MAGV) &&
+                    !Convert.ToInt32(dataGridViewDADK.Rows[i].Cells["NHOM"].Value).Equals(NHOM))
+                {
+                    // đã tồn tại môn này trong bảng danh sách đăng ký => xoá
+                    deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, dataGridViewDADK.Rows[i].Cells["MALTC"].Value.ToString());
+                }
+            }
+                
+                   
+            // bỏ checkbox đăng kí các nhóm còn lại
+            for (int i = 0; i < dataTableDKLTC.Rows.Count; i++)
+            {
+                if (dataGridViewDKLTC.Rows[i].Cells["MAMH"].Value.Equals(MAMH) &&
+                    dataGridViewDKLTC.Rows[i].Cells["MAGV"].Value.Equals(MAGV) &&
+                    !Convert.ToInt32(dataGridViewDKLTC.Rows[i].Cells["NHOM"].Value).Equals(NHOM))
                     dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = false;
             }
-
-            return pos;
         }
 
-        private void deleteAndUpdateDataGridViewDaDK(int index)
+        private void deleteAndUpdateDataGridView(DataTable dataTable,DataGridView dataGridView,string MALTC)
         {
-            // xoá key MALTC trong mảng chứa key ltc
-            MALTCDADK.Remove(dataGridViewDADK.Rows[index].Cells["MALTC"].Value.ToString());
-
-            dataTableDADK.Rows[index].Delete();
-            dataTableDADK.AcceptChanges();
-            dataGridViewDADK.DataSource = dataTableDADK;
+            DataRow foundRows = dataTable.Rows.Find(MALTC);
+            dataTable.Rows.Remove(foundRows);
+            dataTable.AcceptChanges();
+            dataGridView.DataSource = dataTable;
         }
 
         private void addNewRowToDataGridViewDaDK(object []RowValues)
         {
-            dataTableDADK.Rows.Add(RowValues);
-            dataTableDADK.AcceptChanges();
-            dataGridViewDADK.DataSource = dataTableDADK;
+            try
+            {
+                dataTableDADK.Rows.Add(RowValues);
+                dataTableDADK.AcceptChanges();
+                dataGridViewDADK.DataSource = dataTableDADK;
+            }
+            catch (System.Data.ConstraintException e)
+            {
+                // thêm vào trùng khoá thì ko cho thêm
+            }
         }
         private void dataGridViewDKLTC_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -227,60 +247,31 @@ namespace qlsv_tc.Forms
             {
                 // set dữ liệu cho cột đăng ký
                 dataGridViewDKLTC.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = !(Boolean)dataGridViewDKLTC.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-
-                // kiểm tra xem LTC hiện tại đã có trong bảng danh sách đã đăng ký hay chưa
-                
-
                 // nếu bấm checkbox đăng ký và bảng danh sách đăng ký chưa có môn này thì thêm vào
                 if ((Boolean)dataGridViewDKLTC.Rows[e.RowIndex].Cells[e.ColumnIndex].Value)
                 {
-                    Boolean checkExist = MALTCDADK.Contains(dataGridViewDKLTC.Rows[e.RowIndex].Cells["MALTC"].Value.ToString());
+                    string MAMH = dataGridViewDKLTC.Rows[e.RowIndex].Cells["MAMH"].Value.ToString();
+                    string MAGV = dataGridViewDKLTC.Rows[e.RowIndex].Cells["MAGV"].Value.ToString();
+                    int NHOM = Convert.ToInt32(dataGridViewDKLTC.Rows[e.RowIndex].Cells["NHOM"].Value);
+                    DeleteDuplicatedDataGridViewDK(MAMH, MAGV, NHOM);
 
-                    if (!checkExist)
-                    {
-
-                        // kiểm tra xem đã có môn này nhóm khác chưa
-                       int pos = this.posDuplicated(dataGridViewDKLTC.Rows[e.RowIndex].Cells["MAMH"].Value.ToString(), Convert.ToInt32(dataGridViewDKLTC.Rows[e.RowIndex].Cells["NHOM"].Value));
-
-                        // đã tồn tại môn này trong bảng danh sách đăng ký => xoá
-                        if (pos != -1)
-                            deleteAndUpdateDataGridViewDaDK(pos);
-
-                        object[] RowValues = new object[dataGridViewDKLTC.Columns.Count - 2];
-
-                        // không lấy 2 cột cuối cùng của bảng danh sách môn học
-                        for (int i = 0; i < dataGridViewDKLTC.Columns.Count - 2; i++)
-                            RowValues[i] = dataGridViewDKLTC.Rows[e.RowIndex].Cells[i].Value;
-
-                        // nếu chưa có khoá LTC trong bảng đã đang kí LTC thì thêm vào
-                        if (!checkExist) MALTCDADK.Add(RowValues[0].ToString());
-
-                        // thêm dòng mới vào bảng danh sách đăng ký
-                        addNewRowToDataGridViewDaDK(RowValues);
-
-                    }
-                    
+                    object[] RowValues = new object[dataGridViewDKLTC.Columns.Count - 2];
+                    // không lấy 2 cột cuối cùng của bảng danh sách môn học
+                    for (int i = 0; i < dataGridViewDKLTC.Columns.Count - 2; i++)
+                        RowValues[i] = dataGridViewDKLTC.Rows[e.RowIndex].Cells[i].Value;
+                    // thêm dòng mới vào bảng danh sách đăng ký 
+                    addNewRowToDataGridViewDaDK(RowValues);
                 }
-                else
-                {
-                    int index = MALTCDADK.IndexOf(dataGridViewDKLTC.Rows[e.RowIndex].Cells["MALTC"].Value.ToString());
-                    if(index != -1)
-                    {
-                        dataTableDADK.Rows[index].Delete();
-                        dataTableDADK.AcceptChanges();
+                else 
+                    deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, dataGridViewDKLTC.Rows[e.RowIndex].Cells["MALTC"].Value.ToString());
 
-                        dataGridViewDADK.DataSource = dataTableDADK;
-                        // xoa khoa MALTC
-                        MALTCDADK.Remove(dataGridViewDKLTC.Rows[e.RowIndex].Cells["MALTC"].Value.ToString());
-                    }
-                }
-
+                this.setEnableButtonLuuVaXoa(!(dataTableDADK.Rows.Count == 0));
             }
         }
 
         private void dataGridViewDADK_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnLuuDangKy.Enabled = btnXoa.Enabled = true;
+            this.setEnableButtonLuuVaXoa(true);
         }
     }
 
