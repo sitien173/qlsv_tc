@@ -86,6 +86,7 @@ namespace qlsv_tc
             this.txtTaiKhoan.Properties.Appearance.Options.UseFont = true;
             this.txtTaiKhoan.Size = new System.Drawing.Size(313, 34);
             this.txtTaiKhoan.TabIndex = 4;
+            this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._KeyPress);
             // 
             // txtMatKhau
             // 
@@ -96,6 +97,7 @@ namespace qlsv_tc
             this.txtMatKhau.Properties.UseSystemPasswordChar = true;
             this.txtMatKhau.Size = new System.Drawing.Size(313, 34);
             this.txtMatKhau.TabIndex = 5;
+            this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._KeyPress);
             // 
             // labelControl3
             // 

@@ -79,9 +79,11 @@ namespace qlsv_tc
             if (KetNoi_CSDLGOC() == 0) return;
             LayDSPM("select * from GET_Subscribes");
 
-            // tạo ra 1 sự kiện SelectedIndexChanged
             cboxKhoa.SelectedIndex = 1;
             cboxKhoa.SelectedIndex = 0;
+
+            // auto focus textbox tài khoản
+            this.ActiveControl = txtTaiKhoan;
         }
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -102,12 +104,11 @@ namespace qlsv_tc
             {
                 MessageBox.Show("Tài khoản và mật khẩu không được để trống","",MessageBoxButtons.OK);
                 return;
-            }
+            }  
 
             // lưu thông tin đăng nhập vào 2 biến toàn cục để kết nối database
             Program.mlogin = txtTaiKhoan.Text;
             Program.password = txtMatKhau.Text;
-
 
             // nếu kết nối thất bại thì thoát
             if (Program.KetNoi() == 0) return;
@@ -119,7 +120,7 @@ namespace qlsv_tc
 
 
             // đăng nhập với Sinh viên. Mọi sinh viên đều dùng chung 1 tài khoản
-            if(Program.mlogin == "SV")
+            if(Program.mlogin.Equals(Program.role.SV.ToString()))
             {
                 // kiểm tra kết nối tới server
                 conn_publisher.ConnectionString = Program.connstr;
@@ -128,7 +129,7 @@ namespace qlsv_tc
                     conn_publisher.Open();
                     conn_publisher.Close();
 
-                    Program.mGroup = "SV";
+                    Program.mGroup = Program.role.SV.ToString();
                     Program.frmMain.HienThiMenu();
                     // đóng cửa sổ đăng nhập
                     Close();
@@ -192,10 +193,30 @@ namespace qlsv_tc
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Button thoat clicked");
+            Program.connstr = Program.rootConnstr;
             Close();
         }
 
-       
+        private void _KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(this.txtTaiKhoan.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập tài khoản");
+                    this.ActiveControl = this.txtTaiKhoan;
+                    return;
+                    
+                }else if(string.IsNullOrWhiteSpace(this.txtMatKhau.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu");
+                    this.ActiveControl = this.txtMatKhau;
+                    return;
+                    
+                }
+                this.btnDangNhap.PerformClick();
+            }
+                
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace qlsv_tc.Forms
     {
         private static DataTable dataTableDKLTC = new DataTable();
         private static DataTable dataTableDADK = new DataTable();
+        private static int countRowChange = 0; // nếu có sự thay đổi dòng thì bật nút ghi 
         public frmDangKyLTC()
         {
             InitializeComponent();
@@ -24,6 +25,9 @@ namespace qlsv_tc.Forms
             pnThongTinSV.Enabled = false;
             pnThongTinLTC.Visible = false;
             pnRight.Visible = false;
+
+            // auto focus textbox
+            this.ActiveControl = txtMaSv;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -141,13 +145,16 @@ namespace qlsv_tc.Forms
 
             dataTableDADK.PrimaryKey = new DataColumn[] { dataTableDADK.Columns["MALTC"] };
 
-            if (dataTableDADK.Rows.Count > 0)
+            // lưu lại số dòng hiện tại vào biến để kiểm tra sự thay đổi 
+            countRowChange = dataTableDADK.Rows.Count;
+
+            // loại bỏ focus vào dòng đầu tiên khi load xong
+            if (countRowChange > 0)
             {
                 dataGridViewDADK.ClearSelection();
                 dataGridViewDADK.CurrentCell = null;  
             }
-            this.setEnableButtonLuuVaXoa(false);
-
+            btnLuuDangKy.Enabled = btnXoa.Enabled = false;
         }
 
         private void btnTimLTC_Click_1(object sender, EventArgs e)
@@ -173,25 +180,36 @@ namespace qlsv_tc.Forms
 
         }
 
-        // True Bật. False Tắt
-        private void setEnableButtonLuuVaXoa(Boolean status)
+      
+        private void autoEnableButton()
         {
-            btnLuuDangKy.Enabled = btnXoa.Enabled = status;
+            // loại bỏ focus vào dòng đầu tiên
+            dataGridViewDADK.ClearSelection();
+            dataGridViewDADK.CurrentCell = null;
+
+            int count = dataTableDADK.Rows.Count;
+            if ( count != countRowChange)
+            {
+                btnLuuDangKy.Enabled = true;
+                if (count == 0) btnXoa.Enabled = false;
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string MALTC = dataGridViewDADK.CurrentRow.Cells["MALTC"].Value.ToString();
-            // xoá khỏi hàng danh sách đăng ký môn
-            deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, MALTC);
+           if(dataTableDADK.Rows.Count > 0)
+            {
+                string MALTC = dataGridViewDADK.CurrentRow.Cells["MALTC"].Value.ToString();
+                // xoá khỏi hàng danh sách đăng ký môn
+                deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, MALTC);
 
-            // bỏ check đăng kí ở bảng danh sách môn học
-            int length = dataGridViewDKLTC.Rows.Count;
-            for (int i = 0; i < length; i++)
-                if (dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value.ToString().Equals(MALTC))
-                    dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = false;
-
-           this.setEnableButtonLuuVaXoa(!(dataTableDADK.Rows.Count == 0));
+                // bỏ check đăng kí ở bảng danh sách môn học
+                int length = dataGridViewDKLTC.Rows.Count;
+                for (int i = 0; i < length; i++)
+                    if (dataGridViewDKLTC.Rows[i].Cells["MALTC"].Value.ToString().Equals(MALTC))
+                        dataGridViewDKLTC.Rows[i].Cells["DANGKY"].Value = false;
+            }
+           
         }
 
         private void DeleteDuplicatedDataGridViewDK(string MAMH,string MAGV,int NHOM)
@@ -225,6 +243,8 @@ namespace qlsv_tc.Forms
             dataTable.Rows.Remove(foundRows);
             dataTable.AcceptChanges();
             dataGridView.DataSource = dataTable;
+
+            this.autoEnableButton();
         }
 
         private void addNewRowToDataGridViewDaDK(object []RowValues)
@@ -239,6 +259,7 @@ namespace qlsv_tc.Forms
             {
                 // thêm vào trùng khoá thì ko cho thêm
             }
+            this.autoEnableButton();
         }
         private void dataGridViewDKLTC_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -265,13 +286,25 @@ namespace qlsv_tc.Forms
                 else 
                     deleteAndUpdateDataGridView(dataTableDADK, dataGridViewDADK, dataGridViewDKLTC.Rows[e.RowIndex].Cells["MALTC"].Value.ToString());
 
-                this.setEnableButtonLuuVaXoa(!(dataTableDADK.Rows.Count == 0));
             }
         }
 
         private void dataGridViewDADK_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.setEnableButtonLuuVaXoa(true);
+            btnXoa.Enabled = true;
+        }
+
+        private void txtMaSv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(txtMaSv.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập mã sv");
+                    return;
+                }
+                this.btnTimKiem.PerformClick();
+            }
         }
     }
 

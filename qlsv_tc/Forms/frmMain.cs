@@ -42,12 +42,28 @@ namespace qlsv_tc
             // phân quyền
             // dựa vào Program.mGroup để bật tắt các module cần thiết
             rb_quantri.Visible = true;
-            if(Program.mGroup == Program.role.SV.ToString())
+            btnDangXuat.Enabled = true;
+
+            if (Program.mGroup.Equals(Program.role.SV.ToString(), StringComparison.Ordinal))
             {
-                btnTaoTaiKhoan.Enabled = false;
                 btnDangKyLTC.Enabled = true;
+                btnTaoTaiKhoan.Enabled = btnSinhVien.Enabled = btnMoLTC.Enabled = btnHocPhi.Enabled = false;
+
                 rb_baocao.Visible = false;
-                btnDangKyLTC.Enabled = true;
+            }else if( Program.mGroup.Equals(Program.role.KHOA.ToString(), StringComparison.Ordinal) ||
+                      Program.mGroup.Equals(Program.role.PGV.ToString(), StringComparison.Ordinal))
+            {
+                btnTaoTaiKhoan.Enabled = true;
+                rb_baocao.Visible = true;
+                btnHocPhi.Enabled = false;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = true;
+
+            }else if (Program.mGroup.Equals(Program.role.PKT.ToString(), StringComparison.Ordinal))
+            {
+                btnTaoTaiKhoan.Enabled = true;
+                rb_baocao.Visible = false;
+                btnHocPhi.Enabled = true;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = false;
             }
         }
 
@@ -63,6 +79,7 @@ namespace qlsv_tc
            
             rb_quantri.Visible = false;
             rb_baocao.Visible = false;
+            btnDangXuat.Enabled = btnTaoTaiKhoan.Enabled = false;
         }
 
 
@@ -119,6 +136,20 @@ namespace qlsv_tc
 
         private void btnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Form frm = CheckExists(typeof(frmDongHocPhi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDongHocPhi f = new frmDongHocPhi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            // tự động hiện form đăng nhập 
+            btnDangNhap.PerformClick();
 
         }
     }

@@ -37,7 +37,7 @@ namespace qlsv_tc
             this.btnDangNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
-            this.btnNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnLapNhapXuatNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnInPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
@@ -72,7 +72,7 @@ namespace qlsv_tc
             this.btnDangNhap,
             this.btnTaoTaiKhoan,
             this.btnDangXuat,
-            this.btnNV,
+            this.btnSinhVien,
             this.btnLapNhapXuatNV,
             this.btnInPhieuNV,
             this.btnPhieuNV,
@@ -100,6 +100,7 @@ namespace qlsv_tc
             // btnTaoTaiKhoan
             // 
             this.btnTaoTaiKhoan.Caption = "Tạo tải khoản";
+            this.btnTaoTaiKhoan.Enabled = false;
             this.btnTaoTaiKhoan.Id = 3;
             this.btnTaoTaiKhoan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoTaiKhoan.ImageOptions.Image")));
             this.btnTaoTaiKhoan.Name = "btnTaoTaiKhoan";
@@ -107,20 +108,21 @@ namespace qlsv_tc
             // btnDangXuat
             // 
             this.btnDangXuat.Caption = "Đăng xuất";
+            this.btnDangXuat.Enabled = false;
             this.btnDangXuat.Id = 4;
             this.btnDangXuat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.ImageOptions.Image")));
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
             // 
-            // btnNV
+            // btnSinhVien
             // 
-            this.btnNV.Caption = "Sinh Viên";
-            this.btnNV.Enabled = false;
-            this.btnNV.Id = 6;
-            this.btnNV.ImageOptions.Image = global::qlsv_tc.Properties.Resources.sinhvien;
-            this.btnNV.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.sinhvien;
-            this.btnNV.Name = "btnNV";
-            this.btnNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNV_ItemClick);
+            this.btnSinhVien.Caption = "Sinh Viên";
+            this.btnSinhVien.Enabled = false;
+            this.btnSinhVien.Id = 6;
+            this.btnSinhVien.ImageOptions.Image = global::qlsv_tc.Properties.Resources.sinhvien;
+            this.btnSinhVien.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.sinhvien;
+            this.btnSinhVien.Name = "btnSinhVien";
+            this.btnSinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNV_ItemClick);
             // 
             // btnLapNhapXuatNV
             // 
@@ -192,7 +194,7 @@ namespace qlsv_tc
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnNV, true);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnSinhVien, true);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // ribbonPageGroup6
@@ -273,6 +275,7 @@ namespace qlsv_tc
             this.Ribbon = this.ribbonControl1;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -291,7 +294,7 @@ namespace qlsv_tc
         private DevExpress.XtraBars.BarButtonItem btnTaoTaiKhoan;
         private DevExpress.XtraBars.BarButtonItem btnDangXuat;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
-        private DevExpress.XtraBars.BarButtonItem btnNV;
+        private DevExpress.XtraBars.BarButtonItem btnSinhVien;
         private DevExpress.XtraBars.BarButtonItem btnLapNhapXuatNV;
         private DevExpress.XtraBars.BarButtonItem btnInPhieuNV;
         private DevExpress.XtraBars.BarButtonItem btnPhieuNV;
