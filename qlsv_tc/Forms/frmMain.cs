@@ -73,13 +73,18 @@ namespace qlsv_tc
             HOTEN.Text = "HỌ TÊN: ";
             NHOM.Text = "NHÓM: ";
 
-
             Program.connstr = Program.rootConnstr;
 
-           
+
             rb_quantri.Visible = false;
             rb_baocao.Visible = false;
             btnDangXuat.Enabled = btnTaoTaiKhoan.Enabled = false;
+
+            // tạo đối tượng mới sau 1 loạt tác động filter
+            Program.bds_dspm = new BindingSource();
+            // đóng tất cả các form còn mở 
+            foreach(Form f in Program.frmMain.MdiChildren)
+                f.Close();
         }
 
 

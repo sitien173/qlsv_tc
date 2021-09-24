@@ -39,7 +39,7 @@ namespace qlsv_tc.Forms
             }
             else
             {
-                string sql = "select HO,TEN,MALOP from SINHVIEN where MASV = '" + txtMaSv.Text + "'";
+                string query = "EXEC SP_TimThongTinSinhVien @masv = '" + txtMaSv.Text + "'";
                 if (Program.KetNoi() != 1)
                 {
                     MessageBox.Show("Kết nối tới csdl thất bại");
@@ -47,15 +47,22 @@ namespace qlsv_tc.Forms
                 }
                 else
                 {
-                    System.Data.SqlClient.SqlDataReader datareader = Program.ExecSqlDataReader(sql);
+                    System.Data.SqlClient.SqlDataReader dataReader = Program.ExecSqlDataReader(query);
                     // vì chỉ có 1 dòng nên đọc 1 dòng. Nếu trả kết quả nhiều dòng thì dùng vòng lặp
-                    datareader.Read();
-                    if (datareader.HasRows)
+                    dataReader.Read();
+                    if (dataReader.HasRows)
                     {
 
-                        txtHo.Text = datareader.GetString(0);
-                        txtTen.Text = datareader.GetString(1);
-                        txtMaLop.Text = datareader.GetString(2);
+                        // HO
+                        string ho = dataReader.GetString(0);
+                        // TEN
+                        string ten = dataReader.GetString(1);
+                        // MALOP
+                        string malop = dataReader.GetString(2);
+
+                        txtHo.Text = ho;
+                        txtTen.Text = ten;
+                        txtMaLop.Text = malop;
                         pnThongTinLTC.Visible = true;
                     }else
                     {
@@ -75,19 +82,9 @@ namespace qlsv_tc.Forms
                 MessageBox.Show("Kết nối tới csdl thất bại");
                 return;
             }
-            string sql = "SELECT LTC.MALTC,LTC.MAMH," +
-                         " MH.TENMH," +
-                         " LTC.NHOM," +
-                         " GV.MAGV," +
-                         " (GV.HO + ' ' + GV.TEN) AS GV,\n" +
-                         " (LTC.SOSVTOITHIEU - COUNT(DK.MASV)) AS CON\n" +
-                         " FROM dbo.LOPTINCHI AS LTC\n" +
-                         " LEFT JOIN dbo.MONHOC MH ON MH.MAMH = LTC.MAMH\n" +
-                         " LEFT JOIN dbo.GIANGVIEN GV ON GV.MAGV = LTC.MAGV\n" +
-                         " LEFT JOIN dbo.DANGKY DK ON DK.MALTC = LTC.MALTC\n" +
-                         " LEFT JOIN dbo.SINHVIEN SV ON SV.MASV = DK.MASV\n" +
-                         " WHERE LTC.HUYLOP = 0 AND (LTC.NIENKHOA = '" + txtNienKhoa.Text + "' AND LTC.HOCKY = " + spHocKi.Text + ")\n" +
-                         " GROUP BY  LTC.MALTC,LTC.SOSVTOITHIEU,LTC.MAMH,LTC.NHOM,GV.MAGV,GV.HO,GV.TEN,MH.TENMH;\n";
+            string sql = "EXEC SP_GetDanhSachDkyLTC " +
+                "@nienkhoa = '" + txtNienKhoa.Text + "'," +
+                "@hocki = " + spHocKi.Text + "";
 
 
             dataTableDKLTC = Program.ExecSqlQuery(sql);
@@ -125,18 +122,11 @@ namespace qlsv_tc.Forms
                 MessageBox.Show("Kết nối tới csdl thất bại");
                 return;
             }
-            string sql = "SELECT LTC.MALTC,LTC.MAMH, \n" +
-                         " MH.TENMH, \n" +
-                         " LTC.NHOM," +
-                         " GV.MAGV," +
-                         " (GV.HO + ' ' + GV.TEN) AS GV\n" +
-                         " FROM dbo.LOPTINCHI AS LTC\n" +
-                         " LEFT JOIN dbo.MONHOC MH ON MH.MAMH = LTC.MAMH\n" +
-                         " LEFT JOIN dbo.GIANGVIEN GV ON GV.MAGV = LTC.MAGV\n" +
-                         " LEFT JOIN dbo.DANGKY DK ON DK.MALTC = LTC.MALTC\n" +
-                         " LEFT JOIN dbo.SINHVIEN SV ON SV.MASV = DK.MASV\n" +
-                         " WHERE (SV.MASV = '" + txtMaSv.Text + "' AND DK.HUYDANGKY = 0) AND (LTC.NIENKHOA = '" + txtNienKhoa.Text + "' AND LTC.HOCKY = " + spHocKi.Text + ")" +
-                         " GROUP BY  LTC.MALTC,LTC.MAMH,LTC.NHOM,GV.MAGV,GV.HO,GV.TEN,MH.TENMH;\n";
+            string sql = "EXEC SP_GetDanhSachDkyLTCSV " +
+                         "@masv = '" + txtMaSv.Text + "'," +
+                         "@nienkhoa = '" + txtNienKhoa.Text + "'," +
+                         "@hocki = " + spHocKi.Text + "";
+               
 
             dataTableDADK = Program.ExecSqlQuery(sql);
             dataGridViewDADK.DataSource = dataTableDADK;

@@ -59,6 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDangKyLTC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +81,12 @@
     </Compile>
     <Compile Include="Forms\frmDongHocPhi.Designer.cs">
       <DependentUpon>frmDongHocPhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmHocPhi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHocPhi.Designer.cs">
+      <DependentUpon>frmHocPhi.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
@@ -112,6 +123,9 @@
     <EmbeddedResource Include="Forms\frmDongHocPhi.resx">
       <DependentUpon>frmDongHocPhi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHocPhi.resx">
+      <DependentUpon>frmHocPhi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +157,17 @@
     </None>
     <None Include="DS1.xss">
       <DependentUpon>DS1.xsd</DependentUpon>
+    </None>
+    <None Include="DS3.xsc">
+      <DependentUpon>DS3.xsd</DependentUpon>
+    </None>
+    <None Include="DS3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS3.xss">
+      <DependentUpon>DS3.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
