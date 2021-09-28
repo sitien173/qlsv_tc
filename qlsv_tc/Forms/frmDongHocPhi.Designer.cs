@@ -57,17 +57,28 @@ namespace qlsv_tc.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.cT_DONGHOCPHIGridControl = new DevExpress.XtraGrid.GridControl();
             this.bdsCTHP = new System.Windows.Forms.BindingSource(this.components);
             this.bdsHocPhi = new System.Windows.Forms.BindingSource(this.components);
             this.dS3 = new qlsv_tc.DS3();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMASV1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNIENKHOA1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHOCKY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNGAYDONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSOTIENDONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.hOCPHIGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNIENKHOA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHOCKY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHOCPHI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tableAdapterHocPhi = new qlsv_tc.DS3TableAdapters.HOCPHITableAdapter();
             this.tableAdapterManager = new qlsv_tc.DS3TableAdapters.TableAdapterManager();
@@ -77,13 +88,17 @@ namespace qlsv_tc.Forms
             this.pnThongTinSV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cT_DONGHOCPHIGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hOCPHIGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -323,24 +338,36 @@ namespace qlsv_tc.Forms
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.cT_DONGHOCPHIGridControl);
-            this.panelControl1.Controls.Add(this.hOCPHIGridControl);
+            this.panelControl1.Controls.Add(this.panel4);
+            this.panelControl1.Controls.Add(this.panel3);
+            this.panelControl1.Controls.Add(this.panel2);
+            this.panelControl1.Controls.Add(this.panel1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 151);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1576, 695);
             this.panelControl1.TabIndex = 19;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cT_DONGHOCPHIGridControl);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(2, 309);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1572, 384);
+            this.panel4.TabIndex = 6;
+            // 
             // cT_DONGHOCPHIGridControl
             // 
             this.cT_DONGHOCPHIGridControl.DataSource = this.bdsCTHP;
             this.cT_DONGHOCPHIGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cT_DONGHOCPHIGridControl.Location = new System.Drawing.Point(2, 222);
+            this.cT_DONGHOCPHIGridControl.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cT_DONGHOCPHIGridControl.Location = new System.Drawing.Point(0, 0);
             this.cT_DONGHOCPHIGridControl.MainView = this.gridView3;
             this.cT_DONGHOCPHIGridControl.MenuManager = this.barManager1;
             this.cT_DONGHOCPHIGridControl.Name = "cT_DONGHOCPHIGridControl";
-            this.cT_DONGHOCPHIGridControl.Size = new System.Drawing.Size(1572, 471);
-            this.cT_DONGHOCPHIGridControl.TabIndex = 1;
+            this.cT_DONGHOCPHIGridControl.Size = new System.Drawing.Size(1572, 384);
+            this.cT_DONGHOCPHIGridControl.TabIndex = 5;
             this.cT_DONGHOCPHIGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
             // 
@@ -361,19 +388,126 @@ namespace qlsv_tc.Forms
             // 
             // gridView3
             // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMASV1,
+            this.colNIENKHOA1,
+            this.colHOCKY1,
+            this.colNGAYDONG,
+            this.colSOTIENDONG});
             this.gridView3.GridControl = this.cT_DONGHOCPHIGridControl;
             this.gridView3.Name = "gridView3";
+            // 
+            // colMASV1
+            // 
+            this.colMASV1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colMASV1.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMASV1.AppearanceHeader.Options.UseBackColor = true;
+            this.colMASV1.AppearanceHeader.Options.UseFont = true;
+            this.colMASV1.FieldName = "MASV";
+            this.colMASV1.MinWidth = 30;
+            this.colMASV1.Name = "colMASV1";
+            this.colMASV1.Visible = true;
+            this.colMASV1.VisibleIndex = 0;
+            this.colMASV1.Width = 112;
+            // 
+            // colNIENKHOA1
+            // 
+            this.colNIENKHOA1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colNIENKHOA1.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNIENKHOA1.AppearanceHeader.Options.UseBackColor = true;
+            this.colNIENKHOA1.AppearanceHeader.Options.UseFont = true;
+            this.colNIENKHOA1.FieldName = "NIENKHOA";
+            this.colNIENKHOA1.MinWidth = 30;
+            this.colNIENKHOA1.Name = "colNIENKHOA1";
+            this.colNIENKHOA1.Visible = true;
+            this.colNIENKHOA1.VisibleIndex = 1;
+            this.colNIENKHOA1.Width = 112;
+            // 
+            // colHOCKY1
+            // 
+            this.colHOCKY1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colHOCKY1.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCKY1.AppearanceHeader.Options.UseBackColor = true;
+            this.colHOCKY1.AppearanceHeader.Options.UseFont = true;
+            this.colHOCKY1.FieldName = "HOCKY";
+            this.colHOCKY1.MinWidth = 30;
+            this.colHOCKY1.Name = "colHOCKY1";
+            this.colHOCKY1.Visible = true;
+            this.colHOCKY1.VisibleIndex = 2;
+            this.colHOCKY1.Width = 112;
+            // 
+            // colNGAYDONG
+            // 
+            this.colNGAYDONG.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colNGAYDONG.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGAYDONG.AppearanceHeader.Options.UseBackColor = true;
+            this.colNGAYDONG.AppearanceHeader.Options.UseFont = true;
+            this.colNGAYDONG.FieldName = "NGAYDONG";
+            this.colNGAYDONG.MinWidth = 30;
+            this.colNGAYDONG.Name = "colNGAYDONG";
+            this.colNGAYDONG.Visible = true;
+            this.colNGAYDONG.VisibleIndex = 3;
+            this.colNGAYDONG.Width = 112;
+            // 
+            // colSOTIENDONG
+            // 
+            this.colSOTIENDONG.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colSOTIENDONG.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colSOTIENDONG.AppearanceHeader.Options.UseBackColor = true;
+            this.colSOTIENDONG.AppearanceHeader.Options.UseFont = true;
+            this.colSOTIENDONG.DisplayFormat.FormatString = "n0";
+            this.colSOTIENDONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colSOTIENDONG.FieldName = "SOTIENDONG";
+            this.colSOTIENDONG.MinWidth = 30;
+            this.colSOTIENDONG.Name = "colSOTIENDONG";
+            this.colSOTIENDONG.Visible = true;
+            this.colSOTIENDONG.VisibleIndex = 4;
+            this.colSOTIENDONG.Width = 112;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(2, 266);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1572, 43);
+            this.panel3.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(3, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(280, 26);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Chi Tiết Học Phí Đã Đóng";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.hOCPHIGridControl);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(2, 45);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1572, 221);
+            this.panel2.TabIndex = 3;
             // 
             // hOCPHIGridControl
             // 
             this.hOCPHIGridControl.DataSource = this.bdsHocPhi;
-            this.hOCPHIGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hOCPHIGridControl.Location = new System.Drawing.Point(2, 2);
+            this.hOCPHIGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hOCPHIGridControl.EmbeddedNavigator.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hOCPHIGridControl.EmbeddedNavigator.Appearance.Options.UseFont = true;
+            this.hOCPHIGridControl.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hOCPHIGridControl.Location = new System.Drawing.Point(0, 0);
             this.hOCPHIGridControl.MainView = this.gridView2;
             this.hOCPHIGridControl.MenuManager = this.barManager1;
             this.hOCPHIGridControl.Name = "hOCPHIGridControl";
-            this.hOCPHIGridControl.Size = new System.Drawing.Size(1572, 220);
-            this.hOCPHIGridControl.TabIndex = 0;
+            this.hOCPHIGridControl.Size = new System.Drawing.Size(1572, 221);
+            this.hOCPHIGridControl.TabIndex = 1;
             this.hOCPHIGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
@@ -384,11 +518,16 @@ namespace qlsv_tc.Forms
             this.colNIENKHOA,
             this.colHOCKY,
             this.colHOCPHI});
+            this.gridView2.CustomizationFormBounds = new System.Drawing.Rectangle(1271, 637, 377, 383);
             this.gridView2.GridControl = this.hOCPHIGridControl;
             this.gridView2.Name = "gridView2";
             // 
             // colMASV
             // 
+            this.colMASV.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMASV.AppearanceCell.Options.UseFont = true;
+            this.colMASV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colMASV.AppearanceHeader.Options.UseBackColor = true;
             this.colMASV.FieldName = "MASV";
             this.colMASV.MinWidth = 30;
             this.colMASV.Name = "colMASV";
@@ -398,6 +537,10 @@ namespace qlsv_tc.Forms
             // 
             // colNIENKHOA
             // 
+            this.colNIENKHOA.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNIENKHOA.AppearanceCell.Options.UseFont = true;
+            this.colNIENKHOA.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colNIENKHOA.AppearanceHeader.Options.UseBackColor = true;
             this.colNIENKHOA.FieldName = "NIENKHOA";
             this.colNIENKHOA.MinWidth = 30;
             this.colNIENKHOA.Name = "colNIENKHOA";
@@ -407,6 +550,10 @@ namespace qlsv_tc.Forms
             // 
             // colHOCKY
             // 
+            this.colHOCKY.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCKY.AppearanceCell.Options.UseFont = true;
+            this.colHOCKY.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colHOCKY.AppearanceHeader.Options.UseBackColor = true;
             this.colHOCKY.FieldName = "HOCKY";
             this.colHOCKY.MinWidth = 30;
             this.colHOCKY.Name = "colHOCKY";
@@ -416,12 +563,43 @@ namespace qlsv_tc.Forms
             // 
             // colHOCPHI
             // 
+            this.colHOCPHI.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCPHI.AppearanceCell.Options.UseFont = true;
+            this.colHOCPHI.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.colHOCPHI.AppearanceHeader.Options.UseBackColor = true;
+            this.colHOCPHI.DisplayFormat.FormatString = "n0";
+            this.colHOCPHI.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHOCPHI.FieldName = "HOCPHI";
+            this.colHOCPHI.GroupFormat.FormatString = "n0";
+            this.colHOCPHI.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colHOCPHI.MinWidth = 30;
             this.colHOCPHI.Name = "colHOCPHI";
             this.colHOCPHI.Visible = true;
             this.colHOCPHI.VisibleIndex = 3;
             this.colHOCPHI.Width = 112;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1572, 43);
+            this.panel1.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(316, 26);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Danh Sách Học Phí Sinh Viên";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // gridView1
             // 
@@ -470,13 +648,19 @@ namespace qlsv_tc.Forms
             this.pnThongTinSV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cT_DONGHOCPHIGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hOCPHIGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -516,15 +700,26 @@ namespace qlsv_tc.Forms
         private DS3 dS3;
         private DS3TableAdapters.HOCPHITableAdapter tableAdapterHocPhi;
         private DS3TableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingSource bdsCTHP;
+        private DS3TableAdapters.CT_DONGHOCPHITableAdapter tableAdapterCTHP;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraGrid.GridControl cT_DONGHOCPHIGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraGrid.GridControl hOCPHIGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colNIENKHOA;
         private DevExpress.XtraGrid.Columns.GridColumn colHOCKY;
         private DevExpress.XtraGrid.Columns.GridColumn colHOCPHI;
-        private System.Windows.Forms.BindingSource bdsCTHP;
-        private DS3TableAdapters.CT_DONGHOCPHITableAdapter tableAdapterCTHP;
-        private DevExpress.XtraGrid.GridControl cT_DONGHOCPHIGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraGrid.Columns.GridColumn colMASV1;
+        private DevExpress.XtraGrid.Columns.GridColumn colNIENKHOA1;
+        private DevExpress.XtraGrid.Columns.GridColumn colHOCKY1;
+        private DevExpress.XtraGrid.Columns.GridColumn colNGAYDONG;
+        private DevExpress.XtraGrid.Columns.GridColumn colSOTIENDONG;
     }
 }

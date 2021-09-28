@@ -95,7 +95,7 @@ namespace qlsv_tc
 
         private void btnNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+/*
             Form frm = CheckExists(typeof(frmSinhVien));
             if (frm != null) frm.Activate();
             else
@@ -103,7 +103,7 @@ namespace qlsv_tc
                 frmSinhVien f = new frmSinhVien();
                 f.MdiParent = this;
                 f.Show();
-            }
+            }*/
         }
 
         private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -129,11 +129,22 @@ namespace qlsv_tc
     
         private void btnDangKyLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = CheckExists(typeof(frmDangKyLTC));
+            /*  Form frm = CheckExists(typeof(frmDangKyLTC));
+              if (frm != null) frm.Activate();
+              else
+              {
+                  frmDangKyLTC f = new frmDangKyLTC();
+                  f.MdiParent = this;
+                  f.Show();
+              }*/
+
+
+            // test module
+            Form frm = CheckExists(typeof(frmDangKy));
             if (frm != null) frm.Activate();
             else
             {
-                frmDangKyLTC f = new frmDangKyLTC();
+                frmDangKy f = new frmDangKy();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -149,6 +160,7 @@ namespace qlsv_tc
                 f.MdiParent = this;
                 f.Show();
             }
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)

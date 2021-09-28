@@ -95,13 +95,14 @@ namespace qlsv_tc.Forms
             bdsLTC.AddNew();
             
             // nếu thuộc nhóm khoa thì ko cho mở lớp tín chỉ thuộc khoa khác
-            if (Program.mGroup == Program.role.KHOA.ToString())
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString(),StringComparison.Ordinal))
             {
-                txtMakhoa.ReadOnly = true;
-                // set dữ liệu cho text filed mã khoa
-                
+                txtMaKhoa.ReadOnly = true;
+            }else if(Program.mGroup.Equals(Program.role.PGV.ToString(), StringComparison.Ordinal))
+            {
+                txtMaKhoa.ReadOnly = false;
             }
-            this.txtMakhoa.Text = Ultils.GetMaKhoa();
+            txtMaKhoa.Text = Ultils.GetMaKhoa();
         }
 
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,7 +120,7 @@ namespace qlsv_tc.Forms
             else
             {
                 loadInitializeData();
-                this.txtMakhoa.Text = Ultils.GetMaKhoa();
+                this.txtMaKhoa.Text = Ultils.GetMaKhoa();
             }
         }
 

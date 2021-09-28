@@ -35,10 +35,10 @@ namespace qlsv_tc.Forms
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label nHOMLabel;
             System.Windows.Forms.Label mAGVLabel;
-            System.Windows.Forms.Label mAKHOALabel;
             System.Windows.Forms.Label sOSVTOITHIEULabel;
             System.Windows.Forms.Label hUYLOPLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMoLTC));
+            System.Windows.Forms.Label mAKHOALabel;
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -80,20 +80,20 @@ namespace qlsv_tc.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.hUYLOPCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.sOSVTOITHIEUSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.txtMakhoa = new System.Windows.Forms.TextBox();
             this.mAGVTextBox = new System.Windows.Forms.TextBox();
             this.nHOMSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.mAMHTextBox = new System.Windows.Forms.TextBox();
             this.hOCKYSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.nIENKHOATextBox = new System.Windows.Forms.TextBox();
+            this.txtMaKhoa = new System.Windows.Forms.TextBox();
             nIENKHOALabel = new System.Windows.Forms.Label();
             hOCKYLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             nHOMLabel = new System.Windows.Forms.Label();
             mAGVLabel = new System.Windows.Forms.Label();
-            mAKHOALabel = new System.Windows.Forms.Label();
             sOSVTOITHIEULabel = new System.Windows.Forms.Label();
             hUYLOPLabel = new System.Windows.Forms.Label();
+            mAKHOALabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLTC)).BeginInit();
@@ -156,15 +156,6 @@ namespace qlsv_tc.Forms
             mAGVLabel.Size = new System.Drawing.Size(73, 22);
             mAGVLabel.TabIndex = 8;
             mAGVLabel.Text = "MAGV:";
-            // 
-            // mAKHOALabel
-            // 
-            mAKHOALabel.AutoSize = true;
-            mAKHOALabel.Location = new System.Drawing.Point(651, 92);
-            mAKHOALabel.Name = "mAKHOALabel";
-            mAKHOALabel.Size = new System.Drawing.Size(103, 22);
-            mAKHOALabel.TabIndex = 10;
-            mAKHOALabel.Text = "MAKHOA:";
             // 
             // sOSVTOITHIEULabel
             // 
@@ -519,13 +510,13 @@ namespace qlsv_tc.Forms
             // 
             // gbMoLTC
             // 
+            this.gbMoLTC.Controls.Add(mAKHOALabel);
+            this.gbMoLTC.Controls.Add(this.txtMaKhoa);
             this.gbMoLTC.Controls.Add(this.pictureBox1);
             this.gbMoLTC.Controls.Add(hUYLOPLabel);
             this.gbMoLTC.Controls.Add(this.hUYLOPCheckEdit);
             this.gbMoLTC.Controls.Add(sOSVTOITHIEULabel);
             this.gbMoLTC.Controls.Add(this.sOSVTOITHIEUSpinEdit);
-            this.gbMoLTC.Controls.Add(mAKHOALabel);
-            this.gbMoLTC.Controls.Add(this.txtMakhoa);
             this.gbMoLTC.Controls.Add(mAGVLabel);
             this.gbMoLTC.Controls.Add(this.mAGVTextBox);
             this.gbMoLTC.Controls.Add(nHOMLabel);
@@ -578,14 +569,6 @@ namespace qlsv_tc.Forms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.sOSVTOITHIEUSpinEdit.Size = new System.Drawing.Size(240, 28);
             this.sOSVTOITHIEUSpinEdit.TabIndex = 13;
-            // 
-            // txtMakhoa
-            // 
-            this.txtMakhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLTC, "MAKHOA", true));
-            this.txtMakhoa.Location = new System.Drawing.Point(823, 92);
-            this.txtMakhoa.Name = "txtMakhoa";
-            this.txtMakhoa.Size = new System.Drawing.Size(240, 30);
-            this.txtMakhoa.TabIndex = 11;
             // 
             // mAGVTextBox
             // 
@@ -642,6 +625,23 @@ namespace qlsv_tc.Forms
             this.nIENKHOATextBox.Name = "nIENKHOATextBox";
             this.nIENKHOATextBox.Size = new System.Drawing.Size(224, 30);
             this.nIENKHOATextBox.TabIndex = 1;
+            // 
+            // mAKHOALabel
+            // 
+            mAKHOALabel.AutoSize = true;
+            mAKHOALabel.Location = new System.Drawing.Point(651, 100);
+            mAKHOALabel.Name = "mAKHOALabel";
+            mAKHOALabel.Size = new System.Drawing.Size(103, 22);
+            mAKHOALabel.TabIndex = 18;
+            mAKHOALabel.Text = "MAKHOA:";
+            // 
+            // txtMaKhoa
+            // 
+            this.txtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLTC, "MAKHOA", true));
+            this.txtMaKhoa.Location = new System.Drawing.Point(823, 92);
+            this.txtMaKhoa.Name = "txtMaKhoa";
+            this.txtMaKhoa.Size = new System.Drawing.Size(240, 30);
+            this.txtMaKhoa.TabIndex = 19;
             // 
             // frmMoLTC
             // 
@@ -723,7 +723,6 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.GroupBox gbMoLTC;
         private DevExpress.XtraEditors.CheckEdit hUYLOPCheckEdit;
         private DevExpress.XtraEditors.SpinEdit sOSVTOITHIEUSpinEdit;
-        private System.Windows.Forms.TextBox txtMakhoa;
         private System.Windows.Forms.TextBox mAGVTextBox;
         private DevExpress.XtraEditors.SpinEdit nHOMSpinEdit;
         private System.Windows.Forms.TextBox mAMHTextBox;
@@ -731,5 +730,6 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.TextBox nIENKHOATextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
+        private System.Windows.Forms.TextBox txtMaKhoa;
     }
 }

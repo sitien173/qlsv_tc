@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS1.cs">
+      <DependentUpon>DS1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,11 +67,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS3.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmDangKyLTC.cs">
+    <Compile Include="Forms\DkyLTC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmDangKyLTC.Designer.cs">
-      <DependentUpon>frmDangKyLTC.cs</DependentUpon>
+    <Compile Include="Forms\DkyLTC.Designer.cs">
+      <DependentUpon>DkyLTC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDangKy.Designer.cs">
+      <DependentUpon>frmDangKy.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -82,12 +91,6 @@
     <Compile Include="Forms\frmDongHocPhi.Designer.cs">
       <DependentUpon>frmDongHocPhi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmHocPhi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\frmHocPhi.Designer.cs">
-      <DependentUpon>frmHocPhi.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,22 +103,14 @@
     <Compile Include="Forms\frmMoLTC.Designer.cs">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSinhVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmSinhVien.Designer.cs">
-      <DependentUpon>frmSinhVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QLDSV_TCDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLDSV_TCDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Ultils.cs" />
-    <EmbeddedResource Include="Forms\frmDangKyLTC.resx">
-      <DependentUpon>frmDangKyLTC.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DkyLTC.resx">
+      <DependentUpon>DkyLTC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDangKy.resx">
+      <DependentUpon>frmDangKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -123,17 +118,11 @@
     <EmbeddedResource Include="Forms\frmDongHocPhi.resx">
       <DependentUpon>frmDongHocPhi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmHocPhi.resx">
-      <DependentUpon>frmHocPhi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMoLTC.resx">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSinhVien.resx">
-      <DependentUpon>frmSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -180,17 +169,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="QLDSV_TCDataSet.xsc">
-      <DependentUpon>QLDSV_TCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QLDSV_TCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLDSV_TCDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QLDSV_TCDataSet.xss">
-      <DependentUpon>QLDSV_TCDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Resources\register.png" />
   </ItemGroup>
   <ItemGroup>
