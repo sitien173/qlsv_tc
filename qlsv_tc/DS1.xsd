@@ -216,7 +216,7 @@ SELECT MAKHOA, TENKHOA FROM KHOA WHERE (MAKHOA = @MAKHOA)</CommandText>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT MAKHOA, TENKHOA FROM dbo.KHOA</CommandText>
                     <Parameters />
                   </DbCommand>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,25 +11,20 @@ namespace qlsv_tc
 {
     class Ultils
     {
-        public static string GetMaKhoa()
-        {
-            DataTable dt = new DataTable();
-            BindingSource bds = new BindingSource();
-            dt = Program.ExecSqlQuery("SELECT MAKHOA FROM KHOA");
-            bds.DataSource = dt;
-            return ((DataRowView)bds[0])["MAKHOA"].ToString();
-        }
+
         public static void BindingDataToComBo(ComboBox combo, Object data)
         {
             combo.DataSource = data;
             combo.DisplayMember = "TENKHOA";
             combo.ValueMember = "TENSERVER";
 
-           
+            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
+            combo.SelectedIndex = 1;
             // nếu login vào là khoa cntt, thì combox sẽ hiện khoa cntt
             // nếu login vào là khoa vt, thì combox sẽ hiện khoa vt
             combo.SelectedIndex = Program.mKhoa;
         }
+
         // hỗ trợ trong combobox chọn chi nhánh
         public static void ComboboxHelper(ComboBox cmb)
         {
@@ -80,6 +76,40 @@ namespace qlsv_tc
             prompt.AcceptButton = confirmation;
 
             return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
+        // -1 lỗi kết nối csdl --  0 không có dữ liệu trả về -- > 0 có dữ liệu trả về
+        public static int CheckDataHelper(String query)
+        {
+            SqlDataReader dataReader = Program.ExecSqlDataReader(query);
+
+            // nếu null thì thoát luôn  ==> lỗi kết nối
+            if (dataReader == null)
+            {
+                return -1;
+            }
+
+            if (dataReader.Read())
+            {
+                try
+                {
+                    int result = int.Parse(dataReader.GetValue(0).ToString());
+                    dataReader.Close();
+                    return result;
+                }
+                catch (System.FormatException)
+                {
+                    // true
+                }
+            }
+            
+            return 0;
+        }
+        public static string GetMaKhoa()
+        {
+            string sql = "SELECT MAKHOA FROM KHOA";
+            SqlDataReader dataReader = Program.ExecSqlDataReader(sql);
+            dataReader.Read();
+            return dataReader.GetString(0);
         }
     }
 

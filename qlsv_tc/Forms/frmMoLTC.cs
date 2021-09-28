@@ -13,7 +13,10 @@ namespace qlsv_tc.Forms
 {
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
-
+        private int _position = 0;
+        private string _flagOption; // true = add ; false = update ; default of boolean = false
+        private string _oldMaLTC = "";
+        private string _oldTenLTC = "";
         public frmMoLTC()
         {
             InitializeComponent();
@@ -29,25 +32,31 @@ namespace qlsv_tc.Forms
 
         private void loadInitializeData()
         {
+
+            DS.EnforceConstraints = false;
+            this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterMH.Fill(this.DS.MONHOC);
+
+            this.tableAdapterGV.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterGV.Fill(this.DS.GIANGVIEN);
+
             this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
             this.tableAdapterLTC.Fill(this.DS.LOPTINCHI);
-            
-            // TODO: This line of code loads data into the 'DS.DANGKY' table. You can move, or remove it, as needed.
+           
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
             this.tableAdapterDK.Fill(this.DS.DANGKY);
-            // TODO: This line of code loads data into the 'dS.LOPTINCHI' table. You can move, or remove it, as needed.
-
         }
         private void frmMoLTC_Load(object sender, EventArgs e)
         {
+           
             loadInitializeData();
-            // đoạn code liên kết giữa bds với combo box
-            // lọc phân mảnh trước
+            
+            err.Clear();
+
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cboxKhoa, Program.bds_dspm.DataSource);
 
             gbMoLTC.Enabled = false;
-
             LTCGridControl.Enabled = true;
 
             // TODO : Role Action
@@ -84,6 +93,7 @@ namespace qlsv_tc.Forms
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+            _flagOption = "ADD";//  Add action
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -91,18 +101,20 @@ namespace qlsv_tc.Forms
 
             LTCGridControl.Enabled = false;
             gbMoLTC.Enabled = true;
+
             // thao tác chuẩn bị thêm
             bdsLTC.AddNew();
-            
-            // nếu thuộc nhóm khoa thì ko cho mở lớp tín chỉ thuộc khoa khác
-            if (Program.mGroup.Equals(Program.role.KHOA.ToString(),StringComparison.Ordinal))
-            {
-                txtMaKhoa.ReadOnly = true;
-            }else if(Program.mGroup.Equals(Program.role.PGV.ToString(), StringComparison.Ordinal))
-            {
-                txtMaKhoa.ReadOnly = false;
-            }
+
+            // mặc định là false
+            cbHuyLop.Checked = false;
+           
+            int count = this.DS.LOPTINCHI.Rows.Count;
+            txtNienKhoa.Text = this.DS.LOPTINCHI.Rows[count - 1].Field<string>("NIENKHOA");
+              
             txtMaKhoa.Text = Ultils.GetMaKhoa();
+            txtMaKhoa.ReadOnly = true;
+
+            
         }
 
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,7 +132,6 @@ namespace qlsv_tc.Forms
             else
             {
                 loadInitializeData();
-                this.txtMaKhoa.Text = Ultils.GetMaKhoa();
             }
         }
 
@@ -137,6 +148,132 @@ namespace qlsv_tc.Forms
         {
             frmMoLTC_Load(sender, e);
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+        }
+
+        private void cmbMAMH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void mAGVComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+       
+
+        // ====================== SUPPORT VALIDATION ====================== //
+        private bool ValidateInfo()
+        {
+            err.Clear();
+
+            // TODO : Check khoảng trống ở textField
+            if (txtNienKhoa.Text.Trim().Equals(""))
+            {
+                this.err.SetError(txtNienKhoa, "Niên Khoá không được để trống !");
+                return false;
+            }
+            if (cmbMAGV.Text.Equals(""))
+            {
+                this.err.SetError(cmbMAGV, "Vui lòng chọn MAGV !");
+                return false;
+            }
+            if (txtHocKi.Text.Equals(""))
+            {
+                this.err.SetError(txtHocKi, "Vui lòng chọn HOCKY !");
+                return false;
+            }
+            if (cmbMAMH.Text.Equals(""))
+            {
+                this.err.SetError(cmbMAMH, "Vui lòng chọn MAMH !");
+                return false;
+            }
+            if (txtSOSVTOITHIEU.Text.Equals(""))
+            {
+                this.err.SetError(txtSOSVTOITHIEU, "Vui lòng chọn SOSVTOITHIEU !");
+                return false;
+            }
+
+            if (txtNhom.Text.Equals(""))
+            {
+                this.err.SetError(txtNhom, "Vui lòng chọn NHOM !");
+                return false;
+            }
+           
+            
+
+            if (_flagOption == "ADD")
+            {
+                // TODO : Check xem đã có lớp tc nào tồn tại chưa
+
+                string query = "DECLARE	@MALTC int\n" +
+                    "EXEC SP_checkExistMHLTC\n" +
+                    $"@NIENKHOA = '{txtNienKhoa.Text.Trim()}'," +
+                    $"@HOCKY = {txtHocKi.Text}," +
+                    $"@MAMH = '{cmbMAMH.SelectedValue.ToString()}'," +
+                    $"@NHOM = {txtNhom.Text}," +
+                    $"@MAGV = '{cmbMAGV.SelectedValue.ToString()}'," +
+                    $"@MALTC = @MALTC OUTPUT\n" +
+                    "SELECT	@MALTC as N'MALTC'";
+                int result = Ultils.CheckDataHelper(query);
+                if (result == -1)
+                {
+                    XtraMessageBox.Show("Lỗi kết nối với Database. Mời bạn xem lại !", "", MessageBoxButtons.OK);
+                    return false;
+    
+                }
+                else if(result > 0)
+                {
+                    // Đã Tồn tại lớp set vị trị vào dòng đang trùng trên lưới
+                    if (XtraMessageBox.Show("Đã Tồn Tại Trong CSDL !\nBạn có muốn hiểu chỉnh lớp cũ không", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        btnHuy.PerformClick();
+                        bdsLTC.Position = bdsLTC.Find("MALTC", result);
+                        
+                    }
+                    return false;
+                }
+                   
+            }
+
+            if (_flagOption == "UPDATE")
+            {
+               
+            }
+            return true;
+        }
+
+        private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool check = this.ValidateInfo();
+            if (check)
+            {
+                DialogResult dr = XtraMessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                   MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        btnThem.Enabled
+                        = btnXoa.Enabled
+                        = btnHieuChinh.Enabled
+                        = btnUndo.Enabled
+                        = btnReload.Enabled = true;
+
+                        LTCGridControl.Enabled = true;
+
+                        this.bdsLTC.EndEdit();
+                        this.bdsLTC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                        this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
+                    }
+                    catch (Exception ex)
+                    {
+                        bdsLTC.RemoveCurrent();
+                        XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }    
+            }
         }
     }
 }
