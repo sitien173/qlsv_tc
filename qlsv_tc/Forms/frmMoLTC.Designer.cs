@@ -37,8 +37,8 @@ namespace qlsv_tc.Forms
             System.Windows.Forms.Label hUYLOPLabel;
             System.Windows.Forms.Label mAMHLabel1;
             System.Windows.Forms.Label mAGVLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMoLTC));
             System.Windows.Forms.Label mAKHOALabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMoLTC));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -77,6 +77,7 @@ namespace qlsv_tc.Forms
             this.colHUYLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gbMoLTC = new System.Windows.Forms.GroupBox();
+            this.txtMaKhoa = new System.Windows.Forms.TextBox();
             this.cmbMAGV = new System.Windows.Forms.ComboBox();
             this.bdsGV = new System.Windows.Forms.BindingSource(this.components);
             this.cmbMAMH = new System.Windows.Forms.ComboBox();
@@ -90,7 +91,7 @@ namespace qlsv_tc.Forms
             this.tableAdapterMH = new qlsv_tc.DSTableAdapters.MONHOCTableAdapter();
             this.tableAdapterGV = new qlsv_tc.DSTableAdapters.GIANGVIENTableAdapter();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtMaKhoa = new System.Windows.Forms.TextBox();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             nIENKHOALabel = new System.Windows.Forms.Label();
             hOCKYLabel = new System.Windows.Forms.Label();
             nHOMLabel = new System.Windows.Forms.Label();
@@ -183,6 +184,15 @@ namespace qlsv_tc.Forms
             mAGVLabel.TabIndex = 21;
             mAGVLabel.Text = "MAGV:";
             // 
+            // mAKHOALabel
+            // 
+            mAKHOALabel.AutoSize = true;
+            mAKHOALabel.Location = new System.Drawing.Point(654, 100);
+            mAKHOALabel.Name = "mAKHOALabel";
+            mAKHOALabel.Size = new System.Drawing.Size(103, 22);
+            mAKHOALabel.TabIndex = 22;
+            mAKHOALabel.Text = "MAKHOA:";
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -202,8 +212,9 @@ namespace qlsv_tc.Forms
             this.btnUndo,
             this.btnReload,
             this.barButtonItem1,
-            this.btnHuy});
-            this.barManager1.MaxItemId = 10;
+            this.btnHuy,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 11;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -221,7 +232,8 @@ namespace qlsv_tc.Forms
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Offset = 3;
             this.bar1.Text = "Tools";
             // 
@@ -239,6 +251,7 @@ namespace qlsv_tc.Forms
             this.btnHieuChinh.Id = 3;
             this.btnHieuChinh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHieuChinh.ImageOptions.SvgImage")));
             this.btnHieuChinh.Name = "btnHieuChinh";
+            this.btnHieuChinh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHieuChinh_ItemClick);
             // 
             // btnGhi
             // 
@@ -254,6 +267,7 @@ namespace qlsv_tc.Forms
             this.btnXoa.Id = 5;
             this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
             this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
             // btnUndo
             // 
@@ -427,6 +441,7 @@ namespace qlsv_tc.Forms
             this.gridView1.GridControl = this.LTCGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // colMALTC
             // 
@@ -617,6 +632,14 @@ namespace qlsv_tc.Forms
             this.gbMoLTC.TabStop = false;
             this.gbMoLTC.Text = "Mở Lớp Tín Chỉ";
             // 
+            // txtMaKhoa
+            // 
+            this.txtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLTC, "MAKHOA", true));
+            this.txtMaKhoa.Location = new System.Drawing.Point(823, 94);
+            this.txtMaKhoa.Name = "txtMaKhoa";
+            this.txtMaKhoa.Size = new System.Drawing.Size(240, 30);
+            this.txtMaKhoa.TabIndex = 23;
+            // 
             // cmbMAGV
             // 
             this.cmbMAGV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLTC, "MAGV", true));
@@ -772,22 +795,13 @@ namespace qlsv_tc.Forms
             // 
             this.err.ContainerControl = this;
             // 
-            // mAKHOALabel
+            // barButtonItem3
             // 
-            mAKHOALabel.AutoSize = true;
-            mAKHOALabel.Location = new System.Drawing.Point(654, 100);
-            mAKHOALabel.Name = "mAKHOALabel";
-            mAKHOALabel.Size = new System.Drawing.Size(103, 22);
-            mAKHOALabel.TabIndex = 22;
-            mAKHOALabel.Text = "MAKHOA:";
-            // 
-            // txtMaKhoa
-            // 
-            this.txtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLTC, "MAKHOA", true));
-            this.txtMaKhoa.Location = new System.Drawing.Point(823, 94);
-            this.txtMaKhoa.Name = "txtMaKhoa";
-            this.txtMaKhoa.Size = new System.Drawing.Size(240, 30);
-            this.txtMaKhoa.TabIndex = 23;
+            this.barButtonItem3.Caption = "Thoát";
+            this.barButtonItem3.Id = 10;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // frmMoLTC
             // 
@@ -885,5 +899,6 @@ namespace qlsv_tc.Forms
         private DSTableAdapters.GIANGVIENTableAdapter tableAdapterGV;
         private System.Windows.Forms.ErrorProvider err;
         private System.Windows.Forms.TextBox txtMaKhoa;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

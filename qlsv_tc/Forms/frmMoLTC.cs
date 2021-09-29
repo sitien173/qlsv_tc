@@ -13,10 +13,14 @@ namespace qlsv_tc.Forms
 {
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
-        private int _position = 0;
-        private string _flagOption; // true = add ; false = update ; default of boolean = false
-        private string _oldMaLTC = "";
-        private string _oldTenLTC = "";
+        private static int _position = 0;
+        private static string _flagOption; 
+        private static string _oldNienKhoa = "";
+        private static string _oldHocKy = "";
+        private static int _oldMaMH = 0;
+        private static string _oldNhom = "";
+        private static int _oldMaGV = 0;
+
         public frmMoLTC()
         {
             InitializeComponent();
@@ -83,8 +87,8 @@ namespace qlsv_tc.Forms
                    = btnGhi.Enabled
                    = true;
 
-                lblTenKhoa.Text = ((DataRowView)Program.bds_dspm[Program.mKhoa])["TENKHOA"].ToString();
-                cboxKhoa.SelectedIndex = Program.mKhoa;
+                cboxKhoa.Visible = true;
+                cboxKhoa.Enabled = false;
 
             }
            btnGhi.Enabled = btnHuy.Enabled =  false;
@@ -142,6 +146,10 @@ namespace qlsv_tc.Forms
             
             // load lại cả form...
             frmMoLTC_Load(sender, e);
+            if (_position > 0)
+            {
+                bdsLTC.Position = _position;
+            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -206,7 +214,27 @@ namespace qlsv_tc.Forms
             {
                 // TODO : Check xem đã có lớp tc nào tồn tại chưa
 
-                string query = "DECLARE	@MALTC int\n" +
+               return checkExistLTC();
+
+            }
+
+            if (_flagOption == "UPDATE")
+            {
+                if (!this.txtNienKhoa.Text.Trim().Equals(_oldNienKhoa) || 
+                    !this.txtHocKi.Text.Trim().Equals(_oldHocKy) ||
+                    !this.txtNhom.Text.Trim().Equals(_oldNhom) ||
+                    this.cmbMAMH.SelectedIndex != _oldMaMH ||
+                    this.cmbMAGV.SelectedIndex != _oldMaGV)
+                {
+                    return checkExistLTC();
+                }
+            }
+            return true;
+        }
+
+        private Boolean checkExistLTC()
+        {
+            string query = "DECLARE	@MALTC int\n" +
                     "EXEC SP_checkExistMHLTC\n" +
                     $"@NIENKHOA = '{txtNienKhoa.Text.Trim()}'," +
                     $"@HOCKY = {txtHocKi.Text}," +
@@ -215,30 +243,24 @@ namespace qlsv_tc.Forms
                     $"@MAGV = '{cmbMAGV.SelectedValue.ToString()}'," +
                     $"@MALTC = @MALTC OUTPUT\n" +
                     "SELECT	@MALTC as N'MALTC'";
-                int result = Ultils.CheckDataHelper(query);
-                if (result == -1)
-                {
-                    XtraMessageBox.Show("Lỗi kết nối với Database. Mời bạn xem lại !", "", MessageBoxButtons.OK);
-                    return false;
-    
-                }
-                else if(result > 0)
-                {
-                    // Đã Tồn tại lớp set vị trị vào dòng đang trùng trên lưới
-                    if (XtraMessageBox.Show("Đã Tồn Tại Trong CSDL !\nBạn có muốn hiểu chỉnh lớp cũ không", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        btnHuy.PerformClick();
-                        bdsLTC.Position = bdsLTC.Find("MALTC", result);
-                        
-                    }
-                    return false;
-                }
-                   
-            }
-
-            if (_flagOption == "UPDATE")
+           int result = Ultils.CheckDataHelper(query);
+            if (result == -1)
             {
-               
+                XtraMessageBox.Show("Lỗi kết nối với Database. Mời bạn xem lại !", "", MessageBoxButtons.OK);
+                return false;
+
+            }
+            else if (result > 0)
+            {
+                // Đã Tồn tại lớp set vị trị vào dòng đang trùng trên lưới
+                if (XtraMessageBox.Show("Đã Tồn Tại Trong CSDL !\nBạn có muốn hiểu chỉnh lớp cũ không", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    bdsLTC.CancelEdit();
+                    bdsLTC.ResetCurrentItem();
+                    bdsLTC.Position = bdsLTC.Find("MALTC", result);
+                    btnHieuChinh.PerformClick();
+                }
+                return false;
             }
             return true;
         }
@@ -261,10 +283,12 @@ namespace qlsv_tc.Forms
                         = btnReload.Enabled = true;
 
                         LTCGridControl.Enabled = true;
+                        gbMoLTC.Enabled = btnHuy.Enabled = btnGhi.Enabled = false;
 
                         this.bdsLTC.EndEdit();
                         this.bdsLTC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
+                        int check1 = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
+                        if (check1 > 0) XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
                     }
                     catch (Exception ex)
                     {
@@ -273,6 +297,97 @@ namespace qlsv_tc.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }    
+            }
+        }
+
+        private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _flagOption = "UPDATE";//  Update action
+            _oldNienKhoa = this.txtNienKhoa.Text.Trim().ToString();
+            _oldMaGV = this.cmbMAGV.SelectedIndex;
+            _oldMaMH = this.cmbMAMH.SelectedIndex;
+            _oldHocKy = this.txtHocKi.Text.Trim();
+            _oldNhom = this.txtNhom.Text.Trim();
+
+
+            // TODO: Display To handle
+            LTCGridControl.Enabled = false;
+            gbMoLTC.Enabled = true;
+            btnGhi.Enabled = btnHuy.Enabled = true;
+
+            btnThem.Enabled
+                = btnXoa.Enabled
+                = btnHieuChinh.Enabled
+                = btnUndo.Enabled
+                = btnReload.Enabled = false;
+            cboxKhoa.Enabled = false;
+        }
+
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (bdsDK.Count > 0)
+            {
+                XtraMessageBox.Show("Không thể xóa lớp này vì Lớp đã có sinh viên đăng ký.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+
+                    bdsLTC.RemoveCurrent();
+                    this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
+                    int check = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
+                    if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Lỗi xóa Lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    this.tableAdapterLTC.Fill(this.DS.LOPTINCHI);
+                    return;
+
+                }
+            }
+            if (bdsLTC.Count == 0) btnXoa.Enabled = btnHieuChinh.Enabled =  btnHuy.Enabled =false;
+
+
+            btnReload.Enabled = true;
+            gbMoLTC.Enabled = false;
+
+            if (_position > 0)
+            {
+                bdsLTC.Position = _position;
+            }
+        }
+
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            _position = e.RowHandle;
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.gbMoLTC.Enabled)
+            {
+
+                String notifi = " Dữ liệu LỚP chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+                return;
             }
         }
     }
