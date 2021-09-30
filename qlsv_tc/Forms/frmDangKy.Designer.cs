@@ -30,17 +30,7 @@ namespace qlsv_tc.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangKy));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.pnNienKhoaHocKi = new System.Windows.Forms.GroupBox();
             this.spHocKi = new DevExpress.XtraEditors.SpinEdit();
             this.txtNienKhoa = new System.Windows.Forms.TextBox();
@@ -48,23 +38,21 @@ namespace qlsv_tc.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtTen = new System.Windows.Forms.TextBox();
-            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.txtMaLop = new System.Windows.Forms.TextBox();
-            this.txtMaSv = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtHo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.cmbMASV = new DevExpress.XtraEditors.LookUpEdit();
+            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
+            this.dS = new qlsv_tc.DS();
+            this.label1 = new System.Windows.Forms.Label();
+            this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.pnContent = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pnBottom = new System.Windows.Forms.Panel();
             this.dANGKYGridControl = new DevExpress.XtraGrid.GridControl();
             this.bdsDK = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new qlsv_tc.DS();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMALTC2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -84,6 +72,7 @@ namespace qlsv_tc.Forms
             this.rbtnHuyDangKy = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.btnGhi = new DevExpress.XtraEditors.SimpleButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -106,10 +95,14 @@ namespace qlsv_tc.Forms
             this.tableAdapterManager = new qlsv_tc.DSTableAdapters.TableAdapterManager();
             this.tableAdapterDKLTC = new qlsv_tc.DSTableAdapters.DanhSachDkyLTCTableAdapter();
             this.tableAdapterDKLTCSV = new qlsv_tc.DSTableAdapters.DanhSachDkyLTCSVTableAdapter();
+            this.tableAdapterSV = new qlsv_tc.DSTableAdapters.SINHVIENTableAdapter();
             this.pnNienKhoaHocKi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spHocKi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMASV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
             this.pnContent.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -117,7 +110,6 @@ namespace qlsv_tc.Forms
             this.pnBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dANGKYGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSDKSVGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDKLTCSV)).BeginInit();
@@ -125,6 +117,7 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.rbtnHuyDangKy)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.danhSachDkyLTCGridControl)).BeginInit();
@@ -214,30 +207,101 @@ namespace qlsv_tc.Forms
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.txtTen);
-            this.panelControl1.Controls.Add(this.separatorControl1);
-            this.panelControl1.Controls.Add(this.label4);
-            this.panelControl1.Controls.Add(this.btnTimKiem);
+            this.panelControl1.Controls.Add(this.txtHoTen);
             this.panelControl1.Controls.Add(this.txtMaLop);
-            this.panelControl1.Controls.Add(this.txtMaSv);
-            this.panelControl1.Controls.Add(this.label6);
-            this.panelControl1.Controls.Add(this.label1);
-            this.panelControl1.Controls.Add(this.txtHo);
+            this.panelControl1.Controls.Add(this.label4);
             this.panelControl1.Controls.Add(this.label5);
+            this.panelControl1.Controls.Add(this.cmbMASV);
+            this.panelControl1.Controls.Add(this.label1);
+            this.panelControl1.Controls.Add(this.separatorControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1750, 90);
             this.panelControl1.TabIndex = 3;
             // 
-            // txtTen
+            // txtHoTen
             // 
-            this.txtTen.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTen.Location = new System.Drawing.Point(984, 15);
-            this.txtTen.Name = "txtTen";
-            this.txtTen.ReadOnly = true;
-            this.txtTen.Size = new System.Drawing.Size(234, 30);
-            this.txtTen.TabIndex = 19;
+            this.txtHoTen.Enabled = false;
+            this.txtHoTen.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoTen.Location = new System.Drawing.Point(730, 17);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(287, 30);
+            this.txtHoTen.TabIndex = 13;
+            // 
+            // txtMaLop
+            // 
+            this.txtMaLop.Enabled = false;
+            this.txtMaLop.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaLop.Location = new System.Drawing.Point(1196, 17);
+            this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Size = new System.Drawing.Size(239, 30);
+            this.txtMaLop.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1103, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 22);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Mã Lớp";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(628, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 22);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Họ Tên";
+            // 
+            // cmbMASV
+            // 
+            this.cmbMASV.Location = new System.Drawing.Point(194, 17);
+            this.cmbMASV.Name = "cmbMASV";
+            this.cmbMASV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMASV.Properties.Appearance.Options.UseFont = true;
+            this.cmbMASV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbMASV.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MASV", "MASV", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.Descending, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HO", "HO", 38, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TEN", "TEN", 48, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NGAYSINH", "NGAYSINH", 111, DevExpress.Utils.FormatType.DateTime, "M/d/yyyy", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 77, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DANGHIHOC", "DANGHIHOC", 127, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.cmbMASV.Properties.DataSource = this.bdsSV;
+            this.cmbMASV.Properties.DisplayMember = "MASV";
+            this.cmbMASV.Properties.NullText = "Tìm MÃ SV";
+            this.cmbMASV.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+            this.cmbMASV.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbMASV.Properties.ValueMember = "MASV";
+            this.cmbMASV.Size = new System.Drawing.Size(286, 30);
+            this.cmbMASV.TabIndex = 9;
+            this.cmbMASV.EditValueChanged += new System.EventHandler(this.cmbMASV_EditValueChanged);
+            // 
+            // bdsSV
+            // 
+            this.bdsSV.DataMember = "SINHVIEN";
+            this.bdsSV.DataSource = this.dS;
+            // 
+            // dS
+            // 
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 22);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Mã SV";
             // 
             // separatorControl1
             // 
@@ -247,83 +311,6 @@ namespace qlsv_tc.Forms
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(19, 46);
             this.separatorControl1.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(925, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 22);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Tên";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Appearance.Options.UseFont = true;
-            this.btnTimKiem.Location = new System.Drawing.Point(455, 13);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(112, 34);
-            this.btnTimKiem.TabIndex = 2;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtMaLop
-            // 
-            this.txtMaLop.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(1388, 15);
-            this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.ReadOnly = true;
-            this.txtMaLop.Size = new System.Drawing.Size(234, 30);
-            this.txtMaLop.TabIndex = 17;
-            // 
-            // txtMaSv
-            // 
-            this.txtMaSv.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSv.Location = new System.Drawing.Point(182, 12);
-            this.txtMaSv.Name = "txtMaSv";
-            this.txtMaSv.Size = new System.Drawing.Size(250, 33);
-            this.txtMaSv.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1283, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 22);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Mã Lớp";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nhập Mã Sinh Viên";
-            // 
-            // txtHo
-            // 
-            this.txtHo.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHo.Location = new System.Drawing.Point(649, 15);
-            this.txtHo.Name = "txtHo";
-            this.txtHo.ReadOnly = true;
-            this.txtHo.Size = new System.Drawing.Size(234, 30);
-            this.txtHo.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(609, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 22);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Họ";
             // 
             // pnContent
             // 
@@ -383,11 +370,6 @@ namespace qlsv_tc.Forms
             // 
             this.bdsDK.DataMember = "DANGKY";
             this.bdsDK.DataSource = this.dS;
-            // 
-            // dS
-            // 
-            this.dS.DataSetName = "DS";
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridView3
             // 
@@ -609,9 +591,8 @@ namespace qlsv_tc.Forms
             // rbtnHuyDangKy
             // 
             this.rbtnHuyDangKy.AutoHeight = false;
-            editorButtonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions5.SvgImage")));
             this.rbtnHuyDangKy.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.rbtnHuyDangKy.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rbtnHuyDangKy.ContextImageOptions.SvgImage")));
             this.rbtnHuyDangKy.Name = "rbtnHuyDangKy";
             this.rbtnHuyDangKy.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -628,14 +609,23 @@ namespace qlsv_tc.Forms
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel7.Controls.Add(this.btnGhi);
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.label3);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1750, 52);
             this.panel7.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnGhi);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel8.Location = new System.Drawing.Point(1550, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(200, 52);
+            this.panel8.TabIndex = 2;
             // 
             // btnGhi
             // 
@@ -644,7 +634,7 @@ namespace qlsv_tc.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGhi.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGhi.Appearance.Options.UseFont = true;
-            this.btnGhi.Location = new System.Drawing.Point(1576, 6);
+            this.btnGhi.Location = new System.Drawing.Point(14, 6);
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.Size = new System.Drawing.Size(174, 39);
             this.btnGhi.TabIndex = 1;
@@ -658,9 +648,9 @@ namespace qlsv_tc.Forms
             this.label3.ForeColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(20, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(321, 26);
+            this.label3.Size = new System.Drawing.Size(356, 26);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Danh Sách Môn Học Đăng Ký";
+            this.label3.Text = "Danh Sách Môn Học Đã Đăng Ký";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -881,9 +871,8 @@ namespace qlsv_tc.Forms
             // rbtnDANGKY
             // 
             this.rbtnDANGKY.AutoHeight = false;
-            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
             this.rbtnDANGKY.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
             this.rbtnDANGKY.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rbtnDANGKY.ContextImageOptions.SvgImage")));
             this.rbtnDANGKY.Name = "rbtnDANGKY";
             this.rbtnDANGKY.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
@@ -891,7 +880,7 @@ namespace qlsv_tc.Forms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -935,6 +924,10 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterDKLTCSV.ClearBeforeFill = true;
             // 
+            // tableAdapterSV
+            // 
+            this.tableAdapterSV.ClearBeforeFill = true;
+            // 
             // frmDangKy
             // 
             this.Appearance.Options.UseFont = true;
@@ -956,6 +949,9 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMASV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             this.pnContent.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -963,7 +959,6 @@ namespace qlsv_tc.Forms
             this.pnBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dANGKYGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSDKSVGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDKLTCSV)).EndInit();
@@ -972,6 +967,7 @@ namespace qlsv_tc.Forms
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.danhSachDkyLTCGridControl)).EndInit();
@@ -994,16 +990,7 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.TextBox txtTen;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
-        private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.SimpleButton btnTimKiem;
-        private System.Windows.Forms.TextBox txtMaLop;
-        private System.Windows.Forms.TextBox txtMaSv;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtHo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnContent;
         private DS dS;
         private System.Windows.Forms.BindingSource bdsDK;
@@ -1052,5 +1039,14 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_GK;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_CK;
         private DevExpress.XtraGrid.Columns.GridColumn colHUYDANGKY1;
+        private System.Windows.Forms.Panel panel8;
+        private DevExpress.XtraEditors.LookUpEdit cmbMASV;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource bdsSV;
+        private DSTableAdapters.SINHVIENTableAdapter tableAdapterSV;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.TextBox txtMaLop;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -42,55 +42,11 @@ namespace qlsv_tc.Forms
 
         private void DkyLTC_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = txtMaSv;
+            // TODO: This line of code loads data into the 'dS.SINHVIEN' table. You can move, or remove it, as needed.
+            this.tableAdapterSV.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterSV.Fill(this.dS.SINHVIEN);
             pnContent.Visible = false;
             pnNienKhoaHocKi.Visible = false;
-        }
-
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtMaSv.Text))
-            {
-                MessageBox.Show("Mã Sinh Viên Không Được Để Trống");
-                return;
-            }
-
-            string query = "EXEC SP_TimThongTinSinhVien @masv = '" + txtMaSv.Text + "'";
-            if (Program.KetNoi() != 1)
-            {
-                MessageBox.Show("Kết nối tới csdl thất bại");
-                return;
-            }
-            else
-            {
-                System.Data.SqlClient.SqlDataReader dataReader = Program.ExecSqlDataReader(query);
-                // vì chỉ có 1 dòng nên đọc 1 dòng. Nếu trả kết quả nhiều dòng thì dùng vòng lặp
-                dataReader.Read();
-                if (dataReader.HasRows)
-                {
-                    // lưu lại MASV để sau cần đến
-                    MASV = txtMaSv.Text.Trim();
-
-                    // HO
-                    string ho = dataReader.GetString(0);
-                    // TEN
-                    string ten = dataReader.GetString(1);
-                    // MALOP
-                    string malop = dataReader.GetString(2);
-
-                    txtHo.Text = ho;
-                    txtTen.Text = ten;
-                    txtMaLop.Text = malop;
-                    pnNienKhoaHocKi.Visible = true;
-                    pnContent.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("Mã SV Không Tồn Tại");
-                    pnNienKhoaHocKi.Visible = false;
-                }
-
-            }
         }
 
         private void btnTimLTC_Click(object sender, EventArgs e)
@@ -291,6 +247,16 @@ namespace qlsv_tc.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void cmbMASV_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectedSV = cmbMASV.GetSelectedDataRow() as DataRowView;
+            MASV = selectedSV.Row["MASV"].ToString();
+            txtHoTen.Text = selectedSV.Row["HO"] + " " + selectedSV.Row["TEN"];
+            txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
+            pnNienKhoaHocKi.Visible = true;
+            pnContent.Visible = false;
         }
     }
 }

@@ -48,6 +48,7 @@ namespace qlsv_tc.Forms
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -91,7 +92,6 @@ namespace qlsv_tc.Forms
             this.tableAdapterMH = new qlsv_tc.DSTableAdapters.MONHOCTableAdapter();
             this.tableAdapterGV = new qlsv_tc.DSTableAdapters.GIANGVIENTableAdapter();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             nIENKHOALabel = new System.Windows.Forms.Label();
             hOCKYLabel = new System.Windows.Forms.Label();
             nHOMLabel = new System.Windows.Forms.Label();
@@ -286,11 +286,19 @@ namespace qlsv_tc.Forms
             // 
             // btnReload
             // 
-            this.btnReload.Caption = "Reload";
+            this.btnReload.Caption = "Làm mới";
             this.btnReload.Id = 7;
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
             this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Thoát";
+            this.barButtonItem3.Id = 10;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // bar3
             // 
@@ -445,6 +453,10 @@ namespace qlsv_tc.Forms
             // 
             // colMALTC
             // 
+            this.colMALTC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALTC.AppearanceCell.Options.UseFont = true;
+            this.colMALTC.AppearanceCell.Options.UseTextOptions = true;
+            this.colMALTC.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMALTC.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMALTC.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colMALTC.AppearanceHeader.Options.UseBackColor = true;
@@ -462,6 +474,10 @@ namespace qlsv_tc.Forms
             // 
             // colNIENKHOA
             // 
+            this.colNIENKHOA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNIENKHOA.AppearanceCell.Options.UseFont = true;
+            this.colNIENKHOA.AppearanceCell.Options.UseTextOptions = true;
+            this.colNIENKHOA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNIENKHOA.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colNIENKHOA.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNIENKHOA.AppearanceHeader.Options.UseBackColor = true;
@@ -479,6 +495,10 @@ namespace qlsv_tc.Forms
             // 
             // colHOCKY
             // 
+            this.colHOCKY.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCKY.AppearanceCell.Options.UseFont = true;
+            this.colHOCKY.AppearanceCell.Options.UseTextOptions = true;
+            this.colHOCKY.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHOCKY.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colHOCKY.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colHOCKY.AppearanceHeader.Options.UseBackColor = true;
@@ -496,6 +516,10 @@ namespace qlsv_tc.Forms
             // 
             // colMAMH
             // 
+            this.colMAMH.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAMH.AppearanceCell.Options.UseFont = true;
+            this.colMAMH.AppearanceCell.Options.UseTextOptions = true;
+            this.colMAMH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMAMH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMAMH.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colMAMH.AppearanceHeader.Options.UseBackColor = true;
@@ -513,6 +537,10 @@ namespace qlsv_tc.Forms
             // 
             // colNHOM
             // 
+            this.colNHOM.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNHOM.AppearanceCell.Options.UseFont = true;
+            this.colNHOM.AppearanceCell.Options.UseTextOptions = true;
+            this.colNHOM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNHOM.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colNHOM.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNHOM.AppearanceHeader.Options.UseBackColor = true;
@@ -530,6 +558,10 @@ namespace qlsv_tc.Forms
             // 
             // colMAGV
             // 
+            this.colMAGV.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAGV.AppearanceCell.Options.UseFont = true;
+            this.colMAGV.AppearanceCell.Options.UseTextOptions = true;
+            this.colMAGV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMAGV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMAGV.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colMAGV.AppearanceHeader.Options.UseBackColor = true;
@@ -547,6 +579,10 @@ namespace qlsv_tc.Forms
             // 
             // colMAKHOA
             // 
+            this.colMAKHOA.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAKHOA.AppearanceCell.Options.UseFont = true;
+            this.colMAKHOA.AppearanceCell.Options.UseTextOptions = true;
+            this.colMAKHOA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMAKHOA.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMAKHOA.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colMAKHOA.AppearanceHeader.Options.UseBackColor = true;
@@ -564,6 +600,10 @@ namespace qlsv_tc.Forms
             // 
             // colSOSVTOITHIEU
             // 
+            this.colSOSVTOITHIEU.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colSOSVTOITHIEU.AppearanceCell.Options.UseFont = true;
+            this.colSOSVTOITHIEU.AppearanceCell.Options.UseTextOptions = true;
+            this.colSOSVTOITHIEU.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSOSVTOITHIEU.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colSOSVTOITHIEU.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colSOSVTOITHIEU.AppearanceHeader.Options.UseBackColor = true;
@@ -581,6 +621,10 @@ namespace qlsv_tc.Forms
             // 
             // colHUYLOP
             // 
+            this.colHUYLOP.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHUYLOP.AppearanceCell.Options.UseFont = true;
+            this.colHUYLOP.AppearanceCell.Options.UseTextOptions = true;
+            this.colHUYLOP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHUYLOP.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colHUYLOP.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colHUYLOP.AppearanceHeader.Options.UseBackColor = true;
@@ -651,7 +695,6 @@ namespace qlsv_tc.Forms
             this.cmbMAGV.Size = new System.Drawing.Size(240, 30);
             this.cmbMAGV.TabIndex = 22;
             this.cmbMAGV.ValueMember = "MAGV";
-            this.cmbMAGV.SelectedIndexChanged += new System.EventHandler(this.mAGVComboBox_SelectedIndexChanged);
             // 
             // bdsGV
             // 
@@ -669,7 +712,6 @@ namespace qlsv_tc.Forms
             this.cmbMAMH.Size = new System.Drawing.Size(224, 30);
             this.cmbMAMH.TabIndex = 20;
             this.cmbMAMH.ValueMember = "MAMH";
-            this.cmbMAMH.SelectedIndexChanged += new System.EventHandler(this.cmbMAMH_SelectedIndexChanged);
             // 
             // bdsMH
             // 
@@ -782,6 +824,7 @@ namespace qlsv_tc.Forms
             this.txtNienKhoa.Name = "txtNienKhoa";
             this.txtNienKhoa.Size = new System.Drawing.Size(224, 30);
             this.txtNienKhoa.TabIndex = 1;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // tableAdapterMH
             // 
@@ -794,14 +837,6 @@ namespace qlsv_tc.Forms
             // err
             // 
             this.err.ContainerControl = this;
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Thoát";
-            this.barButtonItem3.Id = 10;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // frmMoLTC
             // 

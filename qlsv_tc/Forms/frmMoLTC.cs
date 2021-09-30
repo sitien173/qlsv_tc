@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,13 +15,7 @@ namespace qlsv_tc.Forms
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
-        private static string _flagOption; 
-        private static string _oldNienKhoa = "";
-        private static string _oldHocKy = "";
-        private static int _oldMaMH = 0;
-        private static string _oldNhom = "";
-        private static int _oldMaGV = 0;
-
+       
         public frmMoLTC()
         {
             InitializeComponent();
@@ -97,7 +92,7 @@ namespace qlsv_tc.Forms
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            _flagOption = "ADD";//  Add action
+            
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -157,19 +152,6 @@ namespace qlsv_tc.Forms
             frmMoLTC_Load(sender, e);
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
         }
-
-        private void cmbMAMH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void mAGVComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-       
-
         // ====================== SUPPORT VALIDATION ====================== //
         private bool ValidateInfo()
         {
@@ -207,61 +189,7 @@ namespace qlsv_tc.Forms
                 this.err.SetError(txtNhom, "Vui lòng chọn NHOM !");
                 return false;
             }
-           
-            
-
-            if (_flagOption == "ADD")
-            {
-                // TODO : Check xem đã có lớp tc nào tồn tại chưa
-
-               return checkExistLTC();
-
-            }
-
-            if (_flagOption == "UPDATE")
-            {
-                if (!this.txtNienKhoa.Text.Trim().Equals(_oldNienKhoa) || 
-                    !this.txtHocKi.Text.Trim().Equals(_oldHocKy) ||
-                    !this.txtNhom.Text.Trim().Equals(_oldNhom) ||
-                    this.cmbMAMH.SelectedIndex != _oldMaMH ||
-                    this.cmbMAGV.SelectedIndex != _oldMaGV)
-                {
-                    return checkExistLTC();
-                }
-            }
-            return true;
-        }
-
-        private Boolean checkExistLTC()
-        {
-            string query = "DECLARE	@MALTC int\n" +
-                    "EXEC SP_checkExistMHLTC\n" +
-                    $"@NIENKHOA = '{txtNienKhoa.Text.Trim()}'," +
-                    $"@HOCKY = {txtHocKi.Text}," +
-                    $"@MAMH = '{cmbMAMH.SelectedValue.ToString()}'," +
-                    $"@NHOM = {txtNhom.Text}," +
-                    $"@MAGV = '{cmbMAGV.SelectedValue.ToString()}'," +
-                    $"@MALTC = @MALTC OUTPUT\n" +
-                    "SELECT	@MALTC as N'MALTC'";
-           int result = Ultils.CheckDataHelper(query);
-            if (result == -1)
-            {
-                XtraMessageBox.Show("Lỗi kết nối với Database. Mời bạn xem lại !", "", MessageBoxButtons.OK);
-                return false;
-
-            }
-            else if (result > 0)
-            {
-                // Đã Tồn tại lớp set vị trị vào dòng đang trùng trên lưới
-                if (XtraMessageBox.Show("Đã Tồn Tại Trong CSDL !\nBạn có muốn hiểu chỉnh lớp cũ không", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    bdsLTC.CancelEdit();
-                    bdsLTC.ResetCurrentItem();
-                    bdsLTC.Position = bdsLTC.Find("MALTC", result);
-                    btnHieuChinh.PerformClick();
-                }
-                return false;
-            }
+          
             return true;
         }
 
@@ -290,6 +218,15 @@ namespace qlsv_tc.Forms
                         int check1 = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
                         if (check1 > 0) XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
                     }
+                    catch(SqlException ex)
+                    {
+                        // 2627 là mã lỗi trùng khoá NIENKHOA,HOCKY,MAMH,NHOM
+                        if(ex.Number == 2627)
+                        {
+                            XtraMessageBox.Show("Ghi Thất Bại. NIENKHOA, HOCKY, MAMH, NHOM Đã Tồn Tại","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
                     catch (Exception ex)
                     {
                         bdsLTC.RemoveCurrent();
@@ -302,14 +239,6 @@ namespace qlsv_tc.Forms
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _flagOption = "UPDATE";//  Update action
-            _oldNienKhoa = this.txtNienKhoa.Text.Trim().ToString();
-            _oldMaGV = this.cmbMAGV.SelectedIndex;
-            _oldMaMH = this.cmbMAMH.SelectedIndex;
-            _oldHocKy = this.txtHocKi.Text.Trim();
-            _oldNhom = this.txtNhom.Text.Trim();
-
-
             // TODO: Display To handle
             LTCGridControl.Enabled = false;
             gbMoLTC.Enabled = true;
@@ -334,7 +263,6 @@ namespace qlsv_tc.Forms
             {
                 try
                 {
-
                     bdsLTC.RemoveCurrent();
                     this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
                     int check = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
@@ -387,6 +315,16 @@ namespace qlsv_tc.Forms
             else
             {
                 this.Close();
+                return;
+            }
+        }
+
+        private void txtNienKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('-')) return;
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
                 return;
             }
         }
