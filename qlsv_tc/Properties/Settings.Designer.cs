@@ -33,5 +33,26 @@ namespace qlsv_tc.Properties {
                 return ((string)(this["QLDSV_TCConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M6JC7UB\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            "o=True;User ID=sa")]
+        public string Server3 {
+            get {
+                return ((string)(this["Server3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M6JC7UB\\SERVER2;Initial Catalog=QLDSV_TC;User ID=sa")]
+        public string QLDSV_TCConnectionString2 {
+            get {
+                return ((string)(this["QLDSV_TCConnectionString2"]));
+            }
+        }
     }
 }

@@ -45,13 +45,15 @@ namespace qlsv_tc
             // 
             // btnThoat
             // 
+            this.btnThoat.Appearance.BackColor = System.Drawing.Color.LightGray;
             this.btnThoat.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.btnThoat.Appearance.Options.UseBackColor = true;
             this.btnThoat.Appearance.Options.UseFont = true;
             this.btnThoat.Appearance.Options.UseForeColor = true;
-            this.btnThoat.Location = new System.Drawing.Point(454, 277);
+            this.btnThoat.Location = new System.Drawing.Point(275, 263);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(112, 34);
+            this.btnThoat.Size = new System.Drawing.Size(138, 48);
             this.btnThoat.TabIndex = 1;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -84,6 +86,7 @@ namespace qlsv_tc
             this.txtTaiKhoan.Properties.Appearance.Options.UseFont = true;
             this.txtTaiKhoan.Size = new System.Drawing.Size(313, 34);
             this.txtTaiKhoan.TabIndex = 4;
+            this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._KeyPress);
             // 
             // txtMatKhau
             // 
@@ -94,6 +97,7 @@ namespace qlsv_tc
             this.txtMatKhau.Properties.UseSystemPasswordChar = true;
             this.txtMatKhau.Size = new System.Drawing.Size(313, 34);
             this.txtMatKhau.TabIndex = 5;
+            this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._KeyPress);
             // 
             // labelControl3
             // 
@@ -107,13 +111,15 @@ namespace qlsv_tc
             // 
             // btnDangNhap
             // 
+            this.btnDangNhap.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnDangNhap.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Appearance.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnDangNhap.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.btnDangNhap.Appearance.Options.UseBackColor = true;
             this.btnDangNhap.Appearance.Options.UseFont = true;
             this.btnDangNhap.Appearance.Options.UseForeColor = true;
-            this.btnDangNhap.Location = new System.Drawing.Point(302, 277);
+            this.btnDangNhap.Location = new System.Drawing.Point(451, 263);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(112, 34);
+            this.btnDangNhap.Size = new System.Drawing.Size(152, 48);
             this.btnDangNhap.TabIndex = 8;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);

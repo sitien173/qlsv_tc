@@ -79,9 +79,11 @@ namespace qlsv_tc
             if (KetNoi_CSDLGOC() == 0) return;
             LayDSPM("select * from GET_Subscribes");
 
-            // tạo ra 1 sự kiện SelectedIndexChanged
             cboxKhoa.SelectedIndex = 1;
             cboxKhoa.SelectedIndex = 0;
+
+            // auto focus textbox tài khoản
+            this.ActiveControl = txtTaiKhoan;
         }
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -102,7 +104,7 @@ namespace qlsv_tc
             {
                 MessageBox.Show("Tài khoản và mật khẩu không được để trống","",MessageBoxButtons.OK);
                 return;
-            }
+            }  
 
             // lưu thông tin đăng nhập vào 2 biến toàn cục để kết nối database
             Program.mlogin = txtTaiKhoan.Text;
@@ -111,8 +113,37 @@ namespace qlsv_tc
             // nếu kết nối thất bại thì thoát
             if (Program.KetNoi() == 0) return;
 
+            
+
             Program.mloginDN = Program.mlogin;
             Program.mPasswordDN = Program.password;
+
+
+            // đăng nhập với Sinh viên. Mọi sinh viên đều dùng chung 1 tài khoản
+            if(Program.mlogin.Equals(Program.role.SV.ToString()))
+            {
+                // kiểm tra kết nối tới server
+                conn_publisher.ConnectionString = Program.connstr;
+                try
+                {
+                    conn_publisher.Open();
+                    conn_publisher.Close();
+
+                    Program.mGroup = Program.role.SV.ToString();
+                    Program.frmMain.HienThiMenu();
+                    // đóng cửa sổ đăng nhập
+                    Close();
+
+                    return;
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Đăng nhập thất bại.\nVui lòng nhập đúng tài khoản được cấp cho Sinh Viên");
+                    return;
+                }
+            }
+
+
 
             // đoạn ở trên dùng để kết nối vào server với tài khoản tương ứng
 
@@ -146,12 +177,7 @@ namespace qlsv_tc
             Program.mGroup = Program.myReader.GetString(2);
 
             Program.myReader.Close();
-
             Program.conn.Close();
-
-            Program.frmMain.MANV.Text = "MÃ NV: " + Program.username;
-            Program.frmMain.HOTEN.Text = "HỌ TÊN: " + Program.mHoten;
-            Program.frmMain.NHOM.Text = "NHÓM: " + Program.mGroup;
 
             // đóng cửa sổ đăng nhập
             Close();
@@ -167,10 +193,30 @@ namespace qlsv_tc
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Button thoat clicked");
+            Program.connstr = Program.rootConnstr;
             Close();
         }
 
-       
+        private void _KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(this.txtTaiKhoan.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập tài khoản");
+                    this.ActiveControl = this.txtTaiKhoan;
+                    return;
+                    
+                }else if(string.IsNullOrWhiteSpace(this.txtMatKhau.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu");
+                    this.ActiveControl = this.txtMatKhau;
+                    return;
+                    
+                }
+                this.btnDangNhap.PerformClick();
+            }
+                
+        }
     }
 }

@@ -1,10 +1,6 @@
-﻿using DevExpress.Skins;
-using DevExpress.UserSkins;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace qlsv_tc
@@ -18,12 +14,12 @@ namespace qlsv_tc
         public static SqlDataAdapter da;
         public static SqlDataReader myReader;
         public static string servername = "DESKTOP-M6JC7UB";
-        public static string username;
+        public static string username = "";
         public static string password;
         public static string database = "QLDSV_TC";
         public static string mlogin;
         public static string mGroup;
-        public static string mHoten;
+        public static string mHoten = "";
         public static int mKhoa;
         public static string mloginDN = "";
         public static string mPasswordDN = "";
@@ -34,7 +30,7 @@ namespace qlsv_tc
         public static string remotePassword = "123";
 
         public static BindingSource bds_dspm = new BindingSource();
-        public static frmMain frmMain; 
+        public static frmMain frmMain;
 
         public enum role
         {
@@ -51,7 +47,7 @@ namespace qlsv_tc
             try
             {
                 Program.connstr = Program.connstr = "Data Source=" + Program.servername + ";Initial Catalog=" + Program.database + ";User ID=" +
-                      mlogin + ";password=" + password; 
+                      mlogin + ";password=" + password;
                 Program.conn.ConnectionString = Program.connstr;
                 Program.conn.Open();
                 return 1;
@@ -68,9 +64,9 @@ namespace qlsv_tc
         {
             // đối tượng chỉ cho đọc dữ liệu
             SqlDataReader myreader;
-           
+
             SqlCommand sqlcmd = new SqlCommand();
-           
+
             sqlcmd.Connection = Program.conn;
             sqlcmd.CommandText = cmd;
             sqlcmd.CommandType = System.Data.CommandType.Text;
@@ -138,7 +134,7 @@ namespace qlsv_tc
                 return 0;
             }
         }
-      
+
         [STAThread]
         static void Main()
         {
