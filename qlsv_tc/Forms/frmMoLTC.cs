@@ -15,7 +15,7 @@ namespace qlsv_tc.Forms
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
-       
+        private static int MALTC = 0;
         public frmMoLTC()
         {
             InitializeComponent();
@@ -25,25 +25,25 @@ namespace qlsv_tc.Forms
         {
             this.Validate();
             this.bdsLTC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.DS);
+            this.tableAdapterManager.UpdateAll(this.dS2);
 
         }
 
         private void loadInitializeData()
         {
 
-            DS.EnforceConstraints = false;
+            dS2.EnforceConstraints = false;
             this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterMH.Fill(this.DS.MONHOC);
+            this.tableAdapterMH.Fill(this.dS2.MONHOC);
 
             this.tableAdapterGV.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterGV.Fill(this.DS.GIANGVIEN);
+            this.tableAdapterGV.Fill(this.dS2.GIANGVIEN);
 
             this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterLTC.Fill(this.DS.LOPTINCHI);
+            this.tableAdapterLTC.Fill(this.dS2.LOPTINCHI);
            
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterDK.Fill(this.DS.DANGKY);
+            this.tableAdapterDK.Fill(this.dS2.DANGKY);
         }
         private void frmMoLTC_Load(object sender, EventArgs e)
         {
@@ -91,8 +91,22 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // SP GET MALTC
+            if(MALTC == 0)
+            {
+                // SP GET MALTC
+                string query = "EXEC SP_GetMALTC";
+                if (Program.KetNoi() == -1)
+                {
+                    MessageBox.Show("Lỗi Kết Nối CSDL. Vui Lòng Xem Lại");
+                    return;
+                }
+                int result = Ultils.CheckDataHelper(query);
+                if (result > 0) MALTC = result; // lưu lại MALTC sau khi đã truy vấn để dùng
 
-            
+
+            }
+
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -104,14 +118,15 @@ namespace qlsv_tc.Forms
             // thao tác chuẩn bị thêm
             bdsLTC.AddNew();
 
+            txtMALTC.Text = MALTC.ToString();
+            
+            txtMALTC.Enabled = false;
+            
             // mặc định là false
-            cbHuyLop.Checked = false;
-           
-            int count = this.DS.LOPTINCHI.Rows.Count;
-            txtNienKhoa.Text = this.DS.LOPTINCHI.Rows[count - 1].Field<string>("NIENKHOA");
-              
-            txtMaKhoa.Text = Ultils.GetMaKhoa();
-            txtMaKhoa.ReadOnly = true;
+            txtHUYLOP.Checked = false;
+                         
+            txtMAKHOA.Text = Ultils.GetMaKhoa();
+            txtMAKHOA.ReadOnly = true;
 
             
         }
@@ -145,6 +160,7 @@ namespace qlsv_tc.Forms
             {
                 bdsLTC.Position = _position;
             }
+            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -158,9 +174,9 @@ namespace qlsv_tc.Forms
             err.Clear();
 
             // TODO : Check khoảng trống ở textField
-            if (txtNienKhoa.Text.Trim().Equals(""))
+            if (txtNIENKHOA.Text.Trim().Equals(""))
             {
-                this.err.SetError(txtNienKhoa, "Niên Khoá không được để trống !");
+                this.err.SetError(txtNIENKHOA, "Niên Khoá không được để trống !");
                 return false;
             }
             if (cmbMAGV.Text.Equals(""))
@@ -168,9 +184,9 @@ namespace qlsv_tc.Forms
                 this.err.SetError(cmbMAGV, "Vui lòng chọn MAGV !");
                 return false;
             }
-            if (txtHocKi.Text.Equals(""))
+            if (txtHOCKY.Text.Equals(""))
             {
-                this.err.SetError(txtHocKi, "Vui lòng chọn HOCKY !");
+                this.err.SetError(txtHOCKY, "Vui lòng chọn HOCKY !");
                 return false;
             }
             if (cmbMAMH.Text.Equals(""))
@@ -184,9 +200,9 @@ namespace qlsv_tc.Forms
                 return false;
             }
 
-            if (txtNhom.Text.Equals(""))
+            if (txtNHOM.Text.Equals(""))
             {
-                this.err.SetError(txtNhom, "Vui lòng chọn NHOM !");
+                this.err.SetError(txtNHOM, "Vui lòng chọn NHOM !");
                 return false;
             }
           
@@ -215,15 +231,18 @@ namespace qlsv_tc.Forms
 
                         this.bdsLTC.EndEdit();
                         this.bdsLTC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        int check1 = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
-                        if (check1 > 0) XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
+                        int check1 = this.tableAdapterLTC.Update(this.dS2.LOPTINCHI);
+                        if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
+                        XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
+                        if (MALTC > 0) MALTC = 0; // reset MALTC
                     }
                     catch(SqlException ex)
                     {
                         // 2627 là mã lỗi trùng khoá NIENKHOA,HOCKY,MAMH,NHOM
                         if(ex.Number == 2627)
                         {
-                            XtraMessageBox.Show("Ghi Thất Bại. NIENKHOA, HOCKY, MAMH, NHOM Đã Tồn Tại","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XtraMessageBox.Show("Ghi Thất Bại. NIENKHOA, HOCKY, MAMH, NHOM Đã Có Lớp Tín Chỉ","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
                             return;
                         }
                     }
@@ -265,13 +284,13 @@ namespace qlsv_tc.Forms
                 {
                     bdsLTC.RemoveCurrent();
                     this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
-                    int check = this.tableAdapterLTC.Update(this.DS.LOPTINCHI);
+                    int check = this.tableAdapterLTC.Update(this.dS2.LOPTINCHI);
                     if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show("Lỗi xóa Lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                    this.tableAdapterLTC.Fill(this.DS.LOPTINCHI);
+                    this.tableAdapterLTC.Fill(this.dS2.LOPTINCHI);
                     return;
 
                 }
@@ -327,6 +346,14 @@ namespace qlsv_tc.Forms
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void lOPTINCHIBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.bdsLTC.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dS2);
+
         }
     }
 }
