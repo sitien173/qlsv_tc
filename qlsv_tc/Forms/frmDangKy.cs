@@ -15,13 +15,13 @@ namespace qlsv_tc.Forms
     public partial class frmDangKy : DevExpress.XtraEditors.XtraForm
     {
         private static string MASV = "";
-        
+
         public frmDangKy()
         {
             InitializeComponent();
         }
 
-        private void initDataDsLTC(string nienkhoa,int hocki)
+        private void initDataDsLTC(string nienkhoa, int hocki)
         {
             if (Program.KetNoi() != 1)
             {
@@ -31,7 +31,7 @@ namespace qlsv_tc.Forms
 
             // fill vào bảng đăng kí để đối chiếu so sánh cập nhật vào database. *Bảng này ko hiện thị trên client ẩn đi để xử lí
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterDK.FillByMaSVNienKhoaHocKi(this.dS.DANGKY, MASV, nienkhoa, hocki);
+            this.tableAdapterDK.FillBy(this.dS.DANGKY, MASV, nienkhoa, hocki);
 
             this.tableAdapterDKLTC.Connection.ConnectionString = Program.connstr;
             this.tableAdapterDKLTC.Fill(this.dS.DanhSachDkyLTC, nienkhoa, hocki);
@@ -68,21 +68,21 @@ namespace qlsv_tc.Forms
             }
             this.initDataDsLTC(txtNienKhoa.Text.Trim(), Convert.ToInt32(spHocKi.Text));
             pnContent.Visible = true;
-           
+
         }
-       
+
         private void rbtnDangKy_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             object[] rows = gridView1.GetFocusedDataRow().ItemArray; // MALTC MAMH TENMH NHOM GV SoLuongDK SOSVTOITHIEU
             int MALTC = Convert.ToInt32(rows[0].ToString());
             string MAMH = rows[1].ToString();
             int NHOM = Convert.ToInt32(rows[3]);
-           
+
             // kiểm tra còn được đăng kí không
             string query = "DECLARE	@return_value INT " +
                 $"EXEC @return_value = [dbo].[SP_KiemTraDANGKY] @maltc = {MALTC}" +
                 "SELECT 'Return Value' = @return_value";
-            if(Program.KetNoi() == -1)
+            if (Program.KetNoi() == -1)
             {
                 XtraMessageBox.Show("Kết Nối CSDL Thất Bại. Vui lòng thử lại");
                 return;
@@ -94,7 +94,7 @@ namespace qlsv_tc.Forms
 
             // returnVal = 1 có thể đăng ký
             // returnVal = 0 Đã đủ số lượng
-            if(returnVal == 0)
+            if (returnVal == 0)
             {
                 XtraMessageBox.Show("Môn Học Đã Đầy Vui Lòng Chọn Môn Khác");
                 return;
@@ -102,14 +102,14 @@ namespace qlsv_tc.Forms
 
             int indexBdsDK = bdsDK.Find("MALTC", MALTC);
             // tìm thấy trong bdsDK
-            if(indexBdsDK > -1)
+            if (indexBdsDK > -1)
             {
                 // Nếu trạng thái tắt thì bật
                 bool isHuyDangKy = this.dS.DANGKY.Rows[indexBdsDK].Field<Boolean>("HUYDANGKY");
-                if(isHuyDangKy)
+                if (isHuyDangKy)
                 {
-                   this.dS.DANGKY.Rows[indexBdsDK].SetField<Boolean>("HUYDANGKY", false);
-                   this.dS.DANGKY.AcceptChanges();
+                    this.dS.DANGKY.Rows[indexBdsDK].SetField<Boolean>("HUYDANGKY", false);
+                    this.dS.DANGKY.AcceptChanges();
                     addNewRowBdsDSDKSV(rows);
                 }
             }
@@ -125,7 +125,7 @@ namespace qlsv_tc.Forms
 
         }
 
-        private void newRowBdsDK(int MALTC,string MASV)
+        private void newRowBdsDK(int MALTC, string MASV)
         {
             object[] newRow = new object[6]; // MALTC MASV DIEM_CC DIEM_GK DIEM_CK HUYDANGKY
             newRow[0] = MALTC;
@@ -147,7 +147,7 @@ namespace qlsv_tc.Forms
             string TENMH = rows[2].ToString();
             int NHOM = Convert.ToInt32(rows[3]);
             string GV = rows[4].ToString();
-            
+
             // kiểm tra xem có môn nào cùng nhóm không. Nếu có thì loại bỏ nhóm cũ
             try
             {
@@ -184,12 +184,12 @@ namespace qlsv_tc.Forms
                     }
                 }
             }
-            catch(System.Data.DeletedRowInaccessibleException) // tránh trường hợp đã xoá mà vẫn tìm lại
+            catch (System.Data.DeletedRowInaccessibleException) // tránh trường hợp đã xoá mà vẫn tìm lại
             {
                 // true logic 
             }
 
-            this.dS.DanhSachDkyLTCSV.Rows.Add(MALTC,MAMH,TENMH,NHOM,GV);
+            this.dS.DanhSachDkyLTCSV.Rows.Add(MALTC, MAMH, TENMH, NHOM, GV);
             this.dS.DanhSachDkyLTCSV.AcceptChanges();
             return true;
         }
@@ -200,9 +200,9 @@ namespace qlsv_tc.Forms
             int maltc = gridView2.GetFocusedDataRow().Field<int>("MALTC");
             string TENMH = gridView2.GetFocusedDataRow().Field<string>("TENMH");
             int index = bdsDK.Find("MALTC", maltc);
-            if(index != -1)
+            if (index != -1)
             {
-                int diem_cc =this.dS.DANGKY.Rows[index].Field<int>("DIEM_CC");
+                int diem_cc = this.dS.DANGKY.Rows[index].Field<int>("DIEM_CC");
                 float diem_gk = float.Parse(this.dS.DANGKY.Rows[index].Field<object>("DIEM_GK").ToString());
                 float diem_ck = float.Parse(this.dS.DANGKY.Rows[index].Field<object>("DIEM_CK").ToString());
 
@@ -211,7 +211,8 @@ namespace qlsv_tc.Forms
                 {
                     MessageBox.Show($"Môn học {TENMH} :MALTC {maltc} đã có điểm.\nKhông được huỷ đăng ký");
                     return;
-                }else
+                }
+                else
                 {
                     // đánh dấu huỷ dk vào bdkDK
                     this.dS.DANGKY.Rows[index].SetField<Boolean>("HUYDANGKY", true);
@@ -224,7 +225,7 @@ namespace qlsv_tc.Forms
         }
 
         private void btnGhi_Click(object sender, EventArgs e)
-        { 
+        {
             DialogResult dr = XtraMessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
@@ -233,12 +234,9 @@ namespace qlsv_tc.Forms
                 {
                     this.Validate();
                     this.bdsDK.EndEdit();
-                    this.bdsDK.ResetCurrentItem();        
-                    foreach(var item in this.dS.DANGKY)
-                        this.tableAdapterDK.SP_UpdateInsertDANGKY(item.MALTC, item.MASV, item.HUYDANGKY);
-
-                    MessageBox.Show($"Ghi Thành Công");
-                    
+                    this.bdsDK.ResetCurrentItem();
+                    int check = tableAdapterDK.SP_UpdateInsertDANGKY(this.dS.DANGKY);
+                    MessageBox.Show("Ghi Thành Công");
                 }
                 catch (Exception ex)
                 {

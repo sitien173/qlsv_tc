@@ -30,22 +30,22 @@ namespace qlsv_tc.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDongHocPhi));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.pnThongTinSV = new DevExpress.XtraEditors.PanelControl();
             this.cmbMASV = new DevExpress.XtraEditors.LookUpEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
@@ -67,6 +67,7 @@ namespace qlsv_tc.Forms
             this.colNGAYDONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colSOTIENDONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rtxtSoTienDong = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -74,6 +75,7 @@ namespace qlsv_tc.Forms
             this.viewHP = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNIENKHOA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rTxtNienKhoa = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colHOCKY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.spinEditHocKy = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.colHOCPHI = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -115,8 +117,6 @@ namespace qlsv_tc.Forms
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.rTxtNienKhoa = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.rtxtSoTienDong = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnThongTinSV)).BeginInit();
             this.pnThongTinSV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMASV.Properties)).BeginInit();
@@ -131,10 +131,12 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.viewCTHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rDate.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HPGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewHP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rTxtNienKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditHocKy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rTxtHocPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDongHocPhi)).BeginInit();
@@ -143,8 +145,6 @@ namespace qlsv_tc.Forms
             this.pnBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rTxtNienKhoa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).BeginInit();
             this.SuspendLayout();
             // 
             // pnThongTinSV
@@ -170,7 +170,7 @@ namespace qlsv_tc.Forms
             this.cmbMASV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMASV.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MASV", "MASV", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MASV", "MASV", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HO", "HO", 38, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TEN", "TEN", 48, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NGAYSINH", "NGAYSINH", 111, DevExpress.Utils.FormatType.DateTime, "M/d/yyyy", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
@@ -377,17 +377,17 @@ namespace qlsv_tc.Forms
             // 
             // rDate
             // 
-            editorButtonImageOptions6.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions6.SvgImage")));
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
             this.rDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rDate.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
             this.rDate.CalendarTimeProperties.Appearance.Options.UseTextOptions = true;
             this.rDate.CalendarTimeProperties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            editorButtonImageOptions7.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions7.SvgImage")));
-            serializableAppearanceObject25.Options.UseTextOptions = true;
-            serializableAppearanceObject25.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
+            serializableAppearanceObject5.Options.UseTextOptions = true;
+            serializableAppearanceObject5.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.rDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rDate.ContextImageOptions.Alignment = DevExpress.XtraEditors.ContextImageAlignment.Far;
             this.rDate.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rDate.ContextImageOptions.SvgImage")));
             this.rDate.HighlightTodayCell = DevExpress.Utils.DefaultBoolean.True;
@@ -414,6 +414,14 @@ namespace qlsv_tc.Forms
             this.colSOTIENDONG.Visible = true;
             this.colSOTIENDONG.VisibleIndex = 1;
             this.colSOTIENDONG.Width = 112;
+            // 
+            // rtxtSoTienDong
+            // 
+            this.rtxtSoTienDong.AutoHeight = false;
+            this.rtxtSoTienDong.DisplayFormat.FormatString = "n0";
+            this.rtxtSoTienDong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.rtxtSoTienDong.Name = "rtxtSoTienDong";
+            this.rtxtSoTienDong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTxtHocPhi_KeyPress);
             // 
             // panel3
             // 
@@ -510,6 +518,12 @@ namespace qlsv_tc.Forms
             this.colNIENKHOA.Visible = true;
             this.colNIENKHOA.VisibleIndex = 0;
             this.colNIENKHOA.Width = 112;
+            // 
+            // rTxtNienKhoa
+            // 
+            this.rTxtNienKhoa.AutoHeight = false;
+            this.rTxtNienKhoa.Name = "rTxtNienKhoa";
+            this.rTxtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTxtNienKhoa_KeyPress);
             // 
             // colHOCKY
             // 
@@ -644,7 +658,7 @@ namespace qlsv_tc.Forms
             // 
             this.btnDongHocPhi.AutoHeight = false;
             this.btnDongHocPhi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "Đóng Học Phí", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "Đóng Học Phí", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnDongHocPhi.Name = "btnDongHocPhi";
             this.btnDongHocPhi.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDongHocPhi.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnDongHocPhi_ButtonClick);
@@ -924,20 +938,6 @@ namespace qlsv_tc.Forms
             // 
             this.err.ContainerControl = this;
             // 
-            // rTxtNienKhoa
-            // 
-            this.rTxtNienKhoa.AutoHeight = false;
-            this.rTxtNienKhoa.Name = "rTxtNienKhoa";
-            this.rTxtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTxtNienKhoa_KeyPress);
-            // 
-            // rtxtSoTienDong
-            // 
-            this.rtxtSoTienDong.AutoHeight = false;
-            this.rtxtSoTienDong.DisplayFormat.FormatString = "n0";
-            this.rtxtSoTienDong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.rtxtSoTienDong.Name = "rtxtSoTienDong";
-            this.rtxtSoTienDong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTxtHocPhi_KeyPress);
-            // 
             // frmDongHocPhi
             // 
             this.Appearance.Options.UseFont = true;
@@ -972,11 +972,13 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.viewCTHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rDate.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HPGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewHP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rTxtNienKhoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditHocKy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rTxtHocPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDongHocPhi)).EndInit();
@@ -986,8 +988,6 @@ namespace qlsv_tc.Forms
             this.pnBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rTxtNienKhoa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

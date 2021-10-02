@@ -15,7 +15,6 @@ namespace qlsv_tc.Forms
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
-        private static int MALTC = 0;
         public frmMoLTC()
         {
             InitializeComponent();
@@ -25,29 +24,29 @@ namespace qlsv_tc.Forms
         {
             this.Validate();
             this.bdsLTC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS2);
+            this.tableAdapterManager.UpdateAll(this.dS);
 
         }
 
         private void loadInitializeData()
         {
 
-            dS2.EnforceConstraints = false;
+            dS.EnforceConstraints = false;
             this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterMH.Fill(this.dS2.MONHOC);
+            this.tableAdapterMH.Fill(this.dS.MONHOC);
 
             this.tableAdapterGV.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterGV.Fill(this.dS2.GIANGVIEN);
+            this.tableAdapterGV.Fill(this.dS.GIANGVIEN);
 
             this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterLTC.Fill(this.dS2.LOPTINCHI);
+            this.tableAdapterLTC.Fill(this.dS.LOPTINCHI);
            
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterDK.Fill(this.dS2.DANGKY);
+            this.tableAdapterDK.Fill(this.dS.DANGKY);
         }
         private void frmMoLTC_Load(object sender, EventArgs e)
         {
-           
+            
             loadInitializeData();
             
             err.Clear();
@@ -91,22 +90,7 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // SP GET MALTC
-            if(MALTC == 0)
-            {
-                // SP GET MALTC
-                string query = "EXEC SP_GetMALTC";
-                if (Program.KetNoi() == -1)
-                {
-                    MessageBox.Show("Lỗi Kết Nối CSDL. Vui Lòng Xem Lại");
-                    return;
-                }
-                int result = Ultils.CheckDataHelper(query);
-                if (result > 0) MALTC = result; // lưu lại MALTC sau khi đã truy vấn để dùng
-
-
-            }
-
+          
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -118,10 +102,9 @@ namespace qlsv_tc.Forms
             // thao tác chuẩn bị thêm
             bdsLTC.AddNew();
 
-            txtMALTC.Text = MALTC.ToString();
-            
-            txtMALTC.Enabled = false;
-            
+            cmbMAGV.SelectedIndex = 0;
+            cmbMAMH.SelectedIndex = 0;
+
             // mặc định là false
             txtHUYLOP.Checked = false;
                          
@@ -231,10 +214,10 @@ namespace qlsv_tc.Forms
 
                         this.bdsLTC.EndEdit();
                         this.bdsLTC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        int check1 = this.tableAdapterLTC.Update(this.dS2.LOPTINCHI);
+                        int check1 = this.tableAdapterLTC.Update(this.dS.LOPTINCHI);
                         if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
                         XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
-                        if (MALTC > 0) MALTC = 0; // reset MALTC
+                      
                     }
                     catch(SqlException ex)
                     {
@@ -284,13 +267,13 @@ namespace qlsv_tc.Forms
                 {
                     bdsLTC.RemoveCurrent();
                     this.tableAdapterLTC.Connection.ConnectionString = Program.connstr;
-                    int check = this.tableAdapterLTC.Update(this.dS2.LOPTINCHI);
+                    int check = this.tableAdapterLTC.Update(this.dS.LOPTINCHI);
                     if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show("Lỗi xóa Lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                    this.tableAdapterLTC.Fill(this.dS2.LOPTINCHI);
+                    this.tableAdapterLTC.Fill(this.dS.LOPTINCHI);
                     return;
 
                 }
@@ -352,8 +335,15 @@ namespace qlsv_tc.Forms
         {
             this.Validate();
             this.bdsLTC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS2);
+            this.tableAdapterManager.UpdateAll(this.dS);
 
+        }
+
+       
+
+        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            btnGhi.Enabled = true;
         }
     }
 }
