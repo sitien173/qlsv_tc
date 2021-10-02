@@ -260,6 +260,7 @@ namespace qlsv_tc.Forms
             // 
             // cmbMASV
             // 
+            this.cmbMASV.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
             this.cmbMASV.Location = new System.Drawing.Point(194, 17);
             this.cmbMASV.Name = "cmbMASV";
             this.cmbMASV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -267,7 +268,7 @@ namespace qlsv_tc.Forms
             this.cmbMASV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMASV.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MASV", "MASV", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.Descending, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MASV", "MASV", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("HO", "HO", 38, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TEN", "TEN", 48, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NGAYSINH", "NGAYSINH", 111, DevExpress.Utils.FormatType.DateTime, "M/d/yyyy", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
@@ -314,12 +315,13 @@ namespace qlsv_tc.Forms
             // 
             // pnContent
             // 
+            this.pnContent.AutoScroll = true;
             this.pnContent.Controls.Add(this.panel4);
             this.pnContent.Controls.Add(this.panel2);
             this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContent.Location = new System.Drawing.Point(0, 192);
             this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1750, 781);
+            this.pnContent.Size = new System.Drawing.Size(1750, 867);
             this.pnContent.TabIndex = 5;
             // 
             // panel4
@@ -329,7 +331,7 @@ namespace qlsv_tc.Forms
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 338);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1750, 443);
+            this.panel4.Size = new System.Drawing.Size(1750, 529);
             this.panel4.TabIndex = 5;
             // 
             // panel6
@@ -340,16 +342,17 @@ namespace qlsv_tc.Forms
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 52);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1750, 391);
+            this.panel6.Size = new System.Drawing.Size(1750, 477);
             this.panel6.TabIndex = 1;
             // 
             // pnBottom
             // 
+            this.pnBottom.AutoScroll = true;
             this.pnBottom.Controls.Add(this.dANGKYGridControl);
             this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnBottom.Location = new System.Drawing.Point(0, 152);
+            this.pnBottom.Location = new System.Drawing.Point(0, 309);
             this.pnBottom.Name = "pnBottom";
-            this.pnBottom.Size = new System.Drawing.Size(1750, 239);
+            this.pnBottom.Size = new System.Drawing.Size(1750, 168);
             this.pnBottom.TabIndex = 6;
             this.pnBottom.Visible = false;
             // 
@@ -361,7 +364,7 @@ namespace qlsv_tc.Forms
             this.dANGKYGridControl.Location = new System.Drawing.Point(0, 0);
             this.dANGKYGridControl.MainView = this.gridView3;
             this.dANGKYGridControl.Name = "dANGKYGridControl";
-            this.dANGKYGridControl.Size = new System.Drawing.Size(1750, 239);
+            this.dANGKYGridControl.Size = new System.Drawing.Size(1750, 168);
             this.dANGKYGridControl.TabIndex = 0;
             this.dANGKYGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -447,7 +450,7 @@ namespace qlsv_tc.Forms
             this.dSDKSVGridControl.Name = "dSDKSVGridControl";
             this.dSDKSVGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rbtnHuyDangKy});
-            this.dSDKSVGridControl.Size = new System.Drawing.Size(1750, 391);
+            this.dSDKSVGridControl.Size = new System.Drawing.Size(1750, 477);
             this.dSDKSVGridControl.TabIndex = 4;
             this.dSDKSVGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -907,8 +910,10 @@ namespace qlsv_tc.Forms
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CT_DONGHOCPHITableAdapter = null;
             this.tableAdapterManager.DANGKYTableAdapter = this.tableAdapterDK;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.LOPTINCHITableAdapter = null;
@@ -933,7 +938,7 @@ namespace qlsv_tc.Forms
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1750, 973);
+            this.ClientSize = new System.Drawing.Size(1750, 1059);
             this.Controls.Add(this.pnContent);
             this.Controls.Add(this.pnNienKhoaHocKi);
             this.Controls.Add(this.panelControl1);
