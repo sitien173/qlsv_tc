@@ -98,7 +98,6 @@ namespace qlsv_tc
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            // 
 
             if(txtTaiKhoan.Text.Trim() == "" || txtMatKhau.Text.Trim() == "")
             {
