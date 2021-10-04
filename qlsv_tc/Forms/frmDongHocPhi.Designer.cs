@@ -31,21 +31,11 @@ namespace qlsv_tc.Forms
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDongHocPhi));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDongHocPhi));
             this.pnThongTinSV = new DevExpress.XtraEditors.PanelControl();
             this.cmbMASV = new DevExpress.XtraEditors.LookUpEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
@@ -65,7 +55,6 @@ namespace qlsv_tc.Forms
             this.colNIENKHOA1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHOCKY1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAYDONG = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.rDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colSOTIENDONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rtxtSoTienDong = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -91,7 +80,6 @@ namespace qlsv_tc.Forms
             this.tableAdapterSV = new qlsv_tc.DS3TableAdapters.SINHVIENTableAdapter();
             this.pnBody = new System.Windows.Forms.Panel();
             this.tableAdapterHP = new qlsv_tc.DS3TableAdapters.HOCPHITableAdapter();
-            this.tableAdapterCTHP = new qlsv_tc.DS3TableAdapters.CT_DONGHOCPHITableAdapter();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnHieuChinh = new DevExpress.XtraBars.BarButtonItem();
@@ -117,6 +105,7 @@ namespace qlsv_tc.Forms
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tableAdapterCTHP = new qlsv_tc.DS3TableAdapters.CT_DONGHOCPHITableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pnThongTinSV)).BeginInit();
             this.pnThongTinSV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMASV.Properties)).BeginInit();
@@ -129,8 +118,6 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewCTHP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -274,7 +261,6 @@ namespace qlsv_tc.Forms
             this.CTHPGridControl.MainView = this.viewCTHP;
             this.CTHPGridControl.Name = "CTHPGridControl";
             this.CTHPGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.rDate,
             this.rtxtSoTienDong});
             this.CTHPGridControl.Size = new System.Drawing.Size(1610, 627);
             this.CTHPGridControl.TabIndex = 0;
@@ -301,7 +287,6 @@ namespace qlsv_tc.Forms
             this.colSOTIENDONG});
             this.viewCTHP.GridControl = this.CTHPGridControl;
             this.viewCTHP.Name = "viewCTHP";
-            this.viewCTHP.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.viewCTHP_InitNewRow);
             this.viewCTHP.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.viewCTHP_CellValueChanged);
             // 
             // colMASV1
@@ -365,7 +350,6 @@ namespace qlsv_tc.Forms
             this.colNGAYDONG.AppearanceHeader.Options.UseFont = true;
             this.colNGAYDONG.AppearanceHeader.Options.UseTextOptions = true;
             this.colNGAYDONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colNGAYDONG.ColumnEdit = this.rDate;
             this.colNGAYDONG.DisplayFormat.FormatString = "G";
             this.colNGAYDONG.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colNGAYDONG.FieldName = "NGAYDONG";
@@ -374,26 +358,6 @@ namespace qlsv_tc.Forms
             this.colNGAYDONG.Visible = true;
             this.colNGAYDONG.VisibleIndex = 0;
             this.colNGAYDONG.Width = 112;
-            // 
-            // rDate
-            // 
-            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
-            this.rDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.rDate.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
-            this.rDate.CalendarTimeProperties.Appearance.Options.UseTextOptions = true;
-            this.rDate.CalendarTimeProperties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            editorButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions2.SvgImage")));
-            serializableAppearanceObject5.Options.UseTextOptions = true;
-            serializableAppearanceObject5.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.rDate.ContextImageOptions.Alignment = DevExpress.XtraEditors.ContextImageAlignment.Far;
-            this.rDate.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rDate.ContextImageOptions.SvgImage")));
-            this.rDate.HighlightTodayCell = DevExpress.Utils.DefaultBoolean.True;
-            this.rDate.Mask.UseMaskAsDisplayFormat = true;
-            this.rDate.MaxValue = new System.DateTime(9998, 12, 30, 0, 0, 0, 0);
-            this.rDate.Name = "rDate";
             // 
             // colSOTIENDONG
             // 
@@ -658,7 +622,7 @@ namespace qlsv_tc.Forms
             // 
             this.btnDongHocPhi.AutoHeight = false;
             this.btnDongHocPhi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "Đóng Học Phí", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus, "Đóng Học Phí", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnDongHocPhi.Name = "btnDongHocPhi";
             this.btnDongHocPhi.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnDongHocPhi.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnDongHocPhi_ButtonClick);
@@ -720,10 +684,6 @@ namespace qlsv_tc.Forms
             // tableAdapterHP
             // 
             this.tableAdapterHP.ClearBeforeFill = true;
-            // 
-            // tableAdapterCTHP
-            // 
-            this.tableAdapterCTHP.ClearBeforeFill = true;
             // 
             // bar1
             // 
@@ -938,6 +898,10 @@ namespace qlsv_tc.Forms
             // 
             this.err.ContainerControl = this;
             // 
+            // tableAdapterCTHP
+            // 
+            this.tableAdapterCTHP.ClearBeforeFill = true;
+            // 
             // frmDongHocPhi
             // 
             this.Appearance.Options.UseFont = true;
@@ -970,8 +934,6 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewCTHP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rDate.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rtxtSoTienDong)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -1029,8 +991,6 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colSOTIENCANDONG;
         private System.Windows.Forms.BindingSource bdsHP;
         private DS3TableAdapters.HOCPHITableAdapter tableAdapterHP;
-        private System.Windows.Forms.BindingSource bdsCTHP;
-        private DS3TableAdapters.CT_DONGHOCPHITableAdapter tableAdapterCTHP;
         private DevExpress.XtraBars.Bar bar1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
@@ -1059,11 +1019,12 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private System.Windows.Forms.ErrorProvider err;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit spinEditHocKy;
-        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit rDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDongHocPhi;
         private DevExpress.XtraGrid.Columns.GridColumn colDongHocPhi;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit rTxtHocPhi;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit rtxtSoTienDong;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit rTxtNienKhoa;
+        private System.Windows.Forms.BindingSource bdsCTHP;
+        private DS3TableAdapters.CT_DONGHOCPHITableAdapter tableAdapterCTHP;
     }
 }

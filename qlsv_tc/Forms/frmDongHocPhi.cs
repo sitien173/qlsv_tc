@@ -21,7 +21,6 @@ namespace qlsv_tc.Forms
         private string NIENKHOA = "";
         private int HOCKY = 1;
         private string MASV = "";
-        private string NGAYDONG = "";
         private int SOTIENCANDONG = 0; // dùng để so sánh khi nhập đóng học phó
         public frmDongHocPhi()
         {
@@ -159,35 +158,7 @@ namespace qlsv_tc.Forms
                             }
 
                         }
-                        catch (SqlException ex)
-                        {
-                            // nếu thêm vào mà đã tồn tại niên khoá và học kì đó trong csdl thì thông báo
-                            // mã lối là 2627
-                            if (ex.Number == 2627)
-                            {
-                                if (MessageBox.Show("Ngày Đóng Đã Tồn Tại.\nBạn Có muốn cập nhật lại học phí đã đóng trước đó không","Thông báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
-                                {
-                                    this.loadInitializeData(MASV);
-                                    int length = this.dS3.CT_DONGHOCPHI.Count;
-                                    int index = 0;
-                                    for (int i = 0; i < length; i++)
-                                        if (this.dS3.CT_DONGHOCPHI.Rows[i].Field<string>("MASV").Equals(MASV) &&
-                                                this.dS3.CT_DONGHOCPHI.Rows[i].Field<string>("NIENKHOA").Equals(NIENKHOA) &&
-                                                 this.dS3.CT_DONGHOCPHI.Rows[i].Field<int>("HOCKY").Equals(HOCKY) &&
-                                                 this.dS3.CT_DONGHOCPHI.Rows[i].Field<object>("NGAYDONG").Equals(NGAYDONG))
-                                        {
-                                            index = i;
-                                            break;
-                                        }
-                                    this.bdsCTHP.Position = index;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ghi Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                        }
-                        catch (Exception ex)
+                         catch (Exception ex)
                         {
                             XtraMessageBox.Show($"Lỗi Ghi Vào CSDL {ex.Message}");
                         }
@@ -270,18 +241,6 @@ namespace qlsv_tc.Forms
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENDADONG"], 0);
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENCANDONG"], 0);
         }
-
-        private void viewCTHP_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            // auto set hidden
-            viewCTHP.SetRowCellValue(e.RowHandle, viewCTHP.Columns["MASV"], MASV);
-            viewCTHP.SetRowCellValue(e.RowHandle, viewCTHP.Columns["NIENKHOA"], NIENKHOA);
-            viewCTHP.SetRowCellValue(e.RowHandle, viewCTHP.Columns["HOCKY"], HOCKY);
-
-        }
-
-       
-
         private void btnDongHocPhi_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView) this.bdsHP.Current;
@@ -309,6 +268,10 @@ namespace qlsv_tc.Forms
                     HOCKY = dataRowView.Row.Field<int>("HOCKY");
                     _flagOption = "ADD_CTHP";
                     this.bdsCTHP.AddNew();
+                    // thao tác trước khi thêm
+                    DataRowView drv = (DataRowView)this.bdsCTHP.Current;
+                    drv.Row.SetField<DateTime>("NGAYDONG", DateTime.Now);
+
                     barBtnThem.Enabled = barBtnReload.Enabled = false;
                     _positionHP = this.bdsHP.Position;
                     barBtnHuy.Enabled = true;
@@ -334,8 +297,6 @@ namespace qlsv_tc.Forms
 
         private void viewCTHP_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-
-            if (e.Column.FieldName == "NGAYDONG") NGAYDONG = e.Value.ToString();
             if(e.Column.FieldName == "SOTIENDONG")
             {
                 if(Convert.ToInt32(e.Value.ToString()) > SOTIENCANDONG)

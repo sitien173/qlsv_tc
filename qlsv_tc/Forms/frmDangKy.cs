@@ -42,7 +42,7 @@ namespace qlsv_tc.Forms
 
         private void DkyLTC_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dS.SINHVIEN' table. You can move, or remove it, as needed.
+         
             this.tableAdapterSV.Connection.ConnectionString = Program.connstr;
             this.tableAdapterSV.Fill(this.dS.SINHVIEN);
             pnContent.Visible = false;
