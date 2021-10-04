@@ -220,13 +220,7 @@ namespace qlsv_tc.Forms
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(this.bdsHP.Count > 0 || this.bdsCTHP.Count > 0)
-            {
-                if(MessageBox.Show("Thoát mà không lưu","Thông báo",MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    this.Close();
-                }
-            }
+            if(XtraMessageBox.Show("Xác nhận thoát","Thông báo",MessageBoxButtons.OKCancel) == DialogResult.OK)
             this.Close();
         }
 
@@ -237,14 +231,18 @@ namespace qlsv_tc.Forms
 
 
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["HOCKY"], 1);
-            viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["HOCPHI"], 6000000);
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENDADONG"], 0);
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENCANDONG"], 0);
         }
         private void btnDongHocPhi_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView) this.bdsHP.Current;
-
+            if(dataRowView.IsNew)
+            {
+                _positionHP = this.bdsHP.Position;
+                XtraMessageBox.Show("Vui lòng ghi trước khi đóng học phí");
+                return;
+            }
             bool check = true;
             if(dataRowView.Row.Field<object>("SOTIENCANDONG") != null)
             {
@@ -290,7 +288,12 @@ namespace qlsv_tc.Forms
             _flagOption = "ADD_HP";
             if (e.Column.FieldName.Equals("NIENKHOA")) NIENKHOA = e.Value.ToString();
             else if (e.Column.FieldName.Equals("HOCKY")) HOCKY = Convert.ToInt32(e.Value.ToString());
-
+            else if(e.Column.FieldName.Equals("HOCPHI"))
+            // set dữ liệu vào cột SOTIENCANDONG = HOCPHI
+            {
+                int sotiencandong = int.Parse(e.Value.ToString()) - int.Parse(this.viewHP.GetRowCellValue(e.RowHandle, "SOTIENDADONG").ToString());
+                this.viewHP.SetRowCellValue(e.RowHandle, "SOTIENCANDONG", sotiencandong);
+            }  
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             _positionHP = this.bdsHP.Position;
         }

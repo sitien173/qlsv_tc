@@ -190,3 +190,4 @@ D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.csproj.CoreCompileInputs.cac
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.csproj.CopyComplete
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.exe
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.pdb
+D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmLoginSV.resources
