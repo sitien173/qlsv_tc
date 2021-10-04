@@ -38,6 +38,7 @@ namespace qlsv_tc
             this.btnDangNhap = new DevExpress.XtraEditors.SimpleButton();
             this.cboxKhoa = new System.Windows.Forms.ComboBox();
             this.grbDangNhap = new System.Windows.Forms.GroupBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.txtTaiKhoan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMatKhau.Properties)).BeginInit();
             this.grbDangNhap.SuspendLayout();
@@ -103,7 +104,7 @@ namespace qlsv_tc
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(102, 69);
+            this.labelControl3.Location = new System.Drawing.Point(102, 77);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(47, 25);
             this.labelControl3.TabIndex = 6;
@@ -128,7 +129,7 @@ namespace qlsv_tc
             // 
             this.cboxKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxKhoa.FormattingEnabled = true;
-            this.cboxKhoa.Location = new System.Drawing.Point(222, 69);
+            this.cboxKhoa.Location = new System.Drawing.Point(222, 74);
             this.cboxKhoa.Name = "cboxKhoa";
             this.cboxKhoa.Size = new System.Drawing.Size(313, 33);
             this.cboxKhoa.TabIndex = 9;
@@ -136,6 +137,7 @@ namespace qlsv_tc
             // 
             // grbDangNhap
             // 
+            this.grbDangNhap.AutoSize = true;
             this.grbDangNhap.BackColor = System.Drawing.Color.WhiteSmoke;
             this.grbDangNhap.Controls.Add(this.labelControl3);
             this.grbDangNhap.Controls.Add(this.btnThoat);
@@ -145,10 +147,11 @@ namespace qlsv_tc
             this.grbDangNhap.Controls.Add(this.cboxKhoa);
             this.grbDangNhap.Controls.Add(this.txtTaiKhoan);
             this.grbDangNhap.Controls.Add(this.labelControl1);
+            this.grbDangNhap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbDangNhap.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDangNhap.Location = new System.Drawing.Point(105, 99);
+            this.grbDangNhap.Location = new System.Drawing.Point(0, 0);
             this.grbDangNhap.Name = "grbDangNhap";
-            this.grbDangNhap.Size = new System.Drawing.Size(631, 348);
+            this.grbDangNhap.Size = new System.Drawing.Size(649, 764);
             this.grbDangNhap.TabIndex = 10;
             this.grbDangNhap.TabStop = false;
             this.grbDangNhap.Text = "Đăng Nhập";
@@ -159,7 +162,7 @@ namespace qlsv_tc
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 590);
+            this.ClientSize = new System.Drawing.Size(649, 764);
             this.Controls.Add(this.grbDangNhap);
             this.Name = "frmDangNhap";
             this.Text = "frmDangNhap";
@@ -169,6 +172,7 @@ namespace qlsv_tc
             this.grbDangNhap.ResumeLayout(false);
             this.grbDangNhap.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,5 +187,6 @@ namespace qlsv_tc
         private DevExpress.XtraEditors.SimpleButton btnDangNhap;
         private System.Windows.Forms.ComboBox cboxKhoa;
         private System.Windows.Forms.GroupBox grbDangNhap;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

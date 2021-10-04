@@ -47,6 +47,12 @@ namespace qlsv_tc.Forms
             this.tableAdapterSV.Fill(this.dS.SINHVIEN);
             pnContent.Visible = false;
             pnNienKhoaHocKi.Visible = false;
+            if(Program.mGroup.Equals(Program.role.SV.ToString()))
+            {
+                cmbMASV.Enabled = false;
+                cmbMASV.EditValue = Program.username.ToUpper();
+                
+            }
         }
 
         private void btnTimLTC_Click(object sender, EventArgs e)

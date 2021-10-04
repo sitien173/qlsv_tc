@@ -350,24 +350,24 @@ namespace qlsv_tc.Forms
             this.pnBottom.AutoScroll = true;
             this.pnBottom.Controls.Add(this.dANGKYGridControl);
             this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnBottom.Location = new System.Drawing.Point(0, 309);
+            this.pnBottom.Location = new System.Drawing.Point(0, 467);
             this.pnBottom.Name = "pnBottom";
-            this.pnBottom.Size = new System.Drawing.Size(1750, 168);
+            this.pnBottom.Size = new System.Drawing.Size(1750, 10);
             this.pnBottom.TabIndex = 6;
             this.pnBottom.Visible = false;
             // 
             // dANGKYGridControl
             // 
             this.dANGKYGridControl.DataSource = this.bdsDK;
-            this.dANGKYGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dANGKYGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dANGKYGridControl.Location = new System.Drawing.Point(0, 0);
+            this.dANGKYGridControl.Location = new System.Drawing.Point(0, 60);
             this.dANGKYGridControl.MainView = this.gridView3;
             this.dANGKYGridControl.Name = "dANGKYGridControl";
-            this.dANGKYGridControl.Size = new System.Drawing.Size(1750, 168);
+            this.dANGKYGridControl.Size = new System.Drawing.Size(1750, 108);
             this.dANGKYGridControl.TabIndex = 0;
             this.dANGKYGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            this.dANGKYGridControl.Visible = false;
             // 
             // bdsDK
             // 
