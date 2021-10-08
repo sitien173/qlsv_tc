@@ -101,7 +101,7 @@ namespace qlsv_tc
                     // true
                 }
             }
-            
+            dataReader.Close();
             return 0;
         }
         public static string GetMaKhoa()

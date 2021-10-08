@@ -169,5 +169,29 @@ namespace qlsv_tc
             btnDangNhap.PerformClick();
 
         }
+
+        private void btnInDSLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmReportLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmReportLTC f = new frmReportLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnLapNhapXuatNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmReportSVDkyLTC));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmReportSVDkyLTC f = new frmReportSVDkyLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -30,7 +30,6 @@ namespace qlsv_tc.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangKy));
             this.pnNienKhoaHocKi = new System.Windows.Forms.GroupBox();
             this.spHocKi = new DevExpress.XtraEditors.SpinEdit();
             this.txtNienKhoa = new System.Windows.Forms.TextBox();
@@ -44,7 +43,7 @@ namespace qlsv_tc.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.cmbMASV = new DevExpress.XtraEditors.LookUpEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new qlsv_tc.DS();
+            this.dS = new qlsv_tc.DS1();
             this.label1 = new System.Windows.Forms.Label();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.pnContent = new System.Windows.Forms.Panel();
@@ -91,11 +90,11 @@ namespace qlsv_tc.Forms
             this.rbtnDANGKY = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.tableAdapterDK = new qlsv_tc.DSTableAdapters.DANGKYTableAdapter();
-            this.tableAdapterManager = new qlsv_tc.DSTableAdapters.TableAdapterManager();
-            this.tableAdapterDKLTC = new qlsv_tc.DSTableAdapters.DanhSachDkyLTCTableAdapter();
-            this.tableAdapterDKLTCSV = new qlsv_tc.DSTableAdapters.DanhSachDkyLTCSVTableAdapter();
-            this.tableAdapterSV = new qlsv_tc.DSTableAdapters.SINHVIENTableAdapter();
+            this.tableAdapterDK = new qlsv_tc.DS1TableAdapters.DANGKYTableAdapter();
+            this.tableAdapterManager = new qlsv_tc.DS1TableAdapters.TableAdapterManager();
+            this.tableAdapterDKLTC = new qlsv_tc.DS1TableAdapters.DanhSachDkyLTCTableAdapter();
+            this.tableAdapterDKLTCSV = new qlsv_tc.DS1TableAdapters.DanhSachDkyLTCSVTableAdapter();
+            this.tableAdapterSV = new qlsv_tc.DS1TableAdapters.SINHVIENTableAdapter();
             this.pnNienKhoaHocKi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spHocKi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -329,9 +328,9 @@ namespace qlsv_tc.Forms
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 338);
+            this.panel4.Location = new System.Drawing.Point(0, 301);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1750, 529);
+            this.panel4.Size = new System.Drawing.Size(1750, 566);
             this.panel4.TabIndex = 5;
             // 
             // panel6
@@ -342,7 +341,7 @@ namespace qlsv_tc.Forms
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 52);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1750, 477);
+            this.panel6.Size = new System.Drawing.Size(1750, 514);
             this.panel6.TabIndex = 1;
             // 
             // pnBottom
@@ -350,7 +349,7 @@ namespace qlsv_tc.Forms
             this.pnBottom.AutoScroll = true;
             this.pnBottom.Controls.Add(this.dANGKYGridControl);
             this.pnBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnBottom.Location = new System.Drawing.Point(0, 467);
+            this.pnBottom.Location = new System.Drawing.Point(0, 504);
             this.pnBottom.Name = "pnBottom";
             this.pnBottom.Size = new System.Drawing.Size(1750, 10);
             this.pnBottom.TabIndex = 6;
@@ -450,7 +449,7 @@ namespace qlsv_tc.Forms
             this.dSDKSVGridControl.Name = "dSDKSVGridControl";
             this.dSDKSVGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rbtnHuyDangKy});
-            this.dSDKSVGridControl.Size = new System.Drawing.Size(1750, 477);
+            this.dSDKSVGridControl.Size = new System.Drawing.Size(1750, 514);
             this.dSDKSVGridControl.TabIndex = 4;
             this.dSDKSVGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -596,7 +595,6 @@ namespace qlsv_tc.Forms
             this.rbtnHuyDangKy.AutoHeight = false;
             this.rbtnHuyDangKy.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
-            this.rbtnHuyDangKy.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rbtnHuyDangKy.ContextImageOptions.SvgImage")));
             this.rbtnHuyDangKy.Name = "rbtnHuyDangKy";
             this.rbtnHuyDangKy.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.rbtnHuyDangKy.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.rbtnHuyDangKy_ButtonClick);
@@ -663,7 +661,7 @@ namespace qlsv_tc.Forms
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1750, 338);
+            this.panel2.Size = new System.Drawing.Size(1750, 301);
             this.panel2.TabIndex = 4;
             // 
             // panel3
@@ -673,7 +671,7 @@ namespace qlsv_tc.Forms
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 52);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1750, 286);
+            this.panel3.Size = new System.Drawing.Size(1750, 249);
             this.panel3.TabIndex = 6;
             // 
             // danhSachDkyLTCGridControl
@@ -686,7 +684,7 @@ namespace qlsv_tc.Forms
             this.danhSachDkyLTCGridControl.Name = "danhSachDkyLTCGridControl";
             this.danhSachDkyLTCGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rbtnDANGKY});
-            this.danhSachDkyLTCGridControl.Size = new System.Drawing.Size(1750, 286);
+            this.danhSachDkyLTCGridControl.Size = new System.Drawing.Size(1750, 249);
             this.danhSachDkyLTCGridControl.TabIndex = 0;
             this.danhSachDkyLTCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -876,7 +874,6 @@ namespace qlsv_tc.Forms
             this.rbtnDANGKY.AutoHeight = false;
             this.rbtnDANGKY.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
-            this.rbtnDANGKY.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("rbtnDANGKY.ContextImageOptions.SvgImage")));
             this.rbtnDANGKY.Name = "rbtnDANGKY";
             this.rbtnDANGKY.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.rbtnDANGKY.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.rbtnDangKy_ButtonClick);
@@ -910,16 +907,14 @@ namespace qlsv_tc.Forms
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CT_DONGHOCPHITableAdapter = null;
             this.tableAdapterManager.DANGKYTableAdapter = this.tableAdapterDK;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.LOPTINCHITableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = qlsv_tc.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = qlsv_tc.DS1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tableAdapterDKLTC
             // 
@@ -997,14 +992,14 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private System.Windows.Forms.Panel pnContent;
-        private DS dS;
+        private DS1 dS;
         private System.Windows.Forms.BindingSource bdsDK;
-        private DSTableAdapters.DANGKYTableAdapter tableAdapterDK;
-        private DSTableAdapters.TableAdapterManager tableAdapterManager;
+        private DS1TableAdapters.DANGKYTableAdapter tableAdapterDK;
+        private DS1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource bdsDKLTCSV;
         private System.Windows.Forms.BindingSource bdsDKLTC;
-        private DSTableAdapters.DanhSachDkyLTCTableAdapter tableAdapterDKLTC;
-        private DSTableAdapters.DanhSachDkyLTCSVTableAdapter tableAdapterDKLTCSV;
+        private DS1TableAdapters.DanhSachDkyLTCTableAdapter tableAdapterDKLTC;
+        private DS1TableAdapters.DanhSachDkyLTCSVTableAdapter tableAdapterDKLTCSV;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
@@ -1048,7 +1043,7 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraEditors.LookUpEdit cmbMASV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bdsSV;
-        private DSTableAdapters.SINHVIENTableAdapter tableAdapterSV;
+        private DS1TableAdapters.SINHVIENTableAdapter tableAdapterSV;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.TextBox txtMaLop;
         private System.Windows.Forms.Label label4;

@@ -48,7 +48,8 @@ namespace qlsv_tc.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M6JC7UB\\SERVER2;Initial Catalog=QLDSV_TC;User ID=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-M6JC7UB\\SERVER2;Initial Catalog=QLDSV_TC;Integrated Security=" +
+            "true")]
         public string QLDSV_TCConnectionString2 {
             get {
                 return ((string)(this["QLDSV_TCConnectionString2"]));

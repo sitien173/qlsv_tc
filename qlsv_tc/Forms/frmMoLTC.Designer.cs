@@ -62,7 +62,7 @@ namespace qlsv_tc.Forms
             this.gbMoLTC = new System.Windows.Forms.GroupBox();
             this.txtHUYLOP = new DevExpress.XtraEditors.CheckEdit();
             this.bdsLTC = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new qlsv_tc.DS();
+            this.dS = new qlsv_tc.DS1();
             this.txtSOSVTOITHIEU = new DevExpress.XtraEditors.SpinEdit();
             this.txtMAKHOA = new System.Windows.Forms.TextBox();
             this.cmbMAGV = new System.Windows.Forms.ComboBox();
@@ -87,11 +87,11 @@ namespace qlsv_tc.Forms
             this.colSOSVTOITHIEU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHUYLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tableAdapterLTC = new qlsv_tc.DSTableAdapters.LOPTINCHITableAdapter();
-            this.tableAdapterMH = new qlsv_tc.DSTableAdapters.MONHOCTableAdapter();
-            this.tableAdapterGV = new qlsv_tc.DSTableAdapters.GIANGVIENTableAdapter();
-            this.tableAdapterManager = new qlsv_tc.DSTableAdapters.TableAdapterManager();
-            this.tableAdapterDK = new qlsv_tc.DSTableAdapters.DANGKYTableAdapter();
+            this.tableAdapterLTC = new qlsv_tc.DS1TableAdapters.LOPTINCHITableAdapter();
+            this.tableAdapterMH = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
+            this.tableAdapterGV = new qlsv_tc.DS1TableAdapters.GIANGVIENTableAdapter();
+            this.tableAdapterManager = new qlsv_tc.DS1TableAdapters.TableAdapterManager();
+            this.tableAdapterDK = new qlsv_tc.DS1TableAdapters.DANGKYTableAdapter();
             this.bdsDK = new System.Windows.Forms.BindingSource(this.components);
             hOCKYLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
@@ -813,16 +813,14 @@ namespace qlsv_tc.Forms
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CT_DONGHOCPHITableAdapter = null;
             this.tableAdapterManager.DANGKYTableAdapter = this.tableAdapterDK;
             this.tableAdapterManager.GIANGVIENTableAdapter = this.tableAdapterGV;
-            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.LOPTINCHITableAdapter = this.tableAdapterLTC;
             this.tableAdapterManager.MONHOCTableAdapter = this.tableAdapterMH;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = qlsv_tc.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = qlsv_tc.DS1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tableAdapterDK
             // 
@@ -920,16 +918,16 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraEditors.SpinEdit txtHOCKY;
         private DevExpress.XtraEditors.CheckEdit txtHUYLOP;
         private System.Windows.Forms.Panel panel2;
-        private DS dS;
+        private DS1 dS;
         private System.Windows.Forms.BindingSource bdsLTC;
-        private DSTableAdapters.LOPTINCHITableAdapter tableAdapterLTC;
+        private DS1TableAdapters.LOPTINCHITableAdapter tableAdapterLTC;
         private System.Windows.Forms.TextBox txtNIENKHOA;
         private System.Windows.Forms.BindingSource bdsMH;
-        private DSTableAdapters.MONHOCTableAdapter tableAdapterMH;
+        private DS1TableAdapters.MONHOCTableAdapter tableAdapterMH;
         private System.Windows.Forms.BindingSource bdsGV;
-        private DSTableAdapters.GIANGVIENTableAdapter tableAdapterGV;
-        private DSTableAdapters.TableAdapterManager tableAdapterManager;
-        private DSTableAdapters.DANGKYTableAdapter tableAdapterDK;
+        private DS1TableAdapters.GIANGVIENTableAdapter tableAdapterGV;
+        private DS1TableAdapters.TableAdapterManager tableAdapterManager;
+        private DS1TableAdapters.DANGKYTableAdapter tableAdapterDK;
         private System.Windows.Forms.BindingSource bdsDK;
     }
 }

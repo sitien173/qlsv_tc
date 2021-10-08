@@ -189,7 +189,7 @@ SELECT MASV, NIENKHOA, HOCKY, HOCPHI FROM HOCPHI WHERE (HOCKY = @HOCKY) AND (MAS
               <Mapping SourceColumn="HOCPHI" DataSetColumn="HOCPHI" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Server3 (Settings)" DbObjectName="QLDSV_TC.dbo.SP_GetHocPhiSV" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Server3 (Settings)" DbObjectName="QLDSV_TC.dbo.SP_GetHocPhiSV" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_GetHocPhiSV</CommandText>
@@ -562,12 +562,6 @@ SELECT MASV, HO, TEN, NGAYSINH, MALOP, DANGHIHOC FROM SINHVIEN WHERE (MASV = @MA
       <xs:field xpath="mstns:HOCKY" />
       <xs:field xpath="mstns:NGAYDONG" />
     </xs:unique>
-    <xs:unique name="Constraint2">
-      <xs:selector xpath=".//mstns:CT_DONGHOCPHI" />
-      <xs:field xpath="mstns:MASV" />
-      <xs:field xpath="mstns:NIENKHOA" />
-      <xs:field xpath="mstns:HOCKY" />
-    </xs:unique>
     <xs:unique name="GIANGVIEN_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:GIANGVIEN" />
       <xs:field xpath="mstns:MAGV" />
@@ -576,18 +570,6 @@ SELECT MASV, HO, TEN, NGAYSINH, MALOP, DANGHIHOC FROM SINHVIEN WHERE (MASV = @MA
       <xs:selector xpath=".//mstns:HOCPHI" />
       <xs:field xpath="mstns:MASV" />
       <xs:field xpath="mstns:NIENKHOA" />
-      <xs:field xpath="mstns:HOCKY" />
-    </xs:unique>
-    <xs:unique name="HOCPHI_Constraint2" msdata:ConstraintName="Constraint2">
-      <xs:selector xpath=".//mstns:HOCPHI" />
-      <xs:field xpath="mstns:MASV" />
-    </xs:unique>
-    <xs:unique name="Constraint3">
-      <xs:selector xpath=".//mstns:HOCPHI" />
-      <xs:field xpath="mstns:NIENKHOA" />
-    </xs:unique>
-    <xs:unique name="Constraint4">
-      <xs:selector xpath=".//mstns:HOCPHI" />
       <xs:field xpath="mstns:HOCKY" />
     </xs:unique>
     <xs:unique name="KHOA_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -602,15 +584,10 @@ SELECT MASV, HO, TEN, NGAYSINH, MALOP, DANGHIHOC FROM SINHVIEN WHERE (MASV = @MA
       <xs:selector xpath=".//mstns:SINHVIEN" />
       <xs:field xpath="mstns:MASV" />
     </xs:unique>
-    <xs:keyref name="FK_HOCPHI_CT_DONGHOCPHI" refer="HOCPHI_Constraint1" msprop:rel_Generator_UserChildTable="CT_DONGHOCPHI" msprop:rel_Generator_ChildPropName="GetCT_DONGHOCPHIRows" msprop:rel_Generator_UserRelationName="FK_CT_DONGHOCPHI_HOCPHI" msprop:rel_Generator_ParentPropName="HOCPHIRowParent" msprop:rel_Generator_RelationVarName="relationFK_CT_DONGHOCPHI_HOCPHI" msprop:rel_Generator_UserParentTable="HOCPHI" msdata:RelationName="FK_CT_DONGHOCPHI_HOCPHI" msdata:DeleteRule="None">
-      <xs:selector xpath=".//mstns:CT_DONGHOCPHI" />
-      <xs:field xpath="mstns:MASV" />
-      <xs:field xpath="mstns:NIENKHOA" />
-      <xs:field xpath="mstns:HOCKY" />
-    </xs:keyref>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
+      <msdata:Relationship name="FK_CT_DONGHOCPHI_HOCPHI" msdata:parent="HOCPHI" msdata:child="CT_DONGHOCPHI" msdata:parentkey="MASV NIENKHOA HOCKY" msdata:childkey="MASV NIENKHOA HOCKY" msprop:Generator_UserChildTable="CT_DONGHOCPHI" msprop:Generator_ChildPropName="GetCT_DONGHOCPHIRows" msprop:Generator_UserRelationName="FK_CT_DONGHOCPHI_HOCPHI" msprop:Generator_ParentPropName="HOCPHIRowParent" msprop:Generator_RelationVarName="relationFK_CT_DONGHOCPHI_HOCPHI" msprop:Generator_UserParentTable="HOCPHI" />
       <msdata:Relationship name="FK_GIANGVIEN_KHOA" msdata:parent="KHOA" msdata:child="GIANGVIEN" msdata:parentkey="MAKHOA" msdata:childkey="MAKHOA" msprop:Generator_UserChildTable="GIANGVIEN" msprop:Generator_ChildPropName="GetGIANGVIENRows" msprop:Generator_UserRelationName="FK_GIANGVIEN_KHOA" msprop:Generator_ParentPropName="KHOARow" msprop:Generator_RelationVarName="relationFK_GIANGVIEN_KHOA" msprop:Generator_UserParentTable="KHOA" />
       <msdata:Relationship name="FK_HOCPHI_SINHVIEN" msdata:parent="SINHVIEN" msdata:child="HOCPHI" msdata:parentkey="MASV" msdata:childkey="MASV" msprop:Generator_UserChildTable="HOCPHI" msprop:Generator_ChildPropName="GetHOCPHIRows" msprop:Generator_UserRelationName="FK_HOCPHI_SINHVIEN" msprop:Generator_ParentPropName="SINHVIENRow" msprop:Generator_RelationVarName="relationFK_HOCPHI_SINHVIEN" msprop:Generator_UserParentTable="SINHVIEN" />
       <msdata:Relationship name="FK_LOP_KHOA" msdata:parent="KHOA" msdata:child="LOP" msdata:parentkey="MAKHOA" msdata:childkey="MAKHOA" msprop:Generator_UserChildTable="LOP" msprop:Generator_ChildPropName="GetLOPRows" msprop:Generator_UserRelationName="FK_LOP_KHOA" msprop:Generator_RelationVarName="relationFK_LOP_KHOA" msprop:Generator_UserParentTable="KHOA" msprop:Generator_ParentPropName="KHOARow" />
