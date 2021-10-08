@@ -46,7 +46,7 @@ namespace qlsv_tc
             if (Program.conn != null && Program.conn.State == System.Data.ConnectionState.Open) Program.conn.Close();
             try
             {
-                Program.connstr = Program.connstr = "Data Source=" + Program.servername + ";Initial Catalog=" + Program.database + ";User ID=" +
+                Program.connstr = Program.connstr = "Data Source=" + Program.servername + ";MultipleActiveResultSets=true;Initial Catalog=" + Program.database + ";User ID=" +
                       mlogin + ";password=" + password;
                 Program.conn.ConnectionString = Program.connstr;
                 Program.conn.Open();

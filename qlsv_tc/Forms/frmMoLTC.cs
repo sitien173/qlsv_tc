@@ -102,7 +102,10 @@ namespace qlsv_tc.Forms
             // thao tác chuẩn bị thêm
             bdsLTC.AddNew();
 
+            cmbMAGV.SelectedIndex = 1;
             cmbMAGV.SelectedIndex = 0;
+
+            cmbMAMH.SelectedIndex = 1;
             cmbMAMH.SelectedIndex = 0;
 
             // mặc định là false
@@ -188,7 +191,23 @@ namespace qlsv_tc.Forms
                 this.err.SetError(txtNHOM, "Vui lòng chọn NHOM !");
                 return false;
             }
-          
+
+            // check exist LOPTINCHI
+            string query = "DECLARE @return_value INT \n" +
+                $"EXEC @return_value=[dbo].[SP_CheckInsertLTC] @nienkhoa=N'{txtNIENKHOA.Text}', @hocki={txtHOCKY.Text}, @mamh=N'{cmbMAMH.Text}', @nhom={txtNHOM.Text};\n" +
+                "SELECT 'Return Value'=@return_value;";
+            int result = Ultils.CheckDataHelper(query);
+            if (result > 0) // exist
+            {
+                XtraMessageBox.Show($"Đã Tồn Tại Lớp Tín Chỉ có niên khóa: {txtNIENKHOA.Text}, học kỳ: {txtHOCKY.Text} \n" +
+                    $"Mã MH: {cmbMAMH.Text.Trim()}, MAGV: {cmbMAGV.Text.Trim()}, Nhóm: {txtNHOM.Text}");
+                this.err.SetError(txtNIENKHOA, "");
+                this.err.SetError(txtHOCKY, "");
+                this.err.SetError(txtNHOM, "");
+                this.err.SetError(cmbMAMH, "");
+                this.err.SetError(cmbMAGV, "");
+                return false;
+            }    
             return true;
         }
 
@@ -218,16 +237,6 @@ namespace qlsv_tc.Forms
                         if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
                         XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
                       
-                    }
-                    catch(SqlException ex)
-                    {
-                        // 2627 là mã lỗi trùng khoá NIENKHOA,HOCKY,MAMH,NHOM
-                        if(ex.Number == 2627)
-                        {
-                            XtraMessageBox.Show("Ghi Thất Bại. NIENKHOA, HOCKY, MAMH, NHOM Đã Có Lớp Tín Chỉ","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
-                            return;
-                        }
                     }
                     catch (Exception ex)
                     {

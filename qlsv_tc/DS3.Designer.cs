@@ -351,18 +351,6 @@ namespace qlsv_tc {
             base.Tables.Add(this.tableLOP);
             this.tableSINHVIEN = new SINHVIENDataTable();
             base.Tables.Add(this.tableSINHVIEN);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_HOCPHI_CT_DONGHOCPHI", new global::System.Data.DataColumn[] {
-                        this.tableHOCPHI.MASVColumn,
-                        this.tableHOCPHI.NIENKHOAColumn,
-                        this.tableHOCPHI.HOCKYColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCT_DONGHOCPHI.MASVColumn,
-                        this.tableCT_DONGHOCPHI.NIENKHOAColumn,
-                        this.tableCT_DONGHOCPHI.HOCKYColumn});
-            this.tableCT_DONGHOCPHI.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.None;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_CT_DONGHOCPHI_HOCPHI = new global::System.Data.DataRelation("FK_CT_DONGHOCPHI_HOCPHI", new global::System.Data.DataColumn[] {
                         this.tableHOCPHI.MASVColumn,
                         this.tableHOCPHI.NIENKHOAColumn,
@@ -690,10 +678,6 @@ namespace qlsv_tc {
                                 this.columnNIENKHOA,
                                 this.columnHOCKY,
                                 this.columnNGAYDONG}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnMASV,
-                                this.columnNIENKHOA,
-                                this.columnHOCKY}, false));
                 this.columnMASV.AllowDBNull = false;
                 this.columnMASV.MaxLength = 10;
                 this.columnNIENKHOA.AllowDBNull = false;
@@ -1314,20 +1298,11 @@ namespace qlsv_tc {
                                 this.columnMASV,
                                 this.columnNIENKHOA,
                                 this.columnHOCKY}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnMASV}, false));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
-                                this.columnNIENKHOA}, false));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint4", new global::System.Data.DataColumn[] {
-                                this.columnHOCKY}, false));
                 this.columnMASV.AllowDBNull = false;
-                this.columnMASV.Unique = true;
                 this.columnMASV.MaxLength = 10;
                 this.columnNIENKHOA.AllowDBNull = false;
-                this.columnNIENKHOA.Unique = true;
                 this.columnNIENKHOA.MaxLength = 9;
                 this.columnHOCKY.AllowDBNull = false;
-                this.columnHOCKY.Unique = true;
                 this.columnHOCPHI.AllowDBNull = false;
             }
             
@@ -4100,23 +4075,6 @@ SELECT MASV, NIENKHOA, HOCKY, HOCPHI FROM HOCPHI WHERE (HOCKY = @HOCKY) AND (MAS
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DS3.HOCPHIDataTable GetDataBy(string MASV) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((MASV == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(MASV));
-            }
-            DS3.HOCPHIDataTable dataTable = new DS3.HOCPHIDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -39,7 +39,7 @@ namespace qlsv_tc
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
             this.btnSinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnLapNhapXuatNV = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInPhieuNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnInDSLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKyLTC = new DevExpress.XtraBars.BarButtonItem();
@@ -74,13 +74,13 @@ namespace qlsv_tc
             this.btnDangXuat,
             this.btnSinhVien,
             this.btnLapNhapXuatNV,
-            this.btnInPhieuNV,
+            this.btnInDSLTC,
             this.btnPhieuNV,
             this.btnMoLTC,
             this.btnDangKyLTC,
             this.btnHocPhi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
             this.ribbonControl1.MaxItemId = 15;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -126,15 +126,17 @@ namespace qlsv_tc
             // 
             // btnLapNhapXuatNV
             // 
-            this.btnLapNhapXuatNV.Caption = "Lập phiếu nhập/xuất";
+            this.btnLapNhapXuatNV.Caption = "DSSV Đăng Ký LTC";
             this.btnLapNhapXuatNV.Id = 7;
             this.btnLapNhapXuatNV.Name = "btnLapNhapXuatNV";
+            this.btnLapNhapXuatNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLapNhapXuatNV_ItemClick);
             // 
-            // btnInPhieuNV
+            // btnInDSLTC
             // 
-            this.btnInPhieuNV.Caption = "In các phiếu của nv";
-            this.btnInPhieuNV.Id = 8;
-            this.btnInPhieuNV.Name = "btnInPhieuNV";
+            this.btnInDSLTC.Caption = "In Danh Sách LTC";
+            this.btnInDSLTC.Id = 8;
+            this.btnInDSLTC.Name = "btnInDSLTC";
+            this.btnInDSLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSLTC_ItemClick);
             // 
             // btnPhieuNV
             // 
@@ -219,7 +221,7 @@ namespace qlsv_tc
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnInPhieuNV, true);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnInDSLTC, true);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             // 
             // ribbonPageGroup5
@@ -296,7 +298,7 @@ namespace qlsv_tc
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem btnSinhVien;
         private DevExpress.XtraBars.BarButtonItem btnLapNhapXuatNV;
-        private DevExpress.XtraBars.BarButtonItem btnInPhieuNV;
+        private DevExpress.XtraBars.BarButtonItem btnInDSLTC;
         private DevExpress.XtraBars.BarButtonItem btnPhieuNV;
         private DevExpress.XtraBars.Ribbon.RibbonPage rb_quantri;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
