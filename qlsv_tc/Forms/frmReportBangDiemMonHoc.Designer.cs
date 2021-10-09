@@ -78,8 +78,9 @@ namespace qlsv_tc.Forms
             this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNienKhoa.Location = new System.Drawing.Point(121, 95);
             this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(229, 30);
+            this.txtNienKhoa.Size = new System.Drawing.Size(376, 30);
             this.txtNienKhoa.TabIndex = 23;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // lookUpEditMH
             // 

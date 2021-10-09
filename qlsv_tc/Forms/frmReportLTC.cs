@@ -21,6 +21,11 @@ namespace qlsv_tc.Forms
 
         private void btnInLTC_Click(object sender, EventArgs e)
         {
+            if (cmbNienKhoa.Text.Equals(""))
+            {
+                XtraMessageBox.Show("Vui lòng chọn niên khóa");
+                return;
+            }
             Xrpt_SP_GetDanhSachDkyLTC xrpt = new Xrpt_SP_GetDanhSachDkyLTC(cmbNienKhoa.Text, int.Parse(spHocKi.Text));
             xrpt.lbTiTle.Text = cboxKhoa.Text.ToUpper();
             xrpt.lbNienKhoaHocKy.Text = $"NIÊN KHÓA: {cmbNienKhoa.Text}  HỌC KỲ: {spHocKi.Text}";

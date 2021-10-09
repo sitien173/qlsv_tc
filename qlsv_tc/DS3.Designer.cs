@@ -4752,9 +4752,7 @@ SELECT MALOP, TENLOP, KHOAHOC, MAKHOA FROM LOP WHERE (MALOP = @MALOP)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT LOP.MALOP, LOP.TENLOP, LOP.KHOAHOC, KHOA.MAKHOA\r\nFROM   LOP AS LOP LEFT OU" +
-                "TER JOIN\r\n             KHOA AS KHOA ON KHOA.MAKHOA = LOP.MAKHOA\r\nWHERE (KHOA.MAK" +
-                "HOA = @makhoa)";
+            this._commandCollection[1].CommandText = "SELECT MALOP, TENLOP, KHOAHOC, MAKHOA FROM dbo.LOP where MAKHOA = @makhoa";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@makhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MAKHOA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -4787,7 +4785,7 @@ SELECT MALOP, TENLOP, KHOAHOC, MAKHOA FROM LOP WHERE (MALOP = @MALOP)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByKhoa(DS3.LOPDataTable dataTable, string makhoa) {
+        public virtual int FillByMaKhoa(DS3.LOPDataTable dataTable, string makhoa) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((makhoa == null)) {
                 throw new global::System.ArgumentNullException("makhoa");

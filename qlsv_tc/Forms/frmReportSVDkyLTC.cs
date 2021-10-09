@@ -56,5 +56,15 @@ namespace qlsv_tc.Forms
             ReportPrintTool print = new ReportPrintTool(xrpt);
             print.ShowPreviewDialog();
         }
+
+        private void txtNienKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('-')) return;
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }

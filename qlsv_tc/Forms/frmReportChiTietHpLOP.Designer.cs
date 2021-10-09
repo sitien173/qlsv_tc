@@ -106,20 +106,20 @@ namespace qlsv_tc.Forms
             // 
             // cmbMaLop
             // 
-            this.cmbMaLop.Location = new System.Drawing.Point(120, 160);
+            this.cmbMaLop.Location = new System.Drawing.Point(120, 150);
             this.cmbMaLop.Name = "cmbMaLop";
-            this.cmbMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMaLop.Properties.Appearance.Options.UseFont = true;
             this.cmbMaLop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMaLop.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAKHOA", "MAKHOA", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 98, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAKHOA", "MAKHOA", 107, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.cmbMaLop.Properties.DataSource = this.bdsLop;
             this.cmbMaLop.Properties.DisplayMember = "MALOP";
             this.cmbMaLop.Properties.NullText = "";
             this.cmbMaLop.Properties.ValueMember = "MALOP";
-            this.cmbMaLop.Size = new System.Drawing.Size(396, 30);
+            this.cmbMaLop.Size = new System.Drawing.Size(396, 34);
             this.cmbMaLop.TabIndex = 19;
             // 
             // bdsLop
@@ -131,7 +131,7 @@ namespace qlsv_tc.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 168);
+            this.label1.Location = new System.Drawing.Point(19, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 22);
             this.label1.TabIndex = 18;
@@ -139,15 +139,16 @@ namespace qlsv_tc.Forms
             // 
             // txtNienKhoa
             // 
-            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(120, 77);
+            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNienKhoa.Location = new System.Drawing.Point(120, 68);
             this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(242, 30);
+            this.txtNienKhoa.Size = new System.Drawing.Size(396, 33);
             this.txtNienKhoa.TabIndex = 17;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(353, 196);
+            this.btnInLTC.Location = new System.Drawing.Point(386, 195);
             this.btnInLTC.Name = "btnInLTC";
             this.btnInLTC.Size = new System.Drawing.Size(130, 34);
             this.btnInLTC.TabIndex = 14;
@@ -161,8 +162,10 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Location = new System.Drawing.Point(120, 117);
+            this.txtHocKy.Location = new System.Drawing.Point(120, 107);
             this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHocKy.Properties.Appearance.Options.UseFont = true;
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
@@ -175,14 +178,14 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Size = new System.Drawing.Size(76, 28);
+            this.txtHocKy.Size = new System.Drawing.Size(76, 34);
             this.txtHocKy.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 121);
+            this.label7.Location = new System.Drawing.Point(19, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 22);
             this.label7.TabIndex = 13;
@@ -192,7 +195,7 @@ namespace qlsv_tc.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 85);
+            this.label8.Location = new System.Drawing.Point(19, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 22);
             this.label8.TabIndex = 12;
