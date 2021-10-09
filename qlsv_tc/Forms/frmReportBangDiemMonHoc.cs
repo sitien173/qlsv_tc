@@ -12,27 +12,25 @@ using System.Windows.Forms;
 
 namespace qlsv_tc.Forms
 {
-    public partial class frmReportSVDkyLTC : DevExpress.XtraEditors.XtraForm
+    public partial class frmReportBangDiemMonHoc : DevExpress.XtraEditors.XtraForm
     {
-        public frmReportSVDkyLTC()
+        public frmReportBangDiemMonHoc()
         {
             InitializeComponent();
         }
-       
-        private void frmReportSVDkyLTC_Load(object sender, EventArgs e)
+        private void frmReportBangDiemMonHoc_Load(object sender, EventArgs e)
         {
             this.dS1.EnforceConstraints = false;
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cmbKhoa, Program.bds_dspm.DataSource);
 
-            this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterMH.Fill(this.dS1.MONHOC);
+            this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterMonHoc.Fill(this.dS1.MONHOC);
 
         }
 
         private void btnInLTC_Click(object sender, EventArgs e)
         {
-           
             if (txtNienKhoa.Text.Equals(""))
             {
                 XtraMessageBox.Show("Vui lòng nhập niên khóa");
@@ -49,7 +47,7 @@ namespace qlsv_tc.Forms
                 return;
             }
             // nien khoa hoc ky mamh nhom
-            XrptSinhVienDkyLTC xrpt = new XrptSinhVienDkyLTC(txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), lookUpEditMH.GetColumnValue("MAMH").ToString(), int.Parse(txtNhom.Text));
+            Xrpt_BangDiemMonHoc xrpt = new Xrpt_BangDiemMonHoc(txtNienKhoa.Text, int.Parse(txtHocKy.Text), lookUpEditMH.GetColumnValue("MAMH").ToString(), int.Parse(txtNhom.Text));
             xrpt.lbKhoa.Text = cmbKhoa.Text.ToUpper();
             xrpt.lbNienKhoaHocKy.Text = $"NIÊN KHÓA: {txtNienKhoa.Text}  HỌC KỲ: {txtHocKy.Text}";
             xrpt.lbMonHocNhom.Text = $"MÔN HỌC: {lookUpEditMH.GetColumnValue("TENMH").ToString().ToUpper()}  NHÓM: {txtNhom.Text}";

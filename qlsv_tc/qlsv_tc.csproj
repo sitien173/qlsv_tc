@@ -121,6 +121,18 @@
     <Compile Include="Forms\frmMoLTC.Designer.cs">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmReportBangDiemMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportBangDiemMonHoc.Designer.cs">
+      <DependentUpon>frmReportBangDiemMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportChiTietHpLOP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportChiTietHpLOP.Designer.cs">
+      <DependentUpon>frmReportChiTietHpLOP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmReportLTC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +153,18 @@
     </Compile>
     <Compile Include="XrptSinhVienDkyLTC.Designer.cs">
       <DependentUpon>XrptSinhVienDkyLTC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xrpt_BangDiemMonHoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xrpt_BangDiemMonHoc.Designer.cs">
+      <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xrpt_ChiTietHPLop.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xrpt_ChiTietHPLop.Designer.cs">
+      <DependentUpon>Xrpt_ChiTietHPLop.cs</DependentUpon>
     </Compile>
     <Compile Include="Xrpt_SP_GetDanhSachDkyLTC.cs">
       <SubType>Component</SubType>
@@ -166,6 +190,12 @@
     <EmbeddedResource Include="Forms\frmMoLTC.resx">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportBangDiemMonHoc.resx">
+      <DependentUpon>frmReportBangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportChiTietHpLOP.resx">
+      <DependentUpon>frmReportChiTietHpLOP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReportLTC.resx">
       <DependentUpon>frmReportLTC.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +215,12 @@
     </Compile>
     <EmbeddedResource Include="XrptSinhVienDkyLTC.resx">
       <DependentUpon>XrptSinhVienDkyLTC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xrpt_BangDiemMonHoc.resx">
+      <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xrpt_ChiTietHPLop.resx">
+      <DependentUpon>Xrpt_ChiTietHPLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xrpt_SP_GetDanhSachDkyLTC.resx">
       <DependentUpon>Xrpt_SP_GetDanhSachDkyLTC.cs</DependentUpon>

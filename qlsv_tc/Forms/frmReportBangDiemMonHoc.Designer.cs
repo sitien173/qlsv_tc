@@ -1,7 +1,7 @@
 ﻿
 namespace qlsv_tc.Forms
 {
-    partial class frmReportSVDkyLTC
+    partial class frmReportBangDiemMonHoc
     {
         /// <summary>
         /// Required designer variable.
@@ -31,32 +31,32 @@ namespace qlsv_tc.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNienKhoa = new System.Windows.Forms.TextBox();
+            this.lookUpEditMH = new DevExpress.XtraEditors.LookUpEdit();
+            this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
+            this.dS1 = new qlsv_tc.DS1();
             this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
-            this.dS1 = new qlsv_tc.DS1();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.btnInLTC = new DevExpress.XtraEditors.SimpleButton();
             this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.tableAdapterMH = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
-            this.txtNienKhoa = new System.Windows.Forms.TextBox();
-            this.lookUpEditMH = new DevExpress.XtraEditors.LookUpEdit();
+            this.tableAdapterMonHoc = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lookUpEditMH);
             this.groupBox1.Controls.Add(this.txtNienKhoa);
+            this.groupBox1.Controls.Add(this.lookUpEditMH);
             this.groupBox1.Controls.Add(this.txtNhom);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -66,12 +66,48 @@ namespace qlsv_tc.Forms
             this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(10, 47);
+            this.groupBox1.Location = new System.Drawing.Point(-3, -3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 333);
-            this.groupBox1.TabIndex = 18;
+            this.groupBox1.Size = new System.Drawing.Size(529, 333);
+            this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "In LTC";
+            this.groupBox1.Text = "In Bảng Điểm Môn Học";
+            // 
+            // txtNienKhoa
+            // 
+            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNienKhoa.Location = new System.Drawing.Point(121, 95);
+            this.txtNienKhoa.Name = "txtNienKhoa";
+            this.txtNienKhoa.Size = new System.Drawing.Size(229, 30);
+            this.txtNienKhoa.TabIndex = 23;
+            // 
+            // lookUpEditMH
+            // 
+            this.lookUpEditMH.Location = new System.Drawing.Point(121, 201);
+            this.lookUpEditMH.Name = "lookUpEditMH";
+            this.lookUpEditMH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditMH.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditMH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditMH.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 85, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lookUpEditMH.Properties.DataSource = this.bdsMonHoc;
+            this.lookUpEditMH.Properties.DisplayMember = "TENMH";
+            this.lookUpEditMH.Properties.NullText = "";
+            this.lookUpEditMH.Properties.ValueMember = "MAMH";
+            this.lookUpEditMH.Size = new System.Drawing.Size(376, 30);
+            this.lookUpEditMH.TabIndex = 22;
+            // 
+            // bdsMonHoc
+            // 
+            this.bdsMonHoc.DataMember = "MONHOC";
+            this.bdsMonHoc.DataSource = this.dS1;
+            // 
+            // dS1
+            // 
+            this.dS1.DataSetName = "DS1";
+            this.dS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtNhom
             // 
@@ -117,23 +153,13 @@ namespace qlsv_tc.Forms
             this.label1.TabIndex = 19;
             this.label1.Text = "Môn Học";
             // 
-            // bdsMH
-            // 
-            this.bdsMH.DataMember = "MONHOC";
-            this.bdsMH.DataSource = this.dS1;
-            // 
-            // dS1
-            // 
-            this.dS1.DataSetName = "DS1";
-            this.dS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // cmbKhoa
             // 
-            this.cmbKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
             this.cmbKhoa.Location = new System.Drawing.Point(120, 41);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(377, 33);
+            this.cmbKhoa.Size = new System.Drawing.Size(377, 30);
             this.cmbKhoa.TabIndex = 11;
             // 
             // btnInLTC
@@ -199,52 +225,26 @@ namespace qlsv_tc.Forms
             this.label8.TabIndex = 12;
             this.label8.Text = "Niên Khoá";
             // 
-            // tableAdapterMH
+            // tableAdapterMonHoc
             // 
-            this.tableAdapterMH.ClearBeforeFill = true;
+            this.tableAdapterMonHoc.ClearBeforeFill = true;
             // 
-            // txtNienKhoa
-            // 
-            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(120, 95);
-            this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(232, 30);
-            this.txtNienKhoa.TabIndex = 22;
-            // 
-            // lookUpEditMH
-            // 
-            this.lookUpEditMH.Location = new System.Drawing.Point(120, 201);
-            this.lookUpEditMH.Name = "lookUpEditMH";
-            this.lookUpEditMH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditMH.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditMH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditMH.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 85, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lookUpEditMH.Properties.DataSource = this.bdsMH;
-            this.lookUpEditMH.Properties.DisplayMember = "TENMH";
-            this.lookUpEditMH.Properties.NullText = "";
-            this.lookUpEditMH.Properties.ValueMember = "MAMH";
-            this.lookUpEditMH.Size = new System.Drawing.Size(377, 30);
-            this.lookUpEditMH.TabIndex = 23;
-            // 
-            // frmReportSVDkyLTC
+            // frmReportBangDiemMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 446);
+            this.ClientSize = new System.Drawing.Size(530, 327);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmReportSVDkyLTC";
-            this.Text = "frmReportSVDkyLTC";
-            this.Load += new System.EventHandler(this.frmReportSVDkyLTC_Load);
+            this.Name = "frmReportBangDiemMonHoc";
+            this.Text = "frmReportBangDiemMonHoc";
+            this.Load += new System.EventHandler(this.frmReportBangDiemMonHoc_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,9 +262,9 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private DS1 dS1;
-        private System.Windows.Forms.BindingSource bdsMH;
-        private DS1TableAdapters.MONHOCTableAdapter tableAdapterMH;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditMH;
+        private System.Windows.Forms.BindingSource bdsMonHoc;
+        private DS1TableAdapters.MONHOCTableAdapter tableAdapterMonHoc;
         private System.Windows.Forms.TextBox txtNienKhoa;
     }
 }

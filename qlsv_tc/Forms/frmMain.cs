@@ -57,13 +57,19 @@ namespace qlsv_tc
                 rb_baocao.Visible = true;
                 btnHocPhi.Enabled = false;
                 btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = true;
+                btnDsDongHPLop.Enabled = false;
 
             }else if (Program.mGroup.Equals(Program.role.PKT.ToString(), StringComparison.Ordinal))
             {
                 btnTaoTaiKhoan.Enabled = true;
-                rb_baocao.Visible = false;
+                rb_baocao.Visible = true;
+                
                 btnHocPhi.Enabled = true;
                 btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = false;
+                btnInDSLTC.Enabled = false;
+                btnBangDiemMonHoc.Enabled = false;
+                btnLapNhapXuatNV.Enabled = false;
+                btnDsDongHPLop.Enabled = true;
             }
         }
 
@@ -129,17 +135,6 @@ namespace qlsv_tc
     
         private void btnDangKyLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*  Form frm = CheckExists(typeof(frmDangKyLTC));
-              if (frm != null) frm.Activate();
-              else
-              {
-                  frmDangKyLTC f = new frmDangKyLTC();
-                  f.MdiParent = this;
-                  f.Show();
-              }*/
-
-
-            // test module
             Form frm = CheckExists(typeof(frmDangKy));
             if (frm != null) frm.Activate();
             else
@@ -189,6 +184,30 @@ namespace qlsv_tc
             else
             {
                 frmReportSVDkyLTC f = new frmReportSVDkyLTC();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDsDongHPLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmReportChiTietHpLOP));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmReportChiTietHpLOP f = new frmReportChiTietHpLOP();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnBangDiemMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmReportBangDiemMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmReportBangDiemMonHoc f = new frmReportBangDiemMonHoc();
                 f.MdiParent = this;
                 f.Show();
             }
