@@ -46,8 +46,7 @@ namespace qlsv_tc
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.lbHocKy = new DevExpress.XtraReports.UI.XRLabel();
-            this.lbNienKhoa = new DevExpress.XtraReports.UI.XRLabel();
+            this.lbNienKhoaHocKy = new DevExpress.XtraReports.UI.XRLabel();
             this.lbTiTle = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
@@ -177,41 +176,27 @@ namespace qlsv_tc
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lbHocKy,
-            this.lbNienKhoa,
+            this.lbNienKhoaHocKy,
             this.lbTiTle});
             this.ReportHeader.HeightF = 62.58333F;
             this.ReportHeader.Name = "ReportHeader";
             // 
-            // lbHocKy
+            // lbNienKhoaHocKy
             // 
-            this.lbHocKy.BackColor = System.Drawing.Color.Transparent;
-            this.lbHocKy.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHocKy.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbHocKy.LocationFloat = new DevExpress.Utils.PointFloat(374.8333F, 29.58334F);
-            this.lbHocKy.Multiline = true;
-            this.lbHocKy.Name = "lbHocKy";
-            this.lbHocKy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lbHocKy.SizeF = new System.Drawing.SizeF(121.5278F, 23F);
-            this.lbHocKy.StylePriority.UseBackColor = false;
-            this.lbHocKy.StylePriority.UseFont = false;
-            this.lbHocKy.StylePriority.UseForeColor = false;
-            this.lbHocKy.Text = "Học Kỳ: #";
-            // 
-            // lbNienKhoa
-            // 
-            this.lbNienKhoa.BackColor = System.Drawing.Color.Transparent;
-            this.lbNienKhoa.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNienKhoa.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbNienKhoa.LocationFloat = new DevExpress.Utils.PointFloat(160.8584F, 29.58334F);
-            this.lbNienKhoa.Multiline = true;
-            this.lbNienKhoa.Name = "lbNienKhoa";
-            this.lbNienKhoa.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lbNienKhoa.SizeF = new System.Drawing.SizeF(201.3889F, 23F);
-            this.lbNienKhoa.StylePriority.UseBackColor = false;
-            this.lbNienKhoa.StylePriority.UseFont = false;
-            this.lbNienKhoa.StylePriority.UseForeColor = false;
-            this.lbNienKhoa.Text = "Niên Khóa: ####-####";
+            this.lbNienKhoaHocKy.BackColor = System.Drawing.Color.Transparent;
+            this.lbNienKhoaHocKy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNienKhoaHocKy.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lbNienKhoaHocKy.LocationFloat = new DevExpress.Utils.PointFloat(4.000007F, 29.86111F);
+            this.lbNienKhoaHocKy.Multiline = true;
+            this.lbNienKhoaHocKy.Name = "lbNienKhoaHocKy";
+            this.lbNienKhoaHocKy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbNienKhoaHocKy.SizeF = new System.Drawing.SizeF(642F, 23F);
+            this.lbNienKhoaHocKy.StylePriority.UseBackColor = false;
+            this.lbNienKhoaHocKy.StylePriority.UseFont = false;
+            this.lbNienKhoaHocKy.StylePriority.UseForeColor = false;
+            this.lbNienKhoaHocKy.StylePriority.UseTextAlignment = false;
+            this.lbNienKhoaHocKy.Text = "Niên Khóa: ####-#### Học Kỳ: #";
+            this.lbNienKhoaHocKy.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // lbTiTle
             // 
@@ -226,7 +211,7 @@ namespace qlsv_tc
             this.lbTiTle.StylePriority.UseForeColor = false;
             this.lbTiTle.StylePriority.UseTextAlignment = false;
             this.lbTiTle.Text = "KHOA XXXXXXXXXXXX ";
-            this.lbTiTle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.lbTiTle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // GroupHeader1
             // 
@@ -587,8 +572,7 @@ namespace qlsv_tc
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
-        public DevExpress.XtraReports.UI.XRLabel lbHocKy;
-        public DevExpress.XtraReports.UI.XRLabel lbNienKhoa;
+        public DevExpress.XtraReports.UI.XRLabel lbNienKhoaHocKy;
         public DevExpress.XtraReports.UI.XRLabel lbTiTle;
     }
 }

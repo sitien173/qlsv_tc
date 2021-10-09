@@ -23,8 +23,7 @@ namespace qlsv_tc.Forms
         {
             Xrpt_SP_GetDanhSachDkyLTC xrpt = new Xrpt_SP_GetDanhSachDkyLTC(cmbNienKhoa.Text, int.Parse(spHocKi.Text));
             xrpt.lbTiTle.Text = cboxKhoa.Text.ToUpper();
-            xrpt.lbNienKhoa.Text = $"Niên Khóa: {cmbNienKhoa.Text}";
-            xrpt.lbHocKy.Text = $"Học Kỳ: {spHocKi.Text}";
+            xrpt.lbNienKhoaHocKy.Text = $"NIÊN KHÓA: {cmbNienKhoa.Text}  HỌC KỲ: {spHocKi.Text}";
             ReportPrintTool print = new ReportPrintTool(xrpt);
             print.ShowPreviewDialog();
 
@@ -37,7 +36,7 @@ namespace qlsv_tc.Forms
 
         private void frmReportLTC_Load(object sender, EventArgs e)
         {
-       
+            this.dS.EnforceConstraints = false;
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cboxKhoa, Program.bds_dspm.DataSource);
 

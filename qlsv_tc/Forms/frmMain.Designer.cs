@@ -44,6 +44,7 @@ namespace qlsv_tc
             this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKyLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnHocPhi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDsDongHPLop = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_quantri = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -53,11 +54,14 @@ namespace qlsv_tc
             this.rb_baocao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.MANV = new System.Windows.Forms.ToolStripStatusLabel();
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnBangDiemMonHoc = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -78,10 +82,12 @@ namespace qlsv_tc
             this.btnPhieuNV,
             this.btnMoLTC,
             this.btnDangKyLTC,
-            this.btnHocPhi});
+            this.btnHocPhi,
+            this.btnDsDongHPLop,
+            this.btnBangDiemMonHoc});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 15;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -170,6 +176,13 @@ namespace qlsv_tc
             this.btnHocPhi.Name = "btnHocPhi";
             this.btnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHocPhi_ItemClick);
             // 
+            // btnDsDongHPLop
+            // 
+            this.btnDsDongHPLop.Caption = "DS Đóng HP của Lớp";
+            this.btnDsDongHPLop.Id = 15;
+            this.btnDsDongHPLop.Name = "btnDsDongHPLop";
+            this.btnDsDongHPLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDsDongHPLop_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -214,7 +227,9 @@ namespace qlsv_tc
             // 
             this.rb_baocao.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4,
-            this.ribbonPageGroup5});
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup7});
             this.rb_baocao.Name = "rb_baocao";
             this.rb_baocao.Text = "Báo cáo";
             this.rb_baocao.Visible = false;
@@ -228,6 +243,11 @@ namespace qlsv_tc
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.btnLapNhapXuatNV, true);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnDsDongHPLop, true);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -263,6 +283,18 @@ namespace qlsv_tc
             this.NHOM.Name = "NHOM";
             this.NHOM.Size = new System.Drawing.Size(68, 25);
             this.NHOM.Text = "NHOM";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnBangDiemMonHoc);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            // 
+            // btnBangDiemMonHoc
+            // 
+            this.btnBangDiemMonHoc.Caption = "Bảng Điểm Môn Học";
+            this.btnBangDiemMonHoc.Id = 16;
+            this.btnBangDiemMonHoc.Name = "btnBangDiemMonHoc";
+            this.btnBangDiemMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemMonHoc_ItemClick);
             // 
             // frmMain
             // 
@@ -314,6 +346,10 @@ namespace qlsv_tc
         private DevExpress.XtraBars.BarButtonItem btnDangKyLTC;
         private DevExpress.XtraBars.BarButtonItem btnHocPhi;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rb_hocphi;
+        private DevExpress.XtraBars.BarButtonItem btnDsDongHPLop;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem btnBangDiemMonHoc;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
     }
 }
 
