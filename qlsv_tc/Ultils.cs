@@ -18,8 +18,6 @@ namespace qlsv_tc
             combo.DisplayMember = "TENKHOA";
             combo.ValueMember = "TENSERVER";
 
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            combo.SelectedIndex = 1;
             // nếu login vào là khoa cntt, thì combox sẽ hiện khoa cntt
             // nếu login vào là khoa vt, thì combox sẽ hiện khoa vt
             combo.SelectedIndex = Program.mKhoa;

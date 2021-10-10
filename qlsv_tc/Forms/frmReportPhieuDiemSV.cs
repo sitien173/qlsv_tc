@@ -45,6 +45,11 @@ namespace qlsv_tc.Forms
         {
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cmbKhoa, Program.bds_dspm.DataSource);
+            this.loadInitializeData();
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString()))
+            {
+                this.cmbKhoa.Enabled = false;
+            }
         }
 
         private void btnInLTC_Click(object sender, EventArgs e)
@@ -65,6 +70,11 @@ namespace qlsv_tc.Forms
             xrpt.lbMASV.Text = $"MÃ SV: {lookUpEditMASV.GetColumnValue("MASV").ToString().ToUpper()}";
             ReportPrintTool print = new ReportPrintTool(xrpt);
             print.ShowPreviewDialog();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

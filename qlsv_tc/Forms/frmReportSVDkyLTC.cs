@@ -21,12 +21,15 @@ namespace qlsv_tc.Forms
        
         private void frmReportSVDkyLTC_Load(object sender, EventArgs e)
         {
-            this.dS1.EnforceConstraints = false;
+            
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cmbKhoa, Program.bds_dspm.DataSource);
 
-            this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterMH.Fill(this.dS1.MONHOC);
+            this.loadInitializeData();
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString()))
+            {
+                this.cmbKhoa.Enabled = false;
+            }
 
         }
 
@@ -65,6 +68,36 @@ namespace qlsv_tc.Forms
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // TODO : Chuyển Bộ Phận
+
+            Ultils.ComboboxHelper(this.cmbKhoa);
+
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
+            // thoát.
+            if (Program.KetNoi() == 0)
+            {
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                loadInitializeData();
+            }
+        }
+
+        private void loadInitializeData()
+        {
+            this.dS1.EnforceConstraints = false;
+            this.tableAdapterMH.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterMH.Fill(this.dS1.MONHOC);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace qlsv_tc.Forms
             this.btnInLTC = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.tableAdapterSV = new qlsv_tc.DS1TableAdapters.SINHVIENTableAdapter();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMASV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
@@ -47,11 +48,14 @@ namespace qlsv_tc.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.lookUpEditMASV);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmbKhoa);
             this.groupBox1.Controls.Add(this.btnInLTC);
             this.groupBox1.Controls.Add(this.labelControl3);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBox1.Location = new System.Drawing.Point(4, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(537, 220);
@@ -110,9 +114,13 @@ namespace qlsv_tc.Forms
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(385, 160);
+            this.btnInLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnInLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInLTC.Appearance.Options.UseBackColor = true;
+            this.btnInLTC.Appearance.Options.UseFont = true;
+            this.btnInLTC.Location = new System.Drawing.Point(363, 160);
             this.btnInLTC.Name = "btnInLTC";
-            this.btnInLTC.Size = new System.Drawing.Size(130, 34);
+            this.btnInLTC.Size = new System.Drawing.Size(152, 39);
             this.btnInLTC.TabIndex = 14;
             this.btnInLTC.Text = "In Báo Cáo";
             this.btnInLTC.Click += new System.EventHandler(this.btnInLTC_Click);
@@ -131,6 +139,19 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterSV.ClearBeforeFill = true;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(201, 160);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(141, 39);
+            this.simpleButton1.TabIndex = 24;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmReportPhieuDiemSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -138,7 +159,8 @@ namespace qlsv_tc.Forms
             this.ClientSize = new System.Drawing.Size(545, 224);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmReportPhieuDiemSV";
-            this.Text = "frmReportPhieuDiemSV";
+            this.Text = "Báo Cáo Phiếu Điểm Sinh Viên";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportPhieuDiemSV_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -160,5 +182,6 @@ namespace qlsv_tc.Forms
         private DS1 dS1;
         private System.Windows.Forms.BindingSource bdsSV;
         private DS1TableAdapters.SINHVIENTableAdapter tableAdapterSV;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

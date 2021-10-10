@@ -844,7 +844,7 @@ namespace qlsv_tc.Forms
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMoLTC";
-            this.Text = "frmMoLTC";
+            this.Text = "Mở Lớp Tín Chỉ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMoLTC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

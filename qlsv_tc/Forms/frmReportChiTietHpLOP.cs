@@ -72,5 +72,10 @@ namespace qlsv_tc.Forms
                 return;
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

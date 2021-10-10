@@ -169,6 +169,7 @@ namespace qlsv_tc
                    
                         if (!isLoginSV())
                         {
+                            if (frmLoginSV.isClose) return;
                             MessageBox.Show("MÃ SV hoặc Mật Khẩu Không Đúng Hoặc Không Tồn Tại");
                             return;
                         }

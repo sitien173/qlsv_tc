@@ -45,6 +45,7 @@ namespace qlsv_tc.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterLop = new qlsv_tc.DS3TableAdapters.LOPTableAdapter();
             this.tableAdapterKhoa = new qlsv_tc.DS3TableAdapters.KHOATableAdapter();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS3)).BeginInit();
@@ -55,6 +56,8 @@ namespace qlsv_tc.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmbKhoa);
             this.groupBox1.Controls.Add(this.cmbMaLop);
@@ -64,9 +67,10 @@ namespace qlsv_tc.Forms
             this.groupBox1.Controls.Add(this.txtHocKy);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBox1.Location = new System.Drawing.Point(36, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 235);
+            this.groupBox1.Size = new System.Drawing.Size(537, 240);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In Chi Tiết Học Phí Của Lớp";
@@ -148,9 +152,13 @@ namespace qlsv_tc.Forms
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(386, 195);
+            this.btnInLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnInLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInLTC.Appearance.Options.UseBackColor = true;
+            this.btnInLTC.Appearance.Options.UseFont = true;
+            this.btnInLTC.Location = new System.Drawing.Point(375, 195);
             this.btnInLTC.Name = "btnInLTC";
-            this.btnInLTC.Size = new System.Drawing.Size(130, 34);
+            this.btnInLTC.Size = new System.Drawing.Size(141, 39);
             this.btnInLTC.TabIndex = 14;
             this.btnInLTC.Text = "In Báo Cáo";
             this.btnInLTC.Click += new System.EventHandler(this.btnInLTC_Click);
@@ -209,6 +217,19 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterKhoa.ClearBeforeFill = true;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(213, 195);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(141, 39);
+            this.simpleButton1.TabIndex = 22;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmReportChiTietHpLOP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -216,7 +237,8 @@ namespace qlsv_tc.Forms
             this.ClientSize = new System.Drawing.Size(609, 293);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmReportChiTietHpLOP";
-            this.Text = "Report Học Phí";
+            this.Text = "Báo Cáo Chi Tiết Học Phí Của Lớp";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportChiTietHpLOP_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -246,5 +268,6 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.BindingSource bdsKhoa;
         private DS3TableAdapters.KHOATableAdapter tableAdapterKhoa;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

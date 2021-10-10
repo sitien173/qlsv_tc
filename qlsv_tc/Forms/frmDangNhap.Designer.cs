@@ -46,13 +46,19 @@ namespace qlsv_tc
             // 
             // btnThoat
             // 
-            this.btnThoat.Appearance.BackColor = System.Drawing.Color.LightGray;
+            this.btnThoat.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
             this.btnThoat.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.btnThoat.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Appearance.Options.UseBackColor = true;
             this.btnThoat.Appearance.Options.UseFont = true;
             this.btnThoat.Appearance.Options.UseForeColor = true;
-            this.btnThoat.Location = new System.Drawing.Point(275, 263);
+            this.btnThoat.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(97)))), ((int)(((byte)(85)))));
+            this.btnThoat.AppearanceHovered.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.AppearanceHovered.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.AppearanceHovered.Options.UseBackColor = true;
+            this.btnThoat.AppearanceHovered.Options.UseFont = true;
+            this.btnThoat.AppearanceHovered.Options.UseForeColor = true;
+            this.btnThoat.Location = new System.Drawing.Point(306, 263);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(138, 48);
             this.btnThoat.TabIndex = 1;
@@ -104,7 +110,7 @@ namespace qlsv_tc
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(102, 77);
+            this.labelControl3.Location = new System.Drawing.Point(102, 82);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(47, 25);
             this.labelControl3.TabIndex = 6;
@@ -112,13 +118,19 @@ namespace qlsv_tc
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Appearance.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDangNhap.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnDangNhap.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.btnDangNhap.Appearance.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Appearance.Options.UseBackColor = true;
             this.btnDangNhap.Appearance.Options.UseFont = true;
             this.btnDangNhap.Appearance.Options.UseForeColor = true;
-            this.btnDangNhap.Location = new System.Drawing.Point(451, 263);
+            this.btnDangNhap.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(166)))), ((int)(((byte)(221)))));
+            this.btnDangNhap.AppearanceHovered.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.AppearanceHovered.ForeColor = System.Drawing.Color.White;
+            this.btnDangNhap.AppearanceHovered.Options.UseBackColor = true;
+            this.btnDangNhap.AppearanceHovered.Options.UseFont = true;
+            this.btnDangNhap.AppearanceHovered.Options.UseForeColor = true;
+            this.btnDangNhap.Location = new System.Drawing.Point(461, 263);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(152, 48);
             this.btnDangNhap.TabIndex = 8;
@@ -129,7 +141,7 @@ namespace qlsv_tc
             // 
             this.cboxKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxKhoa.FormattingEnabled = true;
-            this.cboxKhoa.Location = new System.Drawing.Point(222, 74);
+            this.cboxKhoa.Location = new System.Drawing.Point(222, 79);
             this.cboxKhoa.Name = "cboxKhoa";
             this.cboxKhoa.Size = new System.Drawing.Size(313, 33);
             this.cboxKhoa.TabIndex = 9;
@@ -137,7 +149,7 @@ namespace qlsv_tc
             // 
             // grbDangNhap
             // 
-            this.grbDangNhap.AutoSize = true;
+            this.grbDangNhap.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grbDangNhap.BackColor = System.Drawing.Color.WhiteSmoke;
             this.grbDangNhap.Controls.Add(this.labelControl3);
             this.grbDangNhap.Controls.Add(this.btnThoat);
@@ -147,11 +159,10 @@ namespace qlsv_tc
             this.grbDangNhap.Controls.Add(this.cboxKhoa);
             this.grbDangNhap.Controls.Add(this.txtTaiKhoan);
             this.grbDangNhap.Controls.Add(this.labelControl1);
-            this.grbDangNhap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbDangNhap.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDangNhap.Location = new System.Drawing.Point(0, 0);
+            this.grbDangNhap.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.grbDangNhap.Location = new System.Drawing.Point(84, 65);
             this.grbDangNhap.Name = "grbDangNhap";
-            this.grbDangNhap.Size = new System.Drawing.Size(649, 764);
+            this.grbDangNhap.Size = new System.Drawing.Size(682, 339);
             this.grbDangNhap.TabIndex = 10;
             this.grbDangNhap.TabStop = false;
             this.grbDangNhap.Text = "Đăng Nhập";
@@ -162,17 +173,17 @@ namespace qlsv_tc
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 764);
+            this.ClientSize = new System.Drawing.Size(848, 580);
             this.Controls.Add(this.grbDangNhap);
             this.Name = "frmDangNhap";
-            this.Text = "frmDangNhap";
+            this.Text = "Đăng Nhập";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtTaiKhoan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMatKhau.Properties)).EndInit();
             this.grbDangNhap.ResumeLayout(false);
             this.grbDangNhap.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
