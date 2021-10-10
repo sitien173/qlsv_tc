@@ -121,67 +121,67 @@
     <Compile Include="Forms\frmMoLTC.Designer.cs">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReportBangDiemMonHoc.cs">
+    <Compile Include="Report\Forms\frmReportBangDiemMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmReportBangDiemMonHoc.Designer.cs">
+    <Compile Include="Report\Forms\frmReportBangDiemMonHoc.Designer.cs">
       <DependentUpon>frmReportBangDiemMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReportChiTietHpLOP.cs">
+    <Compile Include="Report\Forms\frmReportChiTietHpLOP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmReportChiTietHpLOP.Designer.cs">
+    <Compile Include="Report\Forms\frmReportChiTietHpLOP.Designer.cs">
       <DependentUpon>frmReportChiTietHpLOP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReportLTC.cs">
+    <Compile Include="Report\Forms\frmReportLTC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmReportLTC.Designer.cs">
+    <Compile Include="Report\Forms\frmReportLTC.Designer.cs">
       <DependentUpon>frmReportLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReportPhieuDiemSV.cs">
+    <Compile Include="Report\Forms\frmReportPhieuDiemSV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmReportPhieuDiemSV.Designer.cs">
+    <Compile Include="Report\Forms\frmReportPhieuDiemSV.Designer.cs">
       <DependentUpon>frmReportPhieuDiemSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReportSVDkyLTC.cs">
+    <Compile Include="Report\Forms\frmReportSVDkyLTC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmReportSVDkyLTC.Designer.cs">
+    <Compile Include="Report\Forms\frmReportSVDkyLTC.Designer.cs">
       <DependentUpon>frmReportSVDkyLTC.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ultils.cs" />
-    <Compile Include="XrptSinhVienDkyLTC.cs">
+    <Compile Include="Report\Report Design\XrptSinhVienDkyLTC.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XrptSinhVienDkyLTC.Designer.cs">
+    <Compile Include="Report\Report Design\XrptSinhVienDkyLTC.Designer.cs">
       <DependentUpon>XrptSinhVienDkyLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Xrpt_BangDiemMonHoc.cs">
+    <Compile Include="Report\Report Design\Xrpt_BangDiemMonHoc.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Xrpt_BangDiemMonHoc.Designer.cs">
+    <Compile Include="Report\Report Design\Xrpt_BangDiemMonHoc.Designer.cs">
       <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Xrpt_ChiTietHPLop.cs">
+    <Compile Include="Report\Report Design\Xrpt_ChiTietHPLop.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Xrpt_ChiTietHPLop.Designer.cs">
+    <Compile Include="Report\Report Design\Xrpt_ChiTietHPLop.Designer.cs">
       <DependentUpon>Xrpt_ChiTietHPLop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Xrpt_PhieuDiemSinhVien.cs">
+    <Compile Include="Report\Report Design\Xrpt_PhieuDiemSinhVien.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Xrpt_PhieuDiemSinhVien.Designer.cs">
+    <Compile Include="Report\Report Design\Xrpt_PhieuDiemSinhVien.Designer.cs">
       <DependentUpon>Xrpt_PhieuDiemSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Xrpt_SP_GetDanhSachDkyLTC.cs">
+    <Compile Include="Report\Report Design\Xrpt_SP_GetDanhSachDkyLTC.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Xrpt_SP_GetDanhSachDkyLTC.Designer.cs">
+    <Compile Include="Report\Report Design\Xrpt_SP_GetDanhSachDkyLTC.Designer.cs">
       <DependentUpon>Xrpt_SP_GetDanhSachDkyLTC.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\frmDangKy.resx">
@@ -202,19 +202,19 @@
     <EmbeddedResource Include="Forms\frmMoLTC.resx">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReportBangDiemMonHoc.resx">
+    <EmbeddedResource Include="Report\Forms\frmReportBangDiemMonHoc.resx">
       <DependentUpon>frmReportBangDiemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReportChiTietHpLOP.resx">
+    <EmbeddedResource Include="Report\Forms\frmReportChiTietHpLOP.resx">
       <DependentUpon>frmReportChiTietHpLOP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReportLTC.resx">
+    <EmbeddedResource Include="Report\Forms\frmReportLTC.resx">
       <DependentUpon>frmReportLTC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReportPhieuDiemSV.resx">
+    <EmbeddedResource Include="Report\Forms\frmReportPhieuDiemSV.resx">
       <DependentUpon>frmReportPhieuDiemSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReportSVDkyLTC.resx">
+    <EmbeddedResource Include="Report\Forms\frmReportSVDkyLTC.resx">
       <DependentUpon>frmReportSVDkyLTC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -228,19 +228,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="XrptSinhVienDkyLTC.resx">
+    <EmbeddedResource Include="Report\Report Design\XrptSinhVienDkyLTC.resx">
       <DependentUpon>XrptSinhVienDkyLTC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Xrpt_BangDiemMonHoc.resx">
+    <EmbeddedResource Include="Report\Report Design\Xrpt_BangDiemMonHoc.resx">
       <DependentUpon>Xrpt_BangDiemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Xrpt_ChiTietHPLop.resx">
+    <EmbeddedResource Include="Report\Report Design\Xrpt_ChiTietHPLop.resx">
       <DependentUpon>Xrpt_ChiTietHPLop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Xrpt_PhieuDiemSinhVien.resx">
+    <EmbeddedResource Include="Report\Report Design\Xrpt_PhieuDiemSinhVien.resx">
       <DependentUpon>Xrpt_PhieuDiemSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Xrpt_SP_GetDanhSachDkyLTC.resx">
+    <EmbeddedResource Include="Report\Report Design\Xrpt_SP_GetDanhSachDkyLTC.resx">
       <DependentUpon>Xrpt_SP_GetDanhSachDkyLTC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
