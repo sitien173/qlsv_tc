@@ -45,6 +45,7 @@ namespace qlsv_tc.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterMonHoc = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
@@ -55,6 +56,10 @@ namespace qlsv_tc.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.txtNienKhoa);
             this.groupBox1.Controls.Add(this.lookUpEditMH);
             this.groupBox1.Controls.Add(this.txtNhom);
@@ -66,9 +71,12 @@ namespace qlsv_tc.Forms
             this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(-3, -3);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(269, 36);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(529, 333);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(647, 403);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In Bảng Điểm Môn Học";
@@ -76,14 +84,17 @@ namespace qlsv_tc.Forms
             // txtNienKhoa
             // 
             this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(121, 95);
+            this.txtNienKhoa.Location = new System.Drawing.Point(148, 115);
+            this.txtNienKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(229, 30);
+            this.txtNienKhoa.Size = new System.Drawing.Size(459, 30);
             this.txtNienKhoa.TabIndex = 23;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // lookUpEditMH
             // 
-            this.lookUpEditMH.Location = new System.Drawing.Point(121, 201);
+            this.lookUpEditMH.Location = new System.Drawing.Point(148, 243);
+            this.lookUpEditMH.Margin = new System.Windows.Forms.Padding(4);
             this.lookUpEditMH.Name = "lookUpEditMH";
             this.lookUpEditMH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpEditMH.Properties.Appearance.Options.UseFont = true;
@@ -96,7 +107,7 @@ namespace qlsv_tc.Forms
             this.lookUpEditMH.Properties.DisplayMember = "TENMH";
             this.lookUpEditMH.Properties.NullText = "";
             this.lookUpEditMH.Properties.ValueMember = "MAMH";
-            this.lookUpEditMH.Size = new System.Drawing.Size(376, 30);
+            this.lookUpEditMH.Size = new System.Drawing.Size(460, 30);
             this.lookUpEditMH.TabIndex = 22;
             // 
             // bdsMonHoc
@@ -116,7 +127,8 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtNhom.Location = new System.Drawing.Point(120, 248);
+            this.txtNhom.Location = new System.Drawing.Point(147, 300);
+            this.txtNhom.Margin = new System.Windows.Forms.Padding(4);
             this.txtNhom.Name = "txtNhom";
             this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -130,14 +142,15 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtNhom.Size = new System.Drawing.Size(76, 28);
+            this.txtNhom.Size = new System.Drawing.Size(93, 28);
             this.txtNhom.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 251);
+            this.label2.Location = new System.Drawing.Point(23, 304);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 22);
             this.label2.TabIndex = 20;
@@ -147,7 +160,8 @@ namespace qlsv_tc.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 204);
+            this.label1.Location = new System.Drawing.Point(23, 247);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 22);
             this.label1.TabIndex = 19;
@@ -157,16 +171,23 @@ namespace qlsv_tc.Forms
             // 
             this.cmbKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(120, 41);
+            this.cmbKhoa.Location = new System.Drawing.Point(147, 50);
+            this.cmbKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(377, 30);
+            this.cmbKhoa.Size = new System.Drawing.Size(460, 30);
             this.cmbKhoa.TabIndex = 11;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(354, 274);
+            this.btnInLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnInLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInLTC.Appearance.Options.UseBackColor = true;
+            this.btnInLTC.Appearance.Options.UseFont = true;
+            this.btnInLTC.Location = new System.Drawing.Point(436, 345);
+            this.btnInLTC.Margin = new System.Windows.Forms.Padding(4);
             this.btnInLTC.Name = "btnInLTC";
-            this.btnInLTC.Size = new System.Drawing.Size(130, 34);
+            this.btnInLTC.Size = new System.Drawing.Size(159, 41);
             this.btnInLTC.TabIndex = 14;
             this.btnInLTC.Text = "In Báo Cáo";
             this.btnInLTC.Click += new System.EventHandler(this.btnInLTC_Click);
@@ -178,7 +199,8 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Location = new System.Drawing.Point(120, 147);
+            this.txtHocKy.Location = new System.Drawing.Point(147, 178);
+            this.txtHocKy.Margin = new System.Windows.Forms.Padding(4);
             this.txtHocKy.Name = "txtHocKy";
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -192,14 +214,15 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Size = new System.Drawing.Size(76, 28);
+            this.txtHocKy.Size = new System.Drawing.Size(93, 28);
             this.txtHocKy.TabIndex = 16;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(23, 44);
+            this.labelControl3.Location = new System.Drawing.Point(28, 53);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(47, 25);
             this.labelControl3.TabIndex = 10;
@@ -209,7 +232,8 @@ namespace qlsv_tc.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 153);
+            this.label7.Location = new System.Drawing.Point(23, 185);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 22);
             this.label7.TabIndex = 13;
@@ -219,7 +243,8 @@ namespace qlsv_tc.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 97);
+            this.label8.Location = new System.Drawing.Point(23, 117);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 22);
             this.label8.TabIndex = 12;
@@ -229,14 +254,32 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterMonHoc.ClearBeforeFill = true;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(252, 345);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(159, 41);
+            this.simpleButton1.TabIndex = 24;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmReportBangDiemMonHoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.Appearance.Options.UseFont = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 327);
+            this.ClientSize = new System.Drawing.Size(1318, 473);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmReportBangDiemMonHoc";
-            this.Text = "frmReportBangDiemMonHoc";
+            this.Text = "Báo Cáo Bảng Điểm Môn Học";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportBangDiemMonHoc_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -266,5 +309,6 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.BindingSource bdsMonHoc;
         private DS1TableAdapters.MONHOCTableAdapter tableAdapterMonHoc;
         private System.Windows.Forms.TextBox txtNienKhoa;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

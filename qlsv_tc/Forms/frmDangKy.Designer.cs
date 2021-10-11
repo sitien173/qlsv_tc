@@ -177,6 +177,10 @@ namespace qlsv_tc.Forms
             // 
             // btnTimLTC
             // 
+            this.btnTimLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTimLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimLTC.Appearance.Options.UseBackColor = true;
+            this.btnTimLTC.Appearance.Options.UseFont = true;
             this.btnTimLTC.Location = new System.Drawing.Point(582, 39);
             this.btnTimLTC.Name = "btnTimLTC";
             this.btnTimLTC.Size = new System.Drawing.Size(130, 34);
@@ -940,7 +944,7 @@ namespace qlsv_tc.Forms
             this.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmDangKy";
-            this.Text = "frmDangKy";
+            this.Text = "Đăng Ký";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DkyLTC_Load);
             this.pnNienKhoaHocKi.ResumeLayout(false);

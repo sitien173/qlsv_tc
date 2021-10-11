@@ -15,10 +15,12 @@ namespace qlsv_tc.Forms
     {
         public static string MASV;
         public static string PASSWORD;
+        public static Boolean isClose = false;
         public frmLoginSV()
         {
             InitializeComponent();
             simpleButton1.DialogResult = DialogResult.OK;
+            simpleButton1.DialogResult = DialogResult.Cancel;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -26,6 +28,17 @@ namespace qlsv_tc.Forms
             MASV = txtMASV.Text.Trim();
             PASSWORD = txtPassword.Text.Trim();
             this.Close();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            isClose = true;
+            this.Close();
+        }
+
+        private void frmLoginSV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            isClose = true;
         }
     }
 }

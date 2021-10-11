@@ -145,7 +145,7 @@ namespace qlsv_tc
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 0F;
+            this.TopMargin.HeightF = 100.6944F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -272,7 +272,7 @@ namespace qlsv_tc
             this.colTENMH.StylePriority.UseBorderColor = false;
             this.colTENMH.StylePriority.UseBorders = false;
             this.colTENMH.StylePriority.UseTextAlignment = false;
-            this.colTENMH.Text = "TENMH";
+            this.colTENMH.Text = "TÊN MÔN HỌC";
             this.colTENMH.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.colTENMH.Weight = 0.35100981674783782D;
             // 
@@ -288,7 +288,7 @@ namespace qlsv_tc
             this.colNHOM.StylePriority.UseBorderColor = false;
             this.colNHOM.StylePriority.UseBorders = false;
             this.colNHOM.StylePriority.UseTextAlignment = false;
-            this.colNHOM.Text = "NHOM";
+            this.colNHOM.Text = "NHÓM";
             this.colNHOM.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.colNHOM.Weight = 0.12080335056590381D;
             // 
@@ -304,7 +304,7 @@ namespace qlsv_tc
             this.colGV.StylePriority.UseBorderColor = false;
             this.colGV.StylePriority.UseBorders = false;
             this.colGV.StylePriority.UseTextAlignment = false;
-            this.colGV.Text = "GV";
+            this.colGV.Text = "HỌ TÊN GIÁO VIÊN";
             this.colGV.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.colGV.Weight = 0.34829223935243842D;
             // 
@@ -320,7 +320,7 @@ namespace qlsv_tc
             this.colSOLUONGDK.StylePriority.UseBorderColor = false;
             this.colSOLUONGDK.StylePriority.UseBorders = false;
             this.colSOLUONGDK.StylePriority.UseTextAlignment = false;
-            this.colSOLUONGDK.Text = "So Luong DK";
+            this.colSOLUONGDK.Text = "Số Lượng Đã ĐK";
             this.colSOLUONGDK.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.colSOLUONGDK.Weight = 0.20496785484849345D;
             // 
@@ -336,7 +336,7 @@ namespace qlsv_tc
             this.colSOSVTOITHIEU.StylePriority.UseBorderColor = false;
             this.colSOSVTOITHIEU.StylePriority.UseBorders = false;
             this.colSOSVTOITHIEU.StylePriority.UseTextAlignment = false;
-            this.colSOSVTOITHIEU.Text = "SOSVTOITHIEU";
+            this.colSOSVTOITHIEU.Text = "Số SV Tối Thiểu";
             this.colSOSVTOITHIEU.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.colSOSVTOITHIEU.Weight = 0.21683542480878698D;
             // 
@@ -524,7 +524,7 @@ namespace qlsv_tc
             this.DataMember = "SP_GetDanhSachDkyLTC";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 101, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption1,

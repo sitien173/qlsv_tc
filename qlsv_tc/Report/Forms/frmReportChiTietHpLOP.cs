@@ -28,7 +28,7 @@ namespace qlsv_tc.Forms
            if(cmbKhoa.SelectedValue != null)
             {
                 this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
-                this.tableAdapterLop.FillByKhoa(this.dS3.LOP, cmbKhoa.SelectedValue.ToString());
+                this.tableAdapterLop.FillByMaKhoa(this.dS3.LOP, cmbKhoa.SelectedValue.ToString());
             }
         }
 
@@ -59,8 +59,23 @@ namespace qlsv_tc.Forms
             if(cmbKhoa.SelectedValue != null)
             {
                 this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
-                this.tableAdapterLop.FillByKhoa(this.dS3.LOP, cmbKhoa.SelectedValue.ToString());
+                this.tableAdapterLop.FillByMaKhoa(this.dS3.LOP, cmbKhoa.SelectedValue.ToString());
             }
+        }
+
+        private void txtNienKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('-')) return;
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

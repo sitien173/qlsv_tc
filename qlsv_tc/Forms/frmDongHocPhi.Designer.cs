@@ -918,7 +918,7 @@ namespace qlsv_tc.Forms
             this.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDongHocPhi";
-            this.Text = "frmDongHocPhi";
+            this.Text = "Đóng Học Phí";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDongHocPhi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnThongTinSV)).EndInit();

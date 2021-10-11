@@ -151,7 +151,7 @@ namespace qlsv_tc
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 0F;
+            this.TopMargin.HeightF = 97.22222F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -290,7 +290,7 @@ namespace qlsv_tc
             this.tableCell1.StylePriority.UseBorders = false;
             this.tableCell1.StylePriority.UseFont = false;
             this.tableCell1.StylePriority.UseTextAlignment = false;
-            this.tableCell1.Text = "HOTEN";
+            this.tableCell1.Text = "HỌ VÀ TÊN";
             this.tableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell1.TextTrimming = System.Drawing.StringTrimming.None;
             this.tableCell1.Weight = 0.43334302159726029D;
@@ -310,7 +310,7 @@ namespace qlsv_tc
             this.tableCell2.StylePriority.UseBorders = false;
             this.tableCell2.StylePriority.UseFont = false;
             this.tableCell2.StylePriority.UseTextAlignment = false;
-            this.tableCell2.Text = "HOCPHI";
+            this.tableCell2.Text = "HỌC PHÍ";
             this.tableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell2.TextTrimming = System.Drawing.StringTrimming.None;
             this.tableCell2.Weight = 0.34506094624344896D;
@@ -330,7 +330,7 @@ namespace qlsv_tc
             this.tableCell3.StylePriority.UseBorders = false;
             this.tableCell3.StylePriority.UseFont = false;
             this.tableCell3.StylePriority.UseTextAlignment = false;
-            this.tableCell3.Text = "SOTIENDADONG";
+            this.tableCell3.Text = "SỐ TIỀN ĐÃ ĐÓNG";
             this.tableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell3.TextTrimming = System.Drawing.StringTrimming.None;
             this.tableCell3.Weight = 0.34537258662373993D;
@@ -534,7 +534,7 @@ namespace qlsv_tc
             this.DataMember = "SP_ReportCTHPLOP";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 97, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption1,

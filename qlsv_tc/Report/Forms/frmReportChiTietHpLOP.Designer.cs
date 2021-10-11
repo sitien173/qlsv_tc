@@ -45,6 +45,7 @@ namespace qlsv_tc.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterLop = new qlsv_tc.DS3TableAdapters.LOPTableAdapter();
             this.tableAdapterKhoa = new qlsv_tc.DS3TableAdapters.KHOATableAdapter();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS3)).BeginInit();
@@ -55,6 +56,8 @@ namespace qlsv_tc.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmbKhoa);
             this.groupBox1.Controls.Add(this.cmbMaLop);
@@ -64,9 +67,10 @@ namespace qlsv_tc.Forms
             this.groupBox1.Controls.Add(this.txtHocKy);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBox1.Location = new System.Drawing.Point(36, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 235);
+            this.groupBox1.Size = new System.Drawing.Size(537, 240);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In Chi Tiết Học Phí Của Lớp";
@@ -106,20 +110,20 @@ namespace qlsv_tc.Forms
             // 
             // cmbMaLop
             // 
-            this.cmbMaLop.Location = new System.Drawing.Point(120, 160);
+            this.cmbMaLop.Location = new System.Drawing.Point(120, 150);
             this.cmbMaLop.Name = "cmbMaLop";
-            this.cmbMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMaLop.Properties.Appearance.Options.UseFont = true;
             this.cmbMaLop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMaLop.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAKHOA", "MAKHOA", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 98, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAKHOA", "MAKHOA", 107, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.cmbMaLop.Properties.DataSource = this.bdsLop;
             this.cmbMaLop.Properties.DisplayMember = "MALOP";
             this.cmbMaLop.Properties.NullText = "";
             this.cmbMaLop.Properties.ValueMember = "MALOP";
-            this.cmbMaLop.Size = new System.Drawing.Size(396, 30);
+            this.cmbMaLop.Size = new System.Drawing.Size(396, 34);
             this.cmbMaLop.TabIndex = 19;
             // 
             // bdsLop
@@ -131,7 +135,7 @@ namespace qlsv_tc.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 168);
+            this.label1.Location = new System.Drawing.Point(19, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 22);
             this.label1.TabIndex = 18;
@@ -139,17 +143,22 @@ namespace qlsv_tc.Forms
             // 
             // txtNienKhoa
             // 
-            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(120, 77);
+            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNienKhoa.Location = new System.Drawing.Point(120, 68);
             this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(242, 30);
+            this.txtNienKhoa.Size = new System.Drawing.Size(396, 33);
             this.txtNienKhoa.TabIndex = 17;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(353, 196);
+            this.btnInLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnInLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInLTC.Appearance.Options.UseBackColor = true;
+            this.btnInLTC.Appearance.Options.UseFont = true;
+            this.btnInLTC.Location = new System.Drawing.Point(375, 195);
             this.btnInLTC.Name = "btnInLTC";
-            this.btnInLTC.Size = new System.Drawing.Size(130, 34);
+            this.btnInLTC.Size = new System.Drawing.Size(141, 39);
             this.btnInLTC.TabIndex = 14;
             this.btnInLTC.Text = "In Báo Cáo";
             this.btnInLTC.Click += new System.EventHandler(this.btnInLTC_Click);
@@ -161,8 +170,10 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Location = new System.Drawing.Point(120, 117);
+            this.txtHocKy.Location = new System.Drawing.Point(120, 107);
             this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHocKy.Properties.Appearance.Options.UseFont = true;
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
@@ -175,14 +186,14 @@ namespace qlsv_tc.Forms
             0,
             0,
             0});
-            this.txtHocKy.Size = new System.Drawing.Size(76, 28);
+            this.txtHocKy.Size = new System.Drawing.Size(76, 34);
             this.txtHocKy.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 121);
+            this.label7.Location = new System.Drawing.Point(19, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 22);
             this.label7.TabIndex = 13;
@@ -192,7 +203,7 @@ namespace qlsv_tc.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 85);
+            this.label8.Location = new System.Drawing.Point(19, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 22);
             this.label8.TabIndex = 12;
@@ -206,6 +217,19 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterKhoa.ClearBeforeFill = true;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(213, 195);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(141, 39);
+            this.simpleButton1.TabIndex = 22;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmReportChiTietHpLOP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -213,7 +237,8 @@ namespace qlsv_tc.Forms
             this.ClientSize = new System.Drawing.Size(609, 293);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmReportChiTietHpLOP";
-            this.Text = "Report Học Phí";
+            this.Text = "Báo Cáo Chi Tiết Học Phí Của Lớp";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportChiTietHpLOP_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -243,5 +268,6 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.BindingSource bdsKhoa;
         private DS3TableAdapters.KHOATableAdapter tableAdapterKhoa;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

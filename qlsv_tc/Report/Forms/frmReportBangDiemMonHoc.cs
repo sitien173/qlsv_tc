@@ -18,15 +18,18 @@ namespace qlsv_tc.Forms
         {
             InitializeComponent();
         }
+
         private void frmReportBangDiemMonHoc_Load(object sender, EventArgs e)
         {
             this.dS1.EnforceConstraints = false;
-            Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
+            Program.bds_dspm.Filter = "TENKHOA LIKE 'Khoa%'";
             Ultils.BindingDataToComBo(cmbKhoa, Program.bds_dspm.DataSource);
 
-            this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterMonHoc.Fill(this.dS1.MONHOC);
-
+            loadInitializeData();
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString()))
+            {
+                this.cmbKhoa.Enabled = false;
+            }
         }
 
         private void btnInLTC_Click(object sender, EventArgs e)
@@ -53,6 +56,43 @@ namespace qlsv_tc.Forms
             xrpt.lbMonHocNhom.Text = $"MÔN HỌC: {lookUpEditMH.GetColumnValue("TENMH").ToString().ToUpper()}  NHÓM: {txtNhom.Text}";
             ReportPrintTool print = new ReportPrintTool(xrpt);
             print.ShowPreviewDialog();
+        }
+
+        private void txtNienKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('-')) return;
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Ultils.ComboboxHelper(this.cmbKhoa);
+
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
+            // thoát.
+            if (Program.KetNoi() == 0)
+            {
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                loadInitializeData();
+            }
+        }
+
+        private void loadInitializeData()
+        {
+            this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterMonHoc.Fill(this.dS1.MONHOC);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

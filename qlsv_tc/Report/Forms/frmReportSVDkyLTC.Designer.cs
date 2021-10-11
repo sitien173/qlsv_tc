@@ -31,11 +31,13 @@ namespace qlsv_tc.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lookUpEditMH = new DevExpress.XtraEditors.LookUpEdit();
+            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
+            this.dS1 = new qlsv_tc.DS1();
+            this.txtNienKhoa = new System.Windows.Forms.TextBox();
             this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
-            this.dS1 = new qlsv_tc.DS1();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.btnInLTC = new DevExpress.XtraEditors.SimpleButton();
             this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
@@ -43,18 +45,19 @@ namespace qlsv_tc.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterMH = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
-            this.txtNienKhoa = new System.Windows.Forms.TextBox();
-            this.lookUpEditMH = new DevExpress.XtraEditors.LookUpEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.lookUpEditMH);
             this.groupBox1.Controls.Add(this.txtNienKhoa);
             this.groupBox1.Controls.Add(this.txtNhom);
@@ -66,12 +69,50 @@ namespace qlsv_tc.Forms
             this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBox1.Location = new System.Drawing.Point(10, 47);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 333);
+            this.groupBox1.Size = new System.Drawing.Size(537, 350);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "In LTC";
+            this.groupBox1.Text = "Sinh Viên Đăng Ký LTC";
+            // 
+            // lookUpEditMH
+            // 
+            this.lookUpEditMH.Location = new System.Drawing.Point(120, 201);
+            this.lookUpEditMH.Name = "lookUpEditMH";
+            this.lookUpEditMH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditMH.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditMH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditMH.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 85, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lookUpEditMH.Properties.DataSource = this.bdsMH;
+            this.lookUpEditMH.Properties.DisplayMember = "TENMH";
+            this.lookUpEditMH.Properties.NullText = "";
+            this.lookUpEditMH.Properties.ValueMember = "MAMH";
+            this.lookUpEditMH.Size = new System.Drawing.Size(377, 30);
+            this.lookUpEditMH.TabIndex = 23;
+            // 
+            // bdsMH
+            // 
+            this.bdsMH.DataMember = "MONHOC";
+            this.bdsMH.DataSource = this.dS1;
+            // 
+            // dS1
+            // 
+            this.dS1.DataSetName = "DS1";
+            this.dS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtNienKhoa
+            // 
+            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNienKhoa.Location = new System.Drawing.Point(120, 95);
+            this.txtNienKhoa.Name = "txtNienKhoa";
+            this.txtNienKhoa.Size = new System.Drawing.Size(377, 30);
+            this.txtNienKhoa.TabIndex = 22;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // txtNhom
             // 
@@ -117,16 +158,6 @@ namespace qlsv_tc.Forms
             this.label1.TabIndex = 19;
             this.label1.Text = "Môn Học";
             // 
-            // bdsMH
-            // 
-            this.bdsMH.DataMember = "MONHOC";
-            this.bdsMH.DataSource = this.dS1;
-            // 
-            // dS1
-            // 
-            this.dS1.DataSetName = "DS1";
-            this.dS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // cmbKhoa
             // 
             this.cmbKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -135,12 +166,17 @@ namespace qlsv_tc.Forms
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(377, 33);
             this.cmbKhoa.TabIndex = 11;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // btnInLTC
             // 
-            this.btnInLTC.Location = new System.Drawing.Point(354, 274);
+            this.btnInLTC.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnInLTC.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInLTC.Appearance.Options.UseBackColor = true;
+            this.btnInLTC.Appearance.Options.UseFont = true;
+            this.btnInLTC.Location = new System.Drawing.Point(354, 292);
             this.btnInLTC.Name = "btnInLTC";
-            this.btnInLTC.Size = new System.Drawing.Size(130, 34);
+            this.btnInLTC.Size = new System.Drawing.Size(130, 39);
             this.btnInLTC.TabIndex = 14;
             this.btnInLTC.Text = "In Báo Cáo";
             this.btnInLTC.Click += new System.EventHandler(this.btnInLTC_Click);
@@ -203,31 +239,18 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterMH.ClearBeforeFill = true;
             // 
-            // txtNienKhoa
+            // simpleButton1
             // 
-            this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(120, 95);
-            this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(232, 30);
-            this.txtNienKhoa.TabIndex = 22;
-            // 
-            // lookUpEditMH
-            // 
-            this.lookUpEditMH.Location = new System.Drawing.Point(120, 201);
-            this.lookUpEditMH.Name = "lookUpEditMH";
-            this.lookUpEditMH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditMH.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditMH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditMH.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 85, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 200, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lookUpEditMH.Properties.DataSource = this.bdsMH;
-            this.lookUpEditMH.Properties.DisplayMember = "TENMH";
-            this.lookUpEditMH.Properties.NullText = "";
-            this.lookUpEditMH.Properties.ValueMember = "MAMH";
-            this.lookUpEditMH.Size = new System.Drawing.Size(377, 30);
-            this.lookUpEditMH.TabIndex = 23;
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(186, 292);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(141, 39);
+            this.simpleButton1.TabIndex = 25;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // frmReportSVDkyLTC
             // 
@@ -236,15 +259,16 @@ namespace qlsv_tc.Forms
             this.ClientSize = new System.Drawing.Size(588, 446);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmReportSVDkyLTC";
-            this.Text = "frmReportSVDkyLTC";
+            this.Text = "Báo Cáo Sinh Viên Đăng Ký Lớp Tín Chỉ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportSVDkyLTC_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,5 +290,6 @@ namespace qlsv_tc.Forms
         private DS1TableAdapters.MONHOCTableAdapter tableAdapterMH;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditMH;
         private System.Windows.Forms.TextBox txtNienKhoa;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
