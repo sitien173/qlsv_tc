@@ -151,7 +151,7 @@ namespace qlsv_tc
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 0F;
+            this.TopMargin.HeightF = 97.22222F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -534,7 +534,7 @@ namespace qlsv_tc
             this.DataMember = "SP_ReportCTHPLOP";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 97, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption1,

@@ -1,4 +1,5 @@
 ﻿using qlsv_tc.Forms;
+using qlsv_tc.Report.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,6 +72,7 @@ namespace qlsv_tc
                 btnLapNhapXuatNV.Enabled = false;
                 btnDsDongHPLop.Enabled = true;
                 btnPhieuDiemSinhVien.Enabled = false;
+                btnBangDiemTongKet.Enabled = false;
             }
         }
 
@@ -221,6 +223,18 @@ namespace qlsv_tc
             else
             {
                 frmReportPhieuDiemSV f = new frmReportPhieuDiemSV();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnBangDiemTongKet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmReportBangDiemTongKet));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmReportBangDiemTongKet f = new frmReportBangDiemTongKet();
                 f.MdiParent = this;
                 f.Show();
             }

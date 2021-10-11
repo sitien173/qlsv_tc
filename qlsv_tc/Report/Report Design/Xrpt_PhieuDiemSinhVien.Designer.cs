@@ -136,7 +136,7 @@ namespace qlsv_tc
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 0F;
+            this.TopMargin.HeightF = 99.30556F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -428,7 +428,7 @@ namespace qlsv_tc
             this.DataMember = "SP_ReportPhieuDiemSV";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 99, 100);
             this.PageHeight = 1200;
             this.PageWidth = 927;
             this.PaperKind = System.Drawing.Printing.PaperKind.LetterExtra;

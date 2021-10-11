@@ -161,7 +161,7 @@ namespace qlsv_tc
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 0F;
+            this.TopMargin.HeightF = 99.30556F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -481,6 +481,7 @@ namespace qlsv_tc
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MASV]")});
             this.tableCell8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableCell8.Name = "tableCell8";
+            this.tableCell8.ProcessDuplicatesMode = DevExpress.XtraReports.UI.ProcessDuplicatesMode.Merge;
             this.tableCell8.StyleName = "DetailData1";
             this.tableCell8.StylePriority.UseBorderColor = false;
             this.tableCell8.StylePriority.UseBorders = false;
@@ -498,6 +499,7 @@ namespace qlsv_tc
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HO]")});
             this.tableCell9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableCell9.Name = "tableCell9";
+            this.tableCell9.ProcessDuplicatesMode = DevExpress.XtraReports.UI.ProcessDuplicatesMode.Merge;
             this.tableCell9.StyleName = "DetailData1";
             this.tableCell9.StylePriority.UseBorderColor = false;
             this.tableCell9.StylePriority.UseBorders = false;
@@ -515,6 +517,7 @@ namespace qlsv_tc
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TEN]")});
             this.tableCell10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableCell10.Name = "tableCell10";
+            this.tableCell10.ProcessDuplicatesMode = DevExpress.XtraReports.UI.ProcessDuplicatesMode.Merge;
             this.tableCell10.StyleName = "DetailData1";
             this.tableCell10.StylePriority.UseBorderColor = false;
             this.tableCell10.StylePriority.UseBorders = false;
@@ -637,7 +640,7 @@ namespace qlsv_tc
             this.DataMember = "SP_ReportDiemMonHoc";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 0, 100);
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 99, 100);
             this.PageHeight = 1200;
             this.PageWidth = 927;
             this.PaperKind = System.Drawing.Printing.PaperKind.LetterExtra;
