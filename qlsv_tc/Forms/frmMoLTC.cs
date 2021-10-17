@@ -354,5 +354,10 @@ namespace qlsv_tc.Forms
         {
             btnGhi.Enabled = true;
         }
+
+        private void lblTenKhoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -541,6 +541,7 @@ namespace qlsv_tc
             this.tableCell11.StylePriority.UseFont = false;
             this.tableCell11.StylePriority.UseTextAlignment = false;
             this.tableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell11.TextFormatString = "{0:n2}";
             this.tableCell11.Weight = 0.13740803636536023D;
             // 
             // tableCell12
@@ -558,6 +559,7 @@ namespace qlsv_tc
             this.tableCell12.StylePriority.UseFont = false;
             this.tableCell12.StylePriority.UseTextAlignment = false;
             this.tableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell12.TextFormatString = "{0:n2}";
             this.tableCell12.Weight = 0.12722117645810804D;
             // 
             // tableCell13
@@ -575,6 +577,7 @@ namespace qlsv_tc
             this.tableCell13.StylePriority.UseFont = false;
             this.tableCell13.StylePriority.UseTextAlignment = false;
             this.tableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell13.TextFormatString = "{0:n2}";
             this.tableCell13.Weight = 0.11716304495792877D;
             // 
             // tableCell14
@@ -592,6 +595,7 @@ namespace qlsv_tc
             this.tableCell14.StylePriority.UseFont = false;
             this.tableCell14.StylePriority.UseTextAlignment = false;
             this.tableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.tableCell14.TextFormatString = "{0:n2}";
             this.tableCell14.Weight = 0.12858890690057678D;
             // 
             // ReportFooter

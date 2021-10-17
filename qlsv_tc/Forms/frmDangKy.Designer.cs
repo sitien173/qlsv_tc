@@ -95,6 +95,8 @@ namespace qlsv_tc.Forms
             this.tableAdapterDKLTC = new qlsv_tc.DS1TableAdapters.DanhSachDkyLTCTableAdapter();
             this.tableAdapterDKLTCSV = new qlsv_tc.DS1TableAdapters.DanhSachDkyLTCSVTableAdapter();
             this.tableAdapterSV = new qlsv_tc.DS1TableAdapters.SINHVIENTableAdapter();
+            this.cboxKhoa = new System.Windows.Forms.ComboBox();
+            this.lblTenKhoa = new DevExpress.XtraEditors.LabelControl();
             this.pnNienKhoaHocKi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spHocKi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -174,6 +176,7 @@ namespace qlsv_tc.Forms
             this.txtNienKhoa.Name = "txtNienKhoa";
             this.txtNienKhoa.Size = new System.Drawing.Size(183, 30);
             this.txtNienKhoa.TabIndex = 4;
+            this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
             // btnTimLTC
             // 
@@ -210,6 +213,8 @@ namespace qlsv_tc.Forms
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.cboxKhoa);
+            this.panelControl1.Controls.Add(this.lblTenKhoa);
             this.panelControl1.Controls.Add(this.txtHoTen);
             this.panelControl1.Controls.Add(this.txtMaLop);
             this.panelControl1.Controls.Add(this.label4);
@@ -227,7 +232,7 @@ namespace qlsv_tc.Forms
             // 
             this.txtHoTen.Enabled = false;
             this.txtHoTen.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.Location = new System.Drawing.Point(730, 17);
+            this.txtHoTen.Location = new System.Drawing.Point(1066, 18);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(287, 30);
             this.txtHoTen.TabIndex = 13;
@@ -236,7 +241,7 @@ namespace qlsv_tc.Forms
             // 
             this.txtMaLop.Enabled = false;
             this.txtMaLop.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(1196, 17);
+            this.txtMaLop.Location = new System.Drawing.Point(1461, 18);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(239, 30);
             this.txtMaLop.TabIndex = 12;
@@ -245,7 +250,7 @@ namespace qlsv_tc.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1103, 23);
+            this.label4.Location = new System.Drawing.Point(1382, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 22);
             this.label4.TabIndex = 11;
@@ -255,7 +260,7 @@ namespace qlsv_tc.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(628, 22);
+            this.label5.Location = new System.Drawing.Point(991, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 22);
             this.label5.TabIndex = 10;
@@ -264,7 +269,7 @@ namespace qlsv_tc.Forms
             // cmbMASV
             // 
             this.cmbMASV.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.False;
-            this.cmbMASV.Location = new System.Drawing.Point(194, 17);
+            this.cmbMASV.Location = new System.Drawing.Point(582, 18);
             this.cmbMASV.Name = "cmbMASV";
             this.cmbMASV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMASV.Properties.Appearance.Options.UseFont = true;
@@ -301,7 +306,7 @@ namespace qlsv_tc.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 20);
+            this.label1.Location = new System.Drawing.Point(511, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 22);
             this.label1.TabIndex = 8;
@@ -311,7 +316,7 @@ namespace qlsv_tc.Forms
             // 
             this.separatorControl1.AutoSizeMode = true;
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(573, 5);
+            this.separatorControl1.Location = new System.Drawing.Point(956, 12);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(19, 46);
             this.separatorControl1.TabIndex = 3;
@@ -932,6 +937,27 @@ namespace qlsv_tc.Forms
             // 
             this.tableAdapterSV.ClearBeforeFill = true;
             // 
+            // cboxKhoa
+            // 
+            this.cboxKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboxKhoa.FormattingEnabled = true;
+            this.cboxKhoa.Location = new System.Drawing.Point(120, 15);
+            this.cboxKhoa.Name = "cboxKhoa";
+            this.cboxKhoa.Size = new System.Drawing.Size(329, 33);
+            this.cboxKhoa.TabIndex = 15;
+            this.cboxKhoa.SelectedIndexChanged += new System.EventHandler(this.cboxKhoa_SelectedIndexChanged);
+            // 
+            // lblTenKhoa
+            // 
+            this.lblTenKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTenKhoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhoa.Appearance.Options.UseFont = true;
+            this.lblTenKhoa.Location = new System.Drawing.Point(53, 18);
+            this.lblTenKhoa.Name = "lblTenKhoa";
+            this.lblTenKhoa.Size = new System.Drawing.Size(47, 25);
+            this.lblTenKhoa.TabIndex = 14;
+            this.lblTenKhoa.Text = "Khoa";
+            // 
             // frmDangKy
             // 
             this.Appearance.Options.UseFont = true;
@@ -1052,5 +1078,7 @@ namespace qlsv_tc.Forms
         private System.Windows.Forms.TextBox txtMaLop;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboxKhoa;
+        private DevExpress.XtraEditors.LabelControl lblTenKhoa;
     }
 }
