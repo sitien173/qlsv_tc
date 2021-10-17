@@ -89,6 +89,7 @@ namespace qlsv_tc.Forms
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(263, 30);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtMASV
             // 
