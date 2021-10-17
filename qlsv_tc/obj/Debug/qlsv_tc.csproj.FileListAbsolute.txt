@@ -299,3 +299,4 @@ D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmReportPhieuDiemSV.r
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Xrpt_PhieuDiemSinhVien.resources
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Report.Forms.frmReportBangDiemTongKet.resources
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Xrpt_BangDiemTongKEt.resources
+D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmTaoTaiKhoan.resources

@@ -40,18 +40,32 @@ namespace qlsv_tc.Forms
             this.tableAdapterDKLTCSV.Fill(this.dS.DanhSachDkyLTCSV, MASV, nienkhoa, hocki);
         }
 
-        private void DkyLTC_Load(object sender, EventArgs e)
+        private void initData()
         {
-         
             this.tableAdapterSV.Connection.ConnectionString = Program.connstr;
             this.tableAdapterSV.Fill(this.dS.SINHVIEN);
             pnContent.Visible = false;
             pnNienKhoaHocKi.Visible = false;
-            if(Program.mGroup.Equals(Program.role.SV.ToString()))
+        }
+        private void DkyLTC_Load(object sender, EventArgs e)
+        {
+            Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
+            Ultils.BindingDataToComBo(cboxKhoa, Program.bds_dspm.DataSource);
+
+            initData();
+            if (Program.mGroup.Equals(Program.role.SV.ToString()))
             {
                 cmbMASV.Enabled = false;
                 cmbMASV.EditValue = Program.username.ToUpper();
-                
+                cboxKhoa.Enabled = false;
+            }
+            else if (Program.mGroup.Equals(Program.role.KHOA.ToString()))
+            {
+                cboxKhoa.Enabled = false;
+            } else
+            {
+                cboxKhoa.Enabled = true;
+                cmbMASV.Enabled = true;
             }
         }
 
@@ -261,6 +275,35 @@ namespace qlsv_tc.Forms
             txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
             pnNienKhoaHocKi.Visible = true;
             pnContent.Visible = false;
+        }
+
+        private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // TODO : Chuyển Bộ Phận
+
+            Ultils.ComboboxHelper(this.cboxKhoa);
+
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
+            // thoát.
+            if (Program.KetNoi() == 0)
+            {
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                initData();
+            }
+        }
+
+        private void txtNienKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             // chỉ cho phép nhập số và dấu - 
+            if (e.KeyChar.Equals('-')) return;
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

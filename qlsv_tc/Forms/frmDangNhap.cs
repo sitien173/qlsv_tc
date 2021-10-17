@@ -26,20 +26,22 @@ namespace qlsv_tc
         private void LayDSPM(String sql)
         {
             DataTable dataTable = new DataTable();
-            if (conn_publisher.State == ConnectionState.Closed) conn_publisher.Open();
-            // thực thi chuỗi sql và trả về DataTable
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sql, conn_publisher);
-            sqlDataAdapter.Fill(dataTable);
-            /*
-             các cách lấy dữ liệu từ database
-              1: sử dụng SqlDataAdapter bằng phương thức khởi tạo gồm 2 tham số new SqlDataAdapter(chuỗi truy vấn,đối tượng SqlConnection đang mở)
-                 sau đó dùng phương thức Fill(đối tượng DataTable) để lấy dữ liệu từ view hoặc table lưu vào đối tượng DataTable   
-             */
+            // tự động đóng kết nối
+            using(conn_publisher)
+            {
+                conn_publisher.ConnectionString = Program.connstr;
+                conn_publisher.Open();
+                // thực thi chuỗi sql và trả về DataTable
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sql, conn_publisher);
+                sqlDataAdapter.Fill(dataTable);
+                /*
+                 các cách lấy dữ liệu từ database
+                  1: sử dụng SqlDataAdapter bằng phương thức khởi tạo gồm 2 tham số new SqlDataAdapter(chuỗi truy vấn,đối tượng SqlConnection đang mở)
+                     sau đó dùng phương thức Fill(đối tượng DataTable) để lấy dữ liệu từ view hoặc table lưu vào đối tượng DataTable   
+                 */
 
-            // đóng kết nối
-            conn_publisher.Close();
-
-
+            }
+           
             // đưa dữ liệu từ view(lúc này đã lưu vào dataTable) vào đối tượng BindingSource
             Program.bds_dspm.DataSource = dataTable;
 
@@ -52,25 +54,23 @@ namespace qlsv_tc
                     ValueMember: chứa dữ liệu của field view luôn. Nhưng khi chọn click vào 1 field tương ứng thì nó sẽ trả về dữ liệu cột kế theo nó. Ví dụ click vào khoa CNTT thì ValueMember = tên server tương ứng với khoa cntt
              */
             Ultils.BindingDataToComBo(cboxKhoa, dataTable);
-
         }
 
         private int KetNoi_CSDLGOC()
         {
-            // nếu đối tượng conn_publisher khác null và trạng thái đang mở thì chúng ta đóng lại (tránh trường hợp nếu 2 kết nối cùng mở thì báo lỗi)
-            // Đối tượng SqlConnection nếu kết nối đến database tự động đóng kết nối sau 5s  - 10s
-            if (conn_publisher != null && conn_publisher.State == ConnectionState.Open)
-                conn_publisher.Close();
-
-            try
+            using(conn_publisher)
             {
-                conn_publisher.ConnectionString = Program.connstr;
-                conn_publisher.Open();
-                return 1;
+                try
+                {
+                    conn_publisher.ConnectionString = Program.connstr;
+                    conn_publisher.Open();
+                    return 1;
 
-            } catch (Exception e)
-            {
-                MessageBox.Show("Lỗi kết nối database. \n Bạn xem lại tên Server của Publisher, và Tên CSDL trong chuỗi kết nối. \n" + e.Message);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Lỗi kết nối database. \n Bạn xem lại tên Server của Publisher, và Tên CSDL trong chuỗi kết nối. \n" + e.Message);
+                }
             }
             return 0;
         }
@@ -96,46 +96,9 @@ namespace qlsv_tc
 
             } catch (Exception) { }
         }
-        private bool isLoginSV()
-        {
-            // hiển thị login form dành cho sinh viên
-            frmLoginSV frmLoginSV = new frmLoginSV();
-            if (frmLoginSV.ShowDialog(this) == DialogResult.OK)
-            {
-                if (conn_publisher != null && conn_publisher.State == System.Data.ConnectionState.Open) conn_publisher.Close();
-                conn_publisher.Open();
-                // tìm kiếm trên site hiện tại có tài khoản không -- tránh sql injection bằng @parameter
-                string sql = "SELECT COUNT(*) AS returnVal FROM dbo.SINHVIEN WHERE MASV = @MASV AND PASSWORD = @PASSWORD";
-                SqlCommand command = new SqlCommand(sql, conn_publisher);
-                command.Parameters.Add("@MASV", SqlDbType.NVarChar);
-                command.Parameters["@MASV"].Value = frmLoginSV.MASV;
-
-                command.Parameters.Add("@PASSWORD", SqlDbType.NVarChar);
-                command.Parameters["@PASSWORD"].Value = frmLoginSV.PASSWORD;
-                try
-                {
-                    int returnVal = 0;
-                    SqlDataReader dataReader = command.ExecuteReader();
-                    dataReader.Read();
-                    returnVal = dataReader.GetInt32(0);
-                    // nhập đúng tài khoản sv
-                    if (returnVal > 0)
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            }
-            return false;
-        }
-    
-
-            private void btnDangNhap_Click(object sender, EventArgs e)
-        {
+      
+        private void btnDangNhap_Click(object sender, EventArgs e)
+         {
 
             if(txtTaiKhoan.Text.Trim() == "" || txtMatKhau.Text.Trim() == "")
             {
@@ -160,26 +123,26 @@ namespace qlsv_tc
             if(Program.mlogin == "SV")
             {
                 // kiểm tra kết nối tới server
-                
                 try
                 {
-                    if (conn_publisher != null && conn_publisher.State == System.Data.ConnectionState.Open) conn_publisher.Close();
-                    conn_publisher.ConnectionString = Program.connstr;
-                    conn_publisher.Open();
-                   
-                        if (!isLoginSV())
-                        {
-                            if (frmLoginSV.isClose) return;
-                            MessageBox.Show("MÃ SV hoặc Mật Khẩu Không Đúng Hoặc Không Tồn Tại");
-                            return;
-                        }
-                    Program.mGroup = Program.role.SV.ToString();
-                    Program.mHoten = "";
-                    Program.username = frmLoginSV.MASV;
-                    Program.frmMain.HienThiMenu();
-                    // đóng cửa sổ đăng nhập
-                    Close();
-                    return;
+                    using(conn_publisher)
+                    {
+                        conn_publisher.ConnectionString = Program.connstr;
+                        conn_publisher.Open();
+                    }
+
+                    frmLoginSV frmSV = new frmLoginSV();
+                    if (frmSV.ShowDialog(this) == DialogResult.OK && frmLoginSV.isLogin)
+                    {
+                        Program.mGroup = Program.role.SV.ToString();
+                        Program.mHoten = "";
+                        Program.username = frmLoginSV.MASV;
+                        Program.frmMain.HienThiMenu();
+                        // đóng cửa sổ đăng nhập
+                        Close();
+                        return;
+                    }else return;
+                    
                 }
                 catch (SqlException)
                 {

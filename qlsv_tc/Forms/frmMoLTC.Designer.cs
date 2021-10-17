@@ -369,9 +369,10 @@ namespace qlsv_tc.Forms
             // 
             // cboxKhoa
             // 
+            this.cboxKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboxKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxKhoa.FormattingEnabled = true;
-            this.cboxKhoa.Location = new System.Drawing.Point(708, 27);
+            this.cboxKhoa.Location = new System.Drawing.Point(721, 24);
             this.cboxKhoa.Name = "cboxKhoa";
             this.cboxKhoa.Size = new System.Drawing.Size(424, 33);
             this.cboxKhoa.TabIndex = 1;
@@ -379,13 +380,15 @@ namespace qlsv_tc.Forms
             // 
             // lblTenKhoa
             // 
+            this.lblTenKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTenKhoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenKhoa.Appearance.Options.UseFont = true;
-            this.lblTenKhoa.Location = new System.Drawing.Point(588, 35);
+            this.lblTenKhoa.Location = new System.Drawing.Point(655, 27);
             this.lblTenKhoa.Name = "lblTenKhoa";
             this.lblTenKhoa.Size = new System.Drawing.Size(47, 25);
             this.lblTenKhoa.TabIndex = 0;
             this.lblTenKhoa.Text = "Khoa";
+            this.lblTenKhoa.Click += new System.EventHandler(this.lblTenKhoa_Click);
             // 
             // gbMoLTC
             // 
