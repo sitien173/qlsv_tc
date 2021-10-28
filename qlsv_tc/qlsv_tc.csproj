@@ -109,6 +109,12 @@
     <Compile Include="Forms\frmLoginSV.Designer.cs">
       <DependentUpon>frmLoginSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLop.Designer.cs">
+      <DependentUpon>frmLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,12 @@
     </Compile>
     <Compile Include="Forms\frmMoLTC.Designer.cs">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMonHoc.Designer.cs">
+      <DependentUpon>frmMonHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmTaoTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -214,11 +226,17 @@
     <EmbeddedResource Include="Forms\frmLoginSV.resx">
       <DependentUpon>frmLoginSV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLop.resx">
+      <DependentUpon>frmLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMoLTC.resx">
       <DependentUpon>frmMoLTC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonHoc.resx">
+      <DependentUpon>frmMonHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTaoTaiKhoan.resx">
       <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
@@ -341,6 +359,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\5596784 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1116589.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3442161.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

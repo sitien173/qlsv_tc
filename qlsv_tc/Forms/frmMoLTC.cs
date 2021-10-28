@@ -15,19 +15,14 @@ namespace qlsv_tc.Forms
     public partial class frmMoLTC : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
+        private static string _flag;
+        private static string nienkhoa, hocky, mamh, nhom; // dùng để lưu giá trị cũ để so sánh nếu sửa đổi
         public frmMoLTC()
         {
             InitializeComponent();
         }
 
-        private void lOPTINCHIBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsLTC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS);
-
-        }
-
+       
         private void loadInitializeData()
         {
 
@@ -43,10 +38,11 @@ namespace qlsv_tc.Forms
            
             this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
             this.tableAdapterDK.Fill(this.dS.DANGKY);
+
         }
         private void frmMoLTC_Load(object sender, EventArgs e)
         {
-            
+           
             loadInitializeData();
             
             err.Clear();
@@ -90,7 +86,7 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+            _flag = "ADD";
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -108,13 +104,13 @@ namespace qlsv_tc.Forms
             cmbMAMH.SelectedIndex = 1;
             cmbMAMH.SelectedIndex = 0;
 
+            txtMaKhoa.Text = Ultils.GetMaKhoa();
+
             // mặc định là false
             txtHUYLOP.Checked = false;
-                         
-            txtMAKHOA.Text = Ultils.GetMaKhoa();
-            txtMAKHOA.ReadOnly = true;
 
-            
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString())) txtMaKhoa.Enabled = false;
+            else if(Program.mGroup.Equals(Program.role.PGV.ToString())) txtMaKhoa.Enabled = true;
         }
 
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,26 +187,45 @@ namespace qlsv_tc.Forms
                 this.err.SetError(txtNHOM, "Vui lòng chọn NHOM !");
                 return false;
             }
+            if (txtMaKhoa.Text.Trim().Equals(""))
+            {
+                this.err.SetError(txtMaKhoa, "MAKHOA không được để trống !");
+                return false;
+            }
 
+            if (_flag.Equals("ADD"))
+            {
+                return checkExist(txtNIENKHOA.Text.Trim(), txtHOCKY.Text.Trim(), cmbMAMH.Text.Trim(), txtNHOM.Text.Trim());
+            }
+            else if (_flag.Equals("EDIT"))
+            {
+                if(!txtNIENKHOA.Text.Trim().Equals(nienkhoa) || 
+                    !txtHOCKY.Text.Trim().Equals(hocky) ||
+                    !txtNHOM.Text.Trim().Equals(nhom) ||
+                    !cmbMAMH.Text.Trim().Equals(mamh))
+                {
+                    return checkExist(txtNIENKHOA.Text.Trim(), txtHOCKY.Text.Trim(), cmbMAMH.Text.Trim(), txtNHOM.Text.Trim());
+
+                }
+            }
+            return true;
+        }
+
+        private bool checkExist(string strNienKhoa,string strHocKy,string strMaMH,string strNhom)
+        {
             // check exist LOPTINCHI
             string query = "DECLARE @return_value INT \n" +
-                $"EXEC @return_value=[dbo].[SP_CheckInsertLTC] @nienkhoa=N'{txtNIENKHOA.Text}', @hocki={txtHOCKY.Text}, @mamh=N'{cmbMAMH.Text}', @nhom={txtNHOM.Text};\n" +
+                $"EXEC @return_value=[dbo].[SP_CheckExistLTC] @nienkhoa=N'{strNienKhoa}', @hocki={strHocKy}, @mamh=N'{strMaMH}', @nhom={strNhom};\n" +
                 "SELECT 'Return Value'=@return_value;";
             int result = Ultils.CheckDataHelper(query);
             if (result > 0) // exist
             {
-                XtraMessageBox.Show($"Đã Tồn Tại Lớp Tín Chỉ có niên khóa: {txtNIENKHOA.Text}, học kỳ: {txtHOCKY.Text} \n" +
-                    $"Mã MH: {cmbMAMH.Text.Trim()}, MAGV: {cmbMAGV.Text.Trim()}, Nhóm: {txtNHOM.Text}");
-                this.err.SetError(txtNIENKHOA, "");
-                this.err.SetError(txtHOCKY, "");
-                this.err.SetError(txtNHOM, "");
-                this.err.SetError(cmbMAMH, "");
-                this.err.SetError(cmbMAGV, "");
+                XtraMessageBox.Show($"Đã Tồn Tại Lớp Tín Chỉ có niên khóa: {strNienKhoa}, học kỳ: {strHocKy} \n" +
+                    $"Mã MH: {strMaMH}, Nhóm: {strNhom}");
                 return false;
-            }    
+            }
             return true;
         }
-
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bool check = this.ValidateInfo();
@@ -233,9 +248,9 @@ namespace qlsv_tc.Forms
 
                         this.bdsLTC.EndEdit();
                         this.bdsLTC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        int check1 = this.tableAdapterLTC.Update(this.dS.LOPTINCHI);
+                        this.tableAdapterLTC.Update(this.dS.LOPTINCHI);
                         if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
-                        XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
+                        XtraMessageBox.Show("Ghi Thành Công");
                       
                     }
                     catch (Exception ex)
@@ -250,6 +265,13 @@ namespace qlsv_tc.Forms
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "EDIT";
+            // lưu vào biến để so sánh nếu thay đổi thì kiểm tra trùng
+            nienkhoa = txtNIENKHOA.Text.Trim();
+            hocky = txtHOCKY.Text.Trim();
+            mamh = cmbMAMH.Text.Trim();
+            nhom = txtNHOM.Text.Trim();
+
             // TODO: Display To handle
             LTCGridControl.Enabled = false;
             gbMoLTC.Enabled = true;
@@ -261,6 +283,10 @@ namespace qlsv_tc.Forms
                 = btnUndo.Enabled
                 = btnReload.Enabled = false;
             cboxKhoa.Enabled = false;
+
+            if (Program.mGroup.Equals(Program.role.KHOA.ToString())) txtMaKhoa.Enabled = false;
+            else if (Program.mGroup.Equals(Program.role.PGV.ToString())) txtMaKhoa.Enabled = true;
+
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -299,6 +325,19 @@ namespace qlsv_tc.Forms
             }
         }
 
+        private void txtHUYLOP_CheckedChanged(object sender, EventArgs e)
+        {
+            // nếu đã có sinh viên đăng kí thì ko cho hủy lớp
+            if (_flag.Equals("EDIT"))
+            {
+                if(bdsDK.Count > 0 && txtHUYLOP.Checked)
+                {
+                    XtraMessageBox.Show("Không thể hủy lớp này vì Lớp đã có sinh viên đăng ký.", "", MessageBoxButtons.OK);
+                    txtHUYLOP.Checked = !txtHUYLOP.Checked;
+                }
+            }
+        }
+
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             _position = e.RowHandle;
@@ -309,7 +348,7 @@ namespace qlsv_tc.Forms
             if (this.gbMoLTC.Enabled)
             {
 
-                String notifi = " Dữ liệu LỚP chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+                String notifi = " Dữ liệu chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
 
 
                 DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -338,26 +377,6 @@ namespace qlsv_tc.Forms
                 e.Handled = true;
                 return;
             }
-        }
-
-        private void lOPTINCHIBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsLTC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS);
-
-        }
-
-       
-
-        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            btnGhi.Enabled = true;
-        }
-
-        private void lblTenKhoa_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
