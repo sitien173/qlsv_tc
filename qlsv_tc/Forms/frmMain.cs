@@ -48,7 +48,7 @@ namespace qlsv_tc
             if (Program.mGroup.Equals(Program.role.SV.ToString(), StringComparison.Ordinal))
             {
                 btnDangKyLTC.Enabled = true;
-                btnTaoTaiKhoan.Enabled = btnSinhVien.Enabled = btnMoLTC.Enabled = btnHocPhi.Enabled = false;
+                btnTaoTaiKhoan.Enabled = btnSinhVien.Enabled = btnLop.Enabled = btnMoLTC.Enabled = btnHocPhi.Enabled = btnMonHoc.Enabled = false;
 
                 rb_baocao.Visible = false;
             }else if( Program.mGroup.Equals(Program.role.KHOA.ToString(), StringComparison.Ordinal) ||
@@ -57,16 +57,16 @@ namespace qlsv_tc
                 btnTaoTaiKhoan.Enabled = true;
                 rb_baocao.Visible = true;
                 btnHocPhi.Enabled = false;
-                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = true;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled = btnMonHoc.Enabled = true;
                 btnDsDongHPLop.Enabled = false;
 
             }else if (Program.mGroup.Equals(Program.role.PKT.ToString(), StringComparison.Ordinal))
             {
                 btnTaoTaiKhoan.Enabled = true;
                 rb_baocao.Visible = true;
-                
+
                 btnHocPhi.Enabled = true;
-                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = false;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled =  btnMonHoc.Enabled = false;
                 btnInDSLTC.Enabled = false;
                 btnBangDiemMonHoc.Enabled = false;
                 btnLapNhapXuatNV.Enabled = false;
@@ -104,15 +104,7 @@ namespace qlsv_tc
 
         private void btnNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-/*
-            Form frm = CheckExists(typeof(frmSinhVien));
-            if (frm != null) frm.Activate();
-            else
-            {
-                frmSinhVien f = new frmSinhVien();
-                f.MdiParent = this;
-                f.Show();
-            }*/
+            
         }
 
         private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -247,6 +239,31 @@ namespace qlsv_tc
             else
             {
                 frmTaoTaiKhoan f = new frmTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmMonHoc f = new frmMonHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            Form frm = CheckExists(typeof(frmLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmLop f = new frmLop();
                 f.MdiParent = this;
                 f.Show();
             }

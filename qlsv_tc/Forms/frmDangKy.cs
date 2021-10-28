@@ -132,6 +132,7 @@ namespace qlsv_tc.Forms
                     this.dS.DANGKY.AcceptChanges();
                     addNewRowBdsDSDKSV(rows);
                 }
+
             }
             // chưa có trong bdsDK
             else
