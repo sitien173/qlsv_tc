@@ -11,23 +11,15 @@ using System.Windows.Forms;
 
 namespace qlsv_tc.Forms
 {
-    public partial class frmLop : DevExpress.XtraEditors.XtraForm
+    public partial class frmSinhVien : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
-        public frmLop()
+        public frmSinhVien()
         {
             InitializeComponent();
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsLop.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS1);
-
-        }
-
-        private void frmLop_Load(object sender, EventArgs e)
+        private void frmSinhVien_Load(object sender, EventArgs e)
         {
             error.ClearErrors();
 
@@ -66,6 +58,8 @@ namespace qlsv_tc.Forms
 
             }
             btnGhi.Enabled = btnHuy.Enabled = false;
+           
+
         }
 
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,10 +82,12 @@ namespace qlsv_tc.Forms
         private void loadInitializeData()
         {
             dS1.EnforceConstraints = false;
-            this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterLop.Fill(this.dS1.LOP);
-            this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterSinhVien.Fill(this.dS1.SINHVIEN);
+            this.tableAdapterLOP.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterLOP.Fill(this.dS1.LOP);
+            this.tableAdapterSV.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterSV.Fill(this.dS1.SINHVIEN);
+            this.tableAdapterDK.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterDK.Fill(this.dS1.DANGKY);
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -104,15 +100,9 @@ namespace qlsv_tc.Forms
             lOPGridControl.Enabled = false;
             pnLop.Enabled = true;
 
-            bdsLop.AddNew();
-
-            txtMaKhoa.Text = Ultils.GetMaKhoa();
-
-            if (Program.mGroup.Equals(Program.role.KHOA.ToString()))
-                txtMaKhoa.Enabled = false;
-            else if(Program.mGroup.Equals(Program.role.PGV.ToString()))
-                txtMaKhoa.Enabled = true;
-
+            bdsSV.AddNew();
+            checkBoxPHAI.Checked = true;
+            checkBoxDANGNGHIHOC.Checked = false;
         }
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -130,39 +120,48 @@ namespace qlsv_tc.Forms
             cboxKhoa.Enabled = false;
         }
 
-        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bdsSinhVien.Count > 0)
-            {
-                XtraMessageBox.Show("Không thể xóa lớp vì đã có sinh viên.", "", MessageBoxButtons.OK);
-                return;
-            }
-            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                try
-                {
-                    bdsLop.RemoveCurrent();
-                    this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
-                    int check = this.tableAdapterLop.Update(this.dS1.LOP);
-                    if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show("Lỗi xóa lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                    this.tableAdapterLop.Fill(this.dS1.LOP);
-                    return;
+            bdsSV.CancelEdit();
 
-                }
-            }
-            if (bdsLop.Count == 0) btnXoa.Enabled = btnHieuChinh.Enabled = btnHuy.Enabled = false;
-
-
-            btnReload.Enabled = true;
-            pnLop.Enabled = false;
-
+            // load lại cả form...
+            frmSinhVien_Load(sender, e);
             if (_position > 0)
             {
-                bdsLop.Position = _position;
+                bdsSV.Position = _position;
+            }
+            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
+        }
+
+        private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmSinhVien_Load(sender, e);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (pnLop.Enabled)
+            {
+
+                String notifi = " Dữ liệu sinh viên chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+                return;
             }
         }
 
@@ -186,16 +185,16 @@ namespace qlsv_tc.Forms
                         lOPGridControl.Enabled = true;
                         pnLop.Enabled = btnHuy.Enabled = btnGhi.Enabled = false;
 
-                        this.bdsLop.EndEdit();
-                        this.bdsLop.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        this.tableAdapterLop.Update(this.dS1.LOP);
+                        this.bdsSV.EndEdit();
+                        this.bdsSV.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                        this.tableAdapterSV.Update(this.dS1.SINHVIEN);
                         if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
                         XtraMessageBox.Show("Ghi Thành Công");
 
                     }
                     catch (Exception ex)
                     {
-                        bdsLop.RemoveCurrent();
+                        bdsSV.RemoveCurrent();
                         XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -207,88 +206,84 @@ namespace qlsv_tc.Forms
             error.ClearErrors();
 
             // TODO : Check khoảng trống ở textField
-            if (txtMALOP.Text.Trim().Equals(""))
+            if (txtMASV.Text.Trim().Equals(""))
             {
-                this.error.SetError(txtMALOP, "MALOP không được để trống !");
+                this.error.SetError(txtMASV, "MASV không được để trống !");
                 return false;
             }
-            if (txtTENLOP.Text.Trim().Equals(""))
+            if (txtHO.Text.Trim().Equals(""))
             {
-                this.error.SetError(txtTENLOP, "TENLOP không được để trống !");
+                this.error.SetError(txtHO, "HO không được để trống !");
                 return false;
             }
-            if (txtKHOAHOC.Text.Trim().Equals(""))
+            if (txtTEN.Text.Trim().Equals(""))
             {
-                this.error.SetError(txtKHOAHOC, "KHOAHOC không được để trống !");
+                this.error.SetError(txtTEN, "TEN không được để trống !");
                 return false;
             }
-            if (txtMaKhoa.Text.Trim().Equals(""))
+            if (dateEditNGAYSINH.Text.Trim().Equals(""))
             {
-                this.error.SetError(txtMaKhoa, "MAKHOA không được để trống !");
+                this.error.SetError(dateEditNGAYSINH, "NGAYSINH không được để trống !");
                 return false;
             }
-            return checkExistLop(txtMALOP.Text.Trim());
+            if (cboxMALOP.Text.Trim().Equals(""))
+            {
+                this.error.SetError(cboxMALOP, "MALOP không được để trống !");
+                return false;
+            }
+            return checkExistSV(txtMASV.Text.Trim());
         }
 
-        private bool checkExistLop(string malop)
+        private bool checkExistSV(string masv)
         {
             // check exist MONHOC
             string query = "DECLARE @return_value INT \n" +
-                $"EXEC @return_value=[dbo].[SP_CheckExistLop] @malop=N'{malop}' " +
+                $"EXEC @return_value=[dbo].[SP_CheckExistSV] @masv=N'{masv}' " +
                 "SELECT 'Return Value'=@return_value;";
             int result = Ultils.CheckDataHelper(query);
             if (result > 0) // exist
             {
-                XtraMessageBox.Show($"Đã Tồn Tại Lớp có MALOP: {malop}");
-                this.error.SetError(txtMALOP, "Đã Tồn Tại MALOP");
+                XtraMessageBox.Show($"Đã tồn tại sinh viên có MASV: {masv}");
+                this.error.SetError(txtMASV, "Đã tồn tại MASV");
                 return false;
             }
             return true;
         }
-        private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            bdsLop.CancelEdit();
 
-            // load lại cả form...
-            frmLop_Load(sender, e);
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (bdsDK.Count > 0)
+            {
+                XtraMessageBox.Show("Không thể xóa sinh viên vì đã đăng ký.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa sinh viên này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    bdsSV.RemoveCurrent();
+                    this.tableAdapterSV.Connection.ConnectionString = Program.connstr;
+                    int check = this.tableAdapterSV.Update(this.dS1.SINHVIEN);
+                    if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Lỗi xóa lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    this.tableAdapterSV.Fill(this.dS1.SINHVIEN);
+                    return;
+
+                }
+            }
+            if (bdsSV.Count == 0) btnXoa.Enabled = btnHieuChinh.Enabled = btnHuy.Enabled = false;
+
+
+            btnReload.Enabled = true;
+            pnLop.Enabled = false;
+
             if (_position > 0)
             {
-                bdsLop.Position = _position;
-            }
-            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
-        }
-
-        private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frmLop_Load(sender, e);
-            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
-        }
-
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (pnLop.Enabled)
-            {
-
-                String notifi = " Dữ liệu Lớp chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
-
-
-                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (dr == DialogResult.No)
-                {
-                    return;
-                }
-                else if (dr == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                this.Close();
-                return;
+                bdsDK.Position = _position;
             }
         }
     }
-
 }

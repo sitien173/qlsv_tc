@@ -44,6 +44,7 @@ namespace qlsv_tc
             // dựa vào Program.mGroup để bật tắt các module cần thiết
             rb_quantri.Visible = true;
             btnDangXuat.Enabled = true;
+            btnDangNhap.Enabled = false;
 
             if (Program.mGroup.Equals(Program.role.SV.ToString(), StringComparison.Ordinal))
             {
@@ -104,7 +105,14 @@ namespace qlsv_tc
 
         private void btnNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            Form frm = CheckExists(typeof(frmSinhVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmSinhVien f = new frmSinhVien();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

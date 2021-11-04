@@ -302,3 +302,4 @@ D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Xrpt_BangDiemTongKEt.resourc
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmTaoTaiKhoan.resources
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmMonHoc.resources
 D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmLop.resources
+D:\Project CSDLPT\qlsv_tc\qlsv_tc\obj\Debug\qlsv_tc.Forms.frmSinhVien.resources
