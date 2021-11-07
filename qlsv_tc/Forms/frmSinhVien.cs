@@ -14,6 +14,11 @@ namespace qlsv_tc.Forms
     public partial class frmSinhVien : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
+        private static string _flag;
+
+        // các biến toàn cục dùng để lưu giá trị cũ để so sánh nếu sửa đổi
+        private static string masv;
+       
         public frmSinhVien()
         {
             InitializeComponent();
@@ -92,6 +97,7 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "ADD";
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -107,6 +113,10 @@ namespace qlsv_tc.Forms
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "EDIT";
+            // lưu vào biến để so sánh nếu thay đổi thì kiểm tra trùng
+            masv = txtMASV.Text.Trim();
+           
             // TODO: Display To handle
             SINHVIENGridControl.Enabled = false;
             pnSinhVien.Enabled = true;
@@ -231,6 +241,20 @@ namespace qlsv_tc.Forms
                 this.error.SetError(cboxMALOP, "MALOP không được để trống !");
                 return false;
             }
+            if (_flag.Equals("ADD"))
+            {
+                return checkExistSV(txtMASV.Text.Trim());
+            }
+            else if (_flag.Equals("EDIT"))
+            {
+                // thay đổi masv
+                if (!txtMASV.Text.Trim().Equals(masv))
+                {
+                    return checkExistSV(txtMASV.Text.Trim());
+                }
+                return true;
+            }
+
             return checkExistSV(txtMASV.Text.Trim());
         }
 
