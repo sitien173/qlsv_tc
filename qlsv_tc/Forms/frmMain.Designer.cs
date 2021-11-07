@@ -49,13 +49,17 @@ namespace qlsv_tc
             this.btnPhieuDiemSinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             this.btnMonHoc = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLop = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDiemSV = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_quantri = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_hocphi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_baocao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -68,8 +72,6 @@ namespace qlsv_tc
             this.MANV = new System.Windows.Forms.ToolStripStatusLabel();
             this.HOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.NHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnLop = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -96,10 +98,11 @@ namespace qlsv_tc
             this.btnPhieuDiemSinhVien,
             this.btnBangDiemTongKet,
             this.btnMonHoc,
-            this.btnLop});
+            this.btnLop,
+            this.btnDiemSV});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 23;
+            this.ribbonControl1.MaxItemId = 24;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -228,6 +231,24 @@ namespace qlsv_tc
             this.btnMonHoc.Name = "btnMonHoc";
             this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
             // 
+            // btnLop
+            // 
+            this.btnLop.Caption = "Lớp";
+            this.btnLop.Enabled = false;
+            this.btnLop.Id = 22;
+            this.btnLop.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._3442161;
+            this.btnLop.Name = "btnLop";
+            this.btnLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLop_ItemClick);
+            // 
+            // btnDiemSV
+            // 
+            this.btnDiemSV.Caption = "Nhập Điểm";
+            this.btnDiemSV.Id = 23;
+            this.btnDiemSV.ImageOptions.Image = global::qlsv_tc.Properties.Resources._1310388;
+            this.btnDiemSV.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1310388;
+            this.btnDiemSV.Name = "btnDiemSV";
+            this.btnDiemSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDiemSV_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -246,6 +267,7 @@ namespace qlsv_tc
             // 
             this.rb_quantri.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup10,
+            this.ribbonPageGroup12,
             this.ribbonPageGroup11,
             this.ribbonPageGroup2,
             this.ribbonPageGroup6,
@@ -259,6 +281,11 @@ namespace qlsv_tc
             this.ribbonPageGroup10.ImageOptions.Image = global::qlsv_tc.Properties.Resources._1116589;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnMonHoc, true);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnLop);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
             // 
             // ribbonPageGroup2
             // 
@@ -275,6 +302,11 @@ namespace qlsv_tc
             // 
             this.rb_hocphi.ItemLinks.Add(this.btnHocPhi, true);
             this.rb_hocphi.Name = "rb_hocphi";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.btnDiemSV);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             // 
             // rb_baocao
             // 
@@ -354,20 +386,6 @@ namespace qlsv_tc
             this.NHOM.Size = new System.Drawing.Size(68, 25);
             this.NHOM.Text = "NHOM";
             // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btnLop);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // btnLop
-            // 
-            this.btnLop.Caption = "Lớp";
-            this.btnLop.Enabled = false;
-            this.btnLop.Id = 22;
-            this.btnLop.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._3442161;
-            this.btnLop.Name = "btnLop";
-            this.btnLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLop_ItemClick);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -430,6 +448,8 @@ namespace qlsv_tc
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnLop;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.BarButtonItem btnDiemSV;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }
 

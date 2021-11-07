@@ -26,8 +26,8 @@ namespace qlsv_tc.Forms
             Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Ultils.BindingDataToComBo(cboxKhoa, Program.bds_dspm.DataSource);
 
-            pnLop.Enabled = false;
-            lOPGridControl.Enabled = true;
+            pnSinhVien.Enabled = false;
+            SINHVIENGridControl.Enabled = true;
 
             // TODO : Role Action
             if (Program.mGroup == Program.role.PGV.ToString())// PGV
@@ -97,8 +97,8 @@ namespace qlsv_tc.Forms
             btnGhi.Enabled = btnHuy.Enabled = true;
 
 
-            lOPGridControl.Enabled = false;
-            pnLop.Enabled = true;
+            SINHVIENGridControl.Enabled = false;
+            pnSinhVien.Enabled = true;
 
             bdsSV.AddNew();
             checkBoxPHAI.Checked = true;
@@ -108,8 +108,8 @@ namespace qlsv_tc.Forms
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // TODO: Display To handle
-            lOPGridControl.Enabled = false;
-            pnLop.Enabled = true;
+            SINHVIENGridControl.Enabled = false;
+            pnSinhVien.Enabled = true;
             btnGhi.Enabled = btnHuy.Enabled = true;
 
             btnThem.Enabled
@@ -141,7 +141,7 @@ namespace qlsv_tc.Forms
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (pnLop.Enabled)
+            if (pnSinhVien.Enabled)
             {
 
                 String notifi = " Dữ liệu sinh viên chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
@@ -182,8 +182,8 @@ namespace qlsv_tc.Forms
                         = btnUndo.Enabled
                         = btnReload.Enabled = true;
 
-                        lOPGridControl.Enabled = true;
-                        pnLop.Enabled = btnHuy.Enabled = btnGhi.Enabled = false;
+                        SINHVIENGridControl.Enabled = true;
+                        pnSinhVien.Enabled = btnHuy.Enabled = btnGhi.Enabled = false;
 
                         this.bdsSV.EndEdit();
                         this.bdsSV.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
@@ -278,7 +278,7 @@ namespace qlsv_tc.Forms
 
 
             btnReload.Enabled = true;
-            pnLop.Enabled = false;
+            pnSinhVien.Enabled = false;
 
             if (_position > 0)
             {

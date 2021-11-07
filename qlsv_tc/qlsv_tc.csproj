@@ -97,6 +97,12 @@
     <Compile Include="Forms\frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDIEM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDIEM.Designer.cs">
+      <DependentUpon>frmDIEM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDongHocPhi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDIEM.resx">
+      <DependentUpon>frmDIEM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDongHocPhi.resx">
       <DependentUpon>frmDongHocPhi.cs</DependentUpon>
@@ -374,6 +383,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3442161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1310388.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

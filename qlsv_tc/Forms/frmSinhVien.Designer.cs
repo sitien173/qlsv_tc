@@ -60,7 +60,7 @@ namespace qlsv_tc.Forms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cboxKhoa = new System.Windows.Forms.ComboBox();
             this.lblTenKhoa = new DevExpress.XtraEditors.LabelControl();
-            this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
+            this.SINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.dS1 = new qlsv_tc.DS1();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -75,7 +75,7 @@ namespace qlsv_tc.Forms
             this.colPASSWORD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableAdapterSV = new qlsv_tc.DS1TableAdapters.SINHVIENTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnLop = new System.Windows.Forms.Panel();
+            this.pnSinhVien = new System.Windows.Forms.Panel();
             this.checkBoxPHAI = new DevExpress.XtraEditors.CheckEdit();
             this.cboxMALOP = new System.Windows.Forms.ComboBox();
             this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
@@ -103,12 +103,12 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SINHVIENGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnLop.SuspendLayout();
+            this.pnSinhVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkBoxPHAI.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPASSWORD.Properties)).BeginInit();
@@ -395,17 +395,17 @@ namespace qlsv_tc.Forms
             this.lblTenKhoa.TabIndex = 0;
             this.lblTenKhoa.Text = "Khoa";
             // 
-            // lOPGridControl
+            // SINHVIENGridControl
             // 
-            this.lOPGridControl.DataSource = this.bdsSV;
-            this.lOPGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lOPGridControl.Location = new System.Drawing.Point(0, 114);
-            this.lOPGridControl.MainView = this.gridView1;
-            this.lOPGridControl.MenuManager = this.barManager1;
-            this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(1944, 925);
-            this.lOPGridControl.TabIndex = 20;
-            this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.SINHVIENGridControl.DataSource = this.bdsSV;
+            this.SINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SINHVIENGridControl.Location = new System.Drawing.Point(0, 114);
+            this.SINHVIENGridControl.MainView = this.gridView1;
+            this.SINHVIENGridControl.MenuManager = this.barManager1;
+            this.SINHVIENGridControl.Name = "SINHVIENGridControl";
+            this.SINHVIENGridControl.Size = new System.Drawing.Size(1944, 925);
+            this.SINHVIENGridControl.TabIndex = 20;
+            this.SINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // bdsSV
@@ -430,7 +430,7 @@ namespace qlsv_tc.Forms
             this.colMALOP,
             this.colDANGHIHOC,
             this.colPASSWORD});
-            this.gridView1.GridControl = this.lOPGridControl;
+            this.gridView1.GridControl = this.SINHVIENGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
@@ -610,33 +610,33 @@ namespace qlsv_tc.Forms
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pnLop
+            // pnSinhVien
             // 
-            this.pnLop.Controls.Add(this.checkBoxPHAI);
-            this.pnLop.Controls.Add(this.cboxMALOP);
-            this.pnLop.Controls.Add(pASSWORDLabel);
-            this.pnLop.Controls.Add(this.txtPASSWORD);
-            this.pnLop.Controls.Add(dANGHIHOCLabel);
-            this.pnLop.Controls.Add(this.checkBoxDANGNGHIHOC);
-            this.pnLop.Controls.Add(mALOPLabel);
-            this.pnLop.Controls.Add(nGAYSINHLabel);
-            this.pnLop.Controls.Add(this.dateEditNGAYSINH);
-            this.pnLop.Controls.Add(dIACHILabel);
-            this.pnLop.Controls.Add(this.txtDIACHI);
-            this.pnLop.Controls.Add(pHAILabel);
-            this.pnLop.Controls.Add(tENLabel);
-            this.pnLop.Controls.Add(this.txtTEN);
-            this.pnLop.Controls.Add(hOLabel);
-            this.pnLop.Controls.Add(this.txtHO);
-            this.pnLop.Controls.Add(mASVLabel);
-            this.pnLop.Controls.Add(this.txtMASV);
-            this.pnLop.Controls.Add(this.pictureBox1);
-            this.pnLop.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnLop.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnLop.Location = new System.Drawing.Point(0, 818);
-            this.pnLop.Name = "pnLop";
-            this.pnLop.Size = new System.Drawing.Size(1944, 221);
-            this.pnLop.TabIndex = 21;
+            this.pnSinhVien.Controls.Add(this.checkBoxPHAI);
+            this.pnSinhVien.Controls.Add(this.cboxMALOP);
+            this.pnSinhVien.Controls.Add(pASSWORDLabel);
+            this.pnSinhVien.Controls.Add(this.txtPASSWORD);
+            this.pnSinhVien.Controls.Add(dANGHIHOCLabel);
+            this.pnSinhVien.Controls.Add(this.checkBoxDANGNGHIHOC);
+            this.pnSinhVien.Controls.Add(mALOPLabel);
+            this.pnSinhVien.Controls.Add(nGAYSINHLabel);
+            this.pnSinhVien.Controls.Add(this.dateEditNGAYSINH);
+            this.pnSinhVien.Controls.Add(dIACHILabel);
+            this.pnSinhVien.Controls.Add(this.txtDIACHI);
+            this.pnSinhVien.Controls.Add(pHAILabel);
+            this.pnSinhVien.Controls.Add(tENLabel);
+            this.pnSinhVien.Controls.Add(this.txtTEN);
+            this.pnSinhVien.Controls.Add(hOLabel);
+            this.pnSinhVien.Controls.Add(this.txtHO);
+            this.pnSinhVien.Controls.Add(mASVLabel);
+            this.pnSinhVien.Controls.Add(this.txtMASV);
+            this.pnSinhVien.Controls.Add(this.pictureBox1);
+            this.pnSinhVien.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnSinhVien.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnSinhVien.Location = new System.Drawing.Point(0, 818);
+            this.pnSinhVien.Name = "pnSinhVien";
+            this.pnSinhVien.Size = new System.Drawing.Size(1944, 221);
+            this.pnSinhVien.TabIndex = 21;
             // 
             // checkBoxPHAI
             // 
@@ -769,8 +769,8 @@ namespace qlsv_tc.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1944, 1059);
-            this.Controls.Add(this.pnLop);
-            this.Controls.Add(this.lOPGridControl);
+            this.Controls.Add(this.pnSinhVien);
+            this.Controls.Add(this.SINHVIENGridControl);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -784,13 +784,13 @@ namespace qlsv_tc.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SINHVIENGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnLop.ResumeLayout(false);
-            this.pnLop.PerformLayout();
+            this.pnSinhVien.ResumeLayout(false);
+            this.pnSinhVien.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkBoxPHAI.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPASSWORD.Properties)).EndInit();
@@ -826,7 +826,7 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.ComboBox cboxKhoa;
         private DevExpress.XtraEditors.LabelControl lblTenKhoa;
-        private DevExpress.XtraGrid.GridControl lOPGridControl;
+        private DevExpress.XtraGrid.GridControl SINHVIENGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DS1 dS1;
         private System.Windows.Forms.BindingSource bdsSV;
@@ -840,7 +840,7 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colDANGHIHOC;
         private DevExpress.XtraGrid.Columns.GridColumn colPASSWORD;
-        private System.Windows.Forms.Panel pnLop;
+        private System.Windows.Forms.Panel pnSinhVien;
         private DevExpress.XtraEditors.TextEdit txtPASSWORD;
         private DevExpress.XtraEditors.CheckEdit checkBoxDANGNGHIHOC;
         private DevExpress.XtraEditors.DateEdit dateEditNGAYSINH;
