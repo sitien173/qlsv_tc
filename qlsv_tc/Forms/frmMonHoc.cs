@@ -14,6 +14,12 @@ namespace qlsv_tc.Forms
     public partial class frmMonHoc : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
+        private static string _flag;
+
+        // các biến toàn cục dùng để lưu giá trị cũ để so sánh nếu sửa đổi
+        private static string mamh;
+        private static int sotietLT;
+        private static int sotietTH;
         public frmMonHoc()
         {
             InitializeComponent();
@@ -97,6 +103,7 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "ADD";
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -110,6 +117,12 @@ namespace qlsv_tc.Forms
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "EDIT";
+            // lưu vào biến để so sánh nếu thay đổi thì kiểm tra trùng
+            mamh = txtMAMH.Text.Trim();
+            sotietLT = (int)spSOTIETLT.Value;
+            sotietTH = (int)spSOTIETTH.Value;
+           
             // TODO: Display To handle
             MonHocGridControl.Enabled = false;
             pnMonHoc.Enabled = true;
@@ -159,6 +172,7 @@ namespace qlsv_tc.Forms
             }
         }
 
+       
         // ====================== SUPPORT VALIDATION ====================== //
         private bool ValidateInfo()
         {
@@ -183,15 +197,35 @@ namespace qlsv_tc.Forms
             {
                 this.error.SetError(spSOTIETTH, "SOTIET_TH lớn hơn hoặc bằng 0!");
                 return false;
-            }else
+            }
+            if (_flag.Equals("ADD"))
             {
                 int sum = Convert.ToInt32(spSOTIETLT.Value) + Convert.ToInt32(spSOTIETTH.Value);
-                if(sum % 15 != 0)
+                if (sum % 15 != 0)
                 {
                     this.error.SetError(spSOTIETLT, "SOTIET_LT & SOTIET_TH phải là bội số của 15 !");
                     this.error.SetError(spSOTIETTH, "SOTIET_LT & SOTIET_TH phải là bội số của 15 !");
                     return false;
                 }
+                return checkExistMonHoc(txtMAMH.Text.Trim());
+            }
+            else if (_flag.Equals("EDIT"))
+            {
+                if (!txtMAMH.Text.Trim().Equals(mamh))
+                {
+                    return checkExistMonHoc(txtMAMH.Text.Trim());
+                }
+                else if ((int)spSOTIETLT.Value != sotietLT || (int)spSOTIETTH.Value != sotietTH)
+                {
+                    int sum = Convert.ToInt32(spSOTIETLT.Value) + Convert.ToInt32(spSOTIETTH.Value);
+                    if (sum % 15 != 0)
+                    {
+                        this.error.SetError(spSOTIETLT, "SOTIET_LT & SOTIET_TH phải là bội số của 15 !");
+                        this.error.SetError(spSOTIETTH, "SOTIET_LT & SOTIET_TH phải là bội số của 15 !");
+                        return false;
+                    }
+                }
+                return true;
             }
             return checkExistMonHoc(txtMAMH.Text.Trim());
         }
