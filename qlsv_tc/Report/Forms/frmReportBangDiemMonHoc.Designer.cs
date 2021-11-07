@@ -31,6 +31,7 @@ namespace qlsv_tc.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtNienKhoa = new System.Windows.Forms.TextBox();
             this.lookUpEditMH = new DevExpress.XtraEditors.LookUpEdit();
             this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
@@ -45,7 +46,6 @@ namespace qlsv_tc.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterMonHoc = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
@@ -81,13 +81,27 @@ namespace qlsv_tc.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "In Bảng Điểm Môn Học";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(252, 345);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(159, 41);
+            this.simpleButton1.TabIndex = 24;
+            this.simpleButton1.Text = "Thoát";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // txtNienKhoa
             // 
             this.txtNienKhoa.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNienKhoa.Location = new System.Drawing.Point(148, 115);
             this.txtNienKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(459, 30);
+            this.txtNienKhoa.Size = new System.Drawing.Size(244, 30);
             this.txtNienKhoa.TabIndex = 23;
             this.txtNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNienKhoa_KeyPress);
             // 
@@ -253,20 +267,6 @@ namespace qlsv_tc.Forms
             // tableAdapterMonHoc
             // 
             this.tableAdapterMonHoc.ClearBeforeFill = true;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(19)))), ((int)(((byte)(0)))));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(252, 345);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(159, 41);
-            this.simpleButton1.TabIndex = 24;
-            this.simpleButton1.Text = "Thoát";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // frmReportBangDiemMonHoc
             // 
