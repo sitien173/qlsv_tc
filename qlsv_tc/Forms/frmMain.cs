@@ -44,11 +44,12 @@ namespace qlsv_tc
             // dựa vào Program.mGroup để bật tắt các module cần thiết
             rb_quantri.Visible = true;
             btnDangXuat.Enabled = true;
+            btnDangNhap.Enabled = false;
 
             if (Program.mGroup.Equals(Program.role.SV.ToString(), StringComparison.Ordinal))
             {
                 btnDangKyLTC.Enabled = true;
-                btnTaoTaiKhoan.Enabled = btnSinhVien.Enabled = btnLop.Enabled = btnMoLTC.Enabled = btnHocPhi.Enabled = btnMonHoc.Enabled = false;
+                btnTaoTaiKhoan.Enabled = btnSinhVien.Enabled = btnLop.Enabled = btnMoLTC.Enabled = btnHocPhi.Enabled = btnMonHoc.Enabled = btnDiemSV.Enabled = false;
 
                 rb_baocao.Visible = false;
             }else if( Program.mGroup.Equals(Program.role.KHOA.ToString(), StringComparison.Ordinal) ||
@@ -57,7 +58,7 @@ namespace qlsv_tc
                 btnTaoTaiKhoan.Enabled = true;
                 rb_baocao.Visible = true;
                 btnHocPhi.Enabled = false;
-                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled = btnMonHoc.Enabled = true;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled = btnMonHoc.Enabled =  btnDiemSV.Enabled =true;
                 btnDsDongHPLop.Enabled = false;
 
             }else if (Program.mGroup.Equals(Program.role.PKT.ToString(), StringComparison.Ordinal))
@@ -66,7 +67,7 @@ namespace qlsv_tc
                 rb_baocao.Visible = true;
 
                 btnHocPhi.Enabled = true;
-                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled =  btnMonHoc.Enabled = false;
+                btnSinhVien.Enabled = btnMoLTC.Enabled = btnDangKyLTC.Enabled = btnLop.Enabled =  btnMonHoc.Enabled = btnDiemSV.Enabled = false;
                 btnInDSLTC.Enabled = false;
                 btnBangDiemMonHoc.Enabled = false;
                 btnLapNhapXuatNV.Enabled = false;
@@ -104,7 +105,14 @@ namespace qlsv_tc
 
         private void btnNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            Form frm = CheckExists(typeof(frmSinhVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmSinhVien f = new frmSinhVien();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnMoLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -264,6 +272,18 @@ namespace qlsv_tc
             else
             {
                 frmLop f = new frmLop();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDiemSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = CheckExists(typeof(frmDIEM));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDIEM f = new frmDIEM();
                 f.MdiParent = this;
                 f.Show();
             }
