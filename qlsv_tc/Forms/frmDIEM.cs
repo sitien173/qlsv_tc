@@ -169,5 +169,17 @@ namespace qlsv_tc.Forms
             }
             
         }
+
+        private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (btnGhi.Enabled)
+            {
+                if (XtraMessageBox.Show("Bạn chưa lưu. Bạn có muốn lưu trước khi làm mới không", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    btnGhi.PerformClick();
+                }
+                btnBatDau.PerformClick();
+            }
+        }
     }
 }
