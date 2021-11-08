@@ -81,6 +81,7 @@ namespace qlsv_tc.Forms
             this.tableAdapterDIEMSV.Connection.ConnectionString = Program.connstr;
             this.tableAdapterDIEMSV.Fill(this.dS1.GetDanhSachDiemSV, nienkhoa, hocky, mamh, nhom);
             DiemGridControl.Enabled = true;
+            btnGhi.Enabled = false;
         }
 
         private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,7 +115,7 @@ namespace qlsv_tc.Forms
             {
                 try
                 {
-                    this.Validate();
+                    if (!this.Validate()) return;
                     this.bdsDIEMSV.EndEdit();
                     this.bdsDIEMSV.ResetCurrentItem();
                     DataTable dt = new DataTable();
@@ -179,6 +180,60 @@ namespace qlsv_tc.Forms
                     btnGhi.PerformClick();
                 }
                 btnBatDau.PerformClick();
+            }else
+            {
+                btnBatDau.PerformClick();
+            }
+        }
+
+        private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            DataRowView drv = (DataRowView)bdsDIEMSV.Current;
+            object[] obj = drv.Row.ItemArray;
+            if (!obj[2].ToString().Equals(""))
+            {
+                if(((int)obj[2] < 0 || (int)obj[2] > 10))
+                {
+                    e.ErrorText = "DIEM_CC phải >= 0 && <= 10";
+                    e.Valid = false;
+                    bdsDIEMSV.Position = e.RowHandle;
+                    return;
+                }
+            }
+            else
+            {
+                drv.Row.SetField<int>("DIEM_CC", 0);
+            }
+
+            if (!obj[3].ToString().Equals(""))
+            {
+                if(((double)obj[3] < 0 || (double)obj[3] > 10))
+                {
+                    e.ErrorText = "DIEM_GK phải >= 0 && <= 10";
+                    e.Valid = false;
+                    bdsDIEMSV.Position = e.RowHandle;
+                    return;
+                }
+            }
+            else
+            {
+                drv.Row.SetField<double>("DIEM_GK", 0.0);
+            }
+
+
+            if (!obj[4].ToString().Equals(""))
+            {
+                if(((double)obj[4] < 0.0 || (double)obj[4] > 10.0))
+                {
+                    e.ErrorText = "DIEM_CK phải >= 0 && <= 10";
+                    e.Valid = false;
+                    bdsDIEMSV.Position = e.RowHandle;
+                    return;
+                }
+            }
+            else
+            {
+                drv.Row.SetField<double>("DIEM_CK", 0.0);
             }
         }
     }
