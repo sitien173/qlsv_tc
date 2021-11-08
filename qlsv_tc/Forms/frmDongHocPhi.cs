@@ -90,7 +90,7 @@ namespace qlsv_tc.Forms
 
         private void barBtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(MessageBox.Show("Ghi Vào CSDL","Thông Báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(XtraMessageBox.Show("Ghi Vào CSDL","Thông Báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (_flagOption.Equals("ADD_HP"))
                 {
@@ -99,12 +99,11 @@ namespace qlsv_tc.Forms
                         try
                         {
                             this.bdsHP.EndEdit();
-                            this.Validate();
+                            if (!this.Validate()) return;
                             int check = this.tableAdapterHP.Update(this.dS3.HOCPHI);
                             if (check > 0)
                             {
-                                MessageBox.Show("Ghi Thành Công");
-    
+                                XtraMessageBox.Show("Ghi Thành Công");
                                 loadInitializeData(MASV);
                             }
 
@@ -115,7 +114,7 @@ namespace qlsv_tc.Forms
                             // mã lối là 2627
                             if(ex.Number == 2627)
                             {
-                               if(MessageBox.Show($"NIENKHOA: {NIENKHOA} VÀ HOCKY: {HOCKY} Đã Tồn Tại Học Phí Trong CSDL\nBạn Có Muốn Hiểu Chỉnh Không", "Thông Báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                               if(XtraMessageBox.Show($"NIENKHOA: {NIENKHOA} VÀ HOCKY: {HOCKY} Đã Tồn Tại Học Phí Trong CSDL\nBạn Có Muốn Hiểu Chỉnh Không", "Thông Báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     this.loadInitializeData(MASV);
                                     int length = this.dS3.HOCPHI.Count;
@@ -132,7 +131,7 @@ namespace qlsv_tc.Forms
                                     this.bdsHP.Position = index;
                                 } else
                                 {
-                                    MessageBox.Show("Ghi Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    XtraMessageBox.Show("Ghi Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -149,7 +148,7 @@ namespace qlsv_tc.Forms
                         try
                         {
                             this.bdsCTHP.EndEdit();
-                            this.Validate();
+                            if (!this.Validate()) return;
                             int check = this.tableAdapterCTHP.Update(this.dS3.CT_DONGHOCPHI);
                             if (check > 0)
                             {
@@ -228,8 +227,6 @@ namespace qlsv_tc.Forms
         {
             // auto set MASV
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["MASV"], MASV);
-
-
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["HOCKY"], 1);
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENDADONG"], 0);
             viewHP.SetRowCellValue(e.RowHandle, viewHP.Columns["SOTIENCANDONG"], 0);
@@ -300,6 +297,13 @@ namespace qlsv_tc.Forms
 
         private void viewCTHP_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            if(SOTIENCANDONG == 0)
+            {
+                DataRowView drv = (DataRowView)bdsHP.Current;
+                SOTIENCANDONG = drv.Row.Field<int>("SOTIENCANDONG");
+            }
+
+
             if(e.Column.FieldName == "SOTIENDONG")
             {
                 if(Convert.ToInt32(e.Value.ToString()) > SOTIENCANDONG)
@@ -307,8 +311,15 @@ namespace qlsv_tc.Forms
                     if(XtraMessageBox.Show("Đóng quá số tiền cần đóng thêm.\nBạn có muốn tiếp tục không?", "", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         // set lại giá trị cần đóng
-                        DataRowView dataRow = (DataRowView)this.bdsCTHP.Current;
-                        dataRow.Row.SetField<int>("SOTIENDONG", SOTIENCANDONG);
+                        if (_flagOption.Equals("ADD_CTHP"))
+                        {
+                            DataRowView dataRow = (DataRowView)this.bdsCTHP.Current;
+                            dataRow.Row.SetField<int>("SOTIENDONG", SOTIENCANDONG);
+                        }else
+                        {
+                            bdsCTHP.CancelEdit();
+                        }
+                           
                     }
                 }
             }
@@ -334,6 +345,38 @@ namespace qlsv_tc.Forms
             {
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (bdsCTHP.Count > 0)
+            {
+                XtraMessageBox.Show("Không thể xóa vì đã đóng học phí.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    bdsHP.RemoveCurrent();
+                    this.tableAdapterHP.Connection.ConnectionString = Program.connstr;
+                    int check = this.tableAdapterHP.Update(this.dS3.HOCPHI);
+                    if (check > 0) XtraMessageBox.Show("Xoá Thành Công");
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Lỗi xóa học phí.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    this.tableAdapterHP.Fill(this.dS3.HOCPHI);
+                    return;
+
+                }
+            }
+            if (bdsHP.Count == 0) btnXoa.Enabled = btnHieuChinh.Enabled = btnHuy.Enabled = false;
+            btnReload.Enabled = true;
+            if (_position > 0)
+            {
+                bdsHP.Position = _position;
             }
         }
     }
