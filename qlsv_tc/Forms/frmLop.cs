@@ -14,6 +14,8 @@ namespace qlsv_tc.Forms
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
         private static int _position = 0;
+        private static string _flag;
+        private static string malop;
         public frmLop()
         {
             InitializeComponent();
@@ -96,6 +98,7 @@ namespace qlsv_tc.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "ADD";
             cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
@@ -117,6 +120,9 @@ namespace qlsv_tc.Forms
 
         private void btnHieuChinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _flag = "EDIT";
+            malop = txtMALOP.Text.Trim();
+
             // TODO: Display To handle
             lOPGridControl.Enabled = false;
             pnLop.Enabled = true;
@@ -226,6 +232,18 @@ namespace qlsv_tc.Forms
             {
                 this.error.SetError(txtMaKhoa, "MAKHOA không được để trống !");
                 return false;
+            }
+            if (_flag.Equals("ADD"))
+            {
+                return checkExistLop(txtMALOP.Text.Trim());
+            }else if (_flag.Equals("EDIT"))
+            {
+                // thay đổi mã lớp
+                if (!txtMALOP.Text.Trim().Equals(malop))
+                {
+                    return checkExistLop(txtMALOP.Text.Trim());
+                }
+                return true;
             }
             return checkExistLop(txtMALOP.Text.Trim());
         }

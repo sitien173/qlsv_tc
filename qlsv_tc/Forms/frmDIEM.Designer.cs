@@ -132,6 +132,7 @@ namespace qlsv_tc.Forms
             this.btnReload.Id = 7;
             this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReload.ImageOptions.SvgImage")));
             this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -266,6 +267,7 @@ namespace qlsv_tc.Forms
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
             // colMALTC
             // 
@@ -333,8 +335,6 @@ namespace qlsv_tc.Forms
             this.colDIEM_CC.AppearanceHeader.Options.UseFont = true;
             this.colDIEM_CC.AppearanceHeader.Options.UseTextOptions = true;
             this.colDIEM_CC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colDIEM_CC.DisplayFormat.FormatString = "n2";
-            this.colDIEM_CC.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDIEM_CC.FieldName = "DIEM_CC";
             this.colDIEM_CC.MinWidth = 30;
             this.colDIEM_CC.Name = "colDIEM_CC";
