@@ -148,6 +148,7 @@ namespace qlsv_tc.Forms
                     sqlCommand.ExecuteNonQuery();
                     XtraMessageBox.Show("Ghi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnGhi.Enabled = false;
+                    btnBatDau.PerformClick();
                 }
                 catch (Exception ex)
                 {

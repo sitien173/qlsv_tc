@@ -52,9 +52,6 @@ namespace qlsv_tc.Forms
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.cboxKhoa = new System.Windows.Forms.ComboBox();
-            this.lblTenKhoa = new DevExpress.XtraEditors.LabelControl();
             this.dS1 = new qlsv_tc.DS1();
             this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterMonHoc = new qlsv_tc.DS1TableAdapters.MONHOCTableAdapter();
@@ -80,8 +77,6 @@ namespace qlsv_tc.Forms
             sOTIET_LTLabel = new System.Windows.Forms.Label();
             sOTIET_THLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MonHocGridControl)).BeginInit();
@@ -295,38 +290,6 @@ namespace qlsv_tc.Forms
             this.barButtonItem1.Id = 8;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.cboxKhoa);
-            this.panelControl1.Controls.Add(this.lblTenKhoa);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 34);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1408, 80);
-            this.panelControl1.TabIndex = 17;
-            // 
-            // cboxKhoa
-            // 
-            this.cboxKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboxKhoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxKhoa.FormattingEnabled = true;
-            this.cboxKhoa.Location = new System.Drawing.Point(537, 24);
-            this.cboxKhoa.Name = "cboxKhoa";
-            this.cboxKhoa.Size = new System.Drawing.Size(424, 33);
-            this.cboxKhoa.TabIndex = 1;
-            this.cboxKhoa.SelectedIndexChanged += new System.EventHandler(this.cboxKhoa_SelectedIndexChanged);
-            // 
-            // lblTenKhoa
-            // 
-            this.lblTenKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTenKhoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhoa.Appearance.Options.UseFont = true;
-            this.lblTenKhoa.Location = new System.Drawing.Point(471, 27);
-            this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(47, 25);
-            this.lblTenKhoa.TabIndex = 0;
-            this.lblTenKhoa.Text = "Khoa";
-            // 
             // dS1
             // 
             this.dS1.DataSetName = "DS1";
@@ -456,7 +419,7 @@ namespace qlsv_tc.Forms
             // 
             this.panel1.Controls.Add(this.MonHocGridControl);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 114);
+            this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1408, 333);
             this.panel1.TabIndex = 19;
@@ -473,9 +436,9 @@ namespace qlsv_tc.Forms
             this.pnMonHoc.Controls.Add(this.txtMAMH);
             this.pnMonHoc.Controls.Add(this.pictureBox1);
             this.pnMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMonHoc.Location = new System.Drawing.Point(0, 447);
+            this.pnMonHoc.Location = new System.Drawing.Point(0, 367);
             this.pnMonHoc.Name = "pnMonHoc";
-            this.pnMonHoc.Size = new System.Drawing.Size(1408, 217);
+            this.pnMonHoc.Size = new System.Drawing.Size(1408, 297);
             this.pnMonHoc.TabIndex = 20;
             // 
             // spSOTIETTH
@@ -558,7 +521,6 @@ namespace qlsv_tc.Forms
             this.ClientSize = new System.Drawing.Size(1408, 684);
             this.Controls.Add(this.pnMonHoc);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -568,9 +530,6 @@ namespace qlsv_tc.Forms
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MonHocGridControl)).EndInit();
@@ -608,9 +567,6 @@ namespace qlsv_tc.Forms
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.ComboBox cboxKhoa;
-        private DevExpress.XtraEditors.LabelControl lblTenKhoa;
         private System.Windows.Forms.BindingSource bdsMonHoc;
         private DS1 dS1;
         private DS1TableAdapters.MONHOCTableAdapter tableAdapterMonHoc;

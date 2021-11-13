@@ -40,26 +40,20 @@ namespace qlsv_tc
             this.btnSinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.btnLapNhapXuatNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnInDSLTC = new DevExpress.XtraBars.BarButtonItem();
-            this.btnPhieuNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKyLTC = new DevExpress.XtraBars.BarButtonItem();
             this.btnHocPhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnDsDongHPLop = new DevExpress.XtraBars.BarButtonItem();
             this.btnBangDiemMonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.btnPhieuDiemSinhVien = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             this.btnMonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.btnLop = new DevExpress.XtraBars.BarButtonItem();
             this.btnDiemSV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBangDiemTK = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_quantri = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rb_hocphi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_baocao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,189 +83,269 @@ namespace qlsv_tc
             this.btnSinhVien,
             this.btnLapNhapXuatNV,
             this.btnInDSLTC,
-            this.btnPhieuNV,
             this.btnMoLTC,
             this.btnDangKyLTC,
             this.btnHocPhi,
             this.btnDsDongHPLop,
             this.btnBangDiemMonHoc,
             this.btnPhieuDiemSinhVien,
-            this.btnBangDiemTongKet,
             this.btnMonHoc,
             this.btnLop,
-            this.btnDiemSV});
+            this.btnDiemSV,
+            this.btnBangDiemTK});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.ribbonControl1.MaxItemId = 24;
+            this.ribbonControl1.MaxItemId = 28;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1,
             this.rb_quantri,
-            this.rb_baocao});
-            this.ribbonControl1.Size = new System.Drawing.Size(1137, 231);
+            this.rb_baocao,
+            this.ribbonPage1});
+            this.ribbonControl1.Size = new System.Drawing.Size(1772, 244);
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Caption = "Đăng nhập";
+            this.btnDangNhap.Caption = "ĐĂNG NHẬP";
             this.btnDangNhap.Id = 2;
-            this.btnDangNhap.ImageOptions.Image = global::qlsv_tc.Properties.Resources.signin;
+            this.btnDangNhap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.ImageOptions.Image")));
+            this.btnDangNhap.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.ImageOptions.LargeImage")));
+            this.btnDangNhap.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDangNhap.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnDangNhap.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.ItemAppearance.Normal.Options.UseFont = true;
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangNhap_ItemClick);
             // 
             // btnTaoTaiKhoan
             // 
-            this.btnTaoTaiKhoan.Caption = "Tạo tải khoản";
+            this.btnTaoTaiKhoan.Caption = "TẠO TÀI KHOẢN";
             this.btnTaoTaiKhoan.Enabled = false;
             this.btnTaoTaiKhoan.Id = 3;
-            this.btnTaoTaiKhoan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoTaiKhoan.ImageOptions.Image")));
+            this.btnTaoTaiKhoan.ImageOptions.Image = global::qlsv_tc.Properties.Resources.register;
+            this.btnTaoTaiKhoan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTaoTaiKhoan.ImageOptions.LargeImage")));
+            this.btnTaoTaiKhoan.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTaoTaiKhoan.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnTaoTaiKhoan.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTaoTaiKhoan.ItemAppearance.Normal.Options.UseFont = true;
             this.btnTaoTaiKhoan.Name = "btnTaoTaiKhoan";
             this.btnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTaoTaiKhoan_ItemClick);
             // 
             // btnDangXuat
             // 
-            this.btnDangXuat.Caption = "Đăng xuất";
+            this.btnDangXuat.Caption = "ĐĂNG XUẤT";
             this.btnDangXuat.Enabled = false;
             this.btnDangXuat.Id = 4;
             this.btnDangXuat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.ImageOptions.Image")));
+            this.btnDangXuat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.ImageOptions.LargeImage")));
+            this.btnDangXuat.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDangXuat.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnDangXuat.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDangXuat.ItemAppearance.Normal.Options.UseFont = true;
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangXuat_ItemClick);
             // 
             // btnSinhVien
             // 
-            this.btnSinhVien.Caption = "Sinh Viên";
+            this.btnSinhVien.Caption = "SINH VIÊN";
             this.btnSinhVien.Enabled = false;
             this.btnSinhVien.Id = 6;
-            this.btnSinhVien.ImageOptions.Image = global::qlsv_tc.Properties.Resources.sinhvien;
-            this.btnSinhVien.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.sinhvien;
+            this.btnSinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSinhVien.ImageOptions.Image")));
+            this.btnSinhVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSinhVien.ImageOptions.LargeImage")));
+            this.btnSinhVien.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSinhVien.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnSinhVien.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSinhVien.ItemAppearance.Normal.Options.UseFont = true;
             this.btnSinhVien.Name = "btnSinhVien";
             this.btnSinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNV_ItemClick);
             // 
             // btnLapNhapXuatNV
             // 
-            this.btnLapNhapXuatNV.Caption = "DSSV Đăng Ký LTC";
+            this.btnLapNhapXuatNV.Caption = "DANH SÁCH SINH VIÊN ĐĂNG KÝ LỚP TÍN CHỈ";
             this.btnLapNhapXuatNV.Id = 7;
+            this.btnLapNhapXuatNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLapNhapXuatNV.ImageOptions.Image")));
+            this.btnLapNhapXuatNV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLapNhapXuatNV.ImageOptions.LargeImage")));
+            this.btnLapNhapXuatNV.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLapNhapXuatNV.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnLapNhapXuatNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLapNhapXuatNV.ItemAppearance.Normal.Options.UseFont = true;
             this.btnLapNhapXuatNV.Name = "btnLapNhapXuatNV";
             this.btnLapNhapXuatNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLapNhapXuatNV_ItemClick);
             // 
             // btnInDSLTC
             // 
-            this.btnInDSLTC.Caption = "Danh Sách LTC";
+            this.btnInDSLTC.Caption = "DANH SÁCH LỚP TÍN CHỈ";
             this.btnInDSLTC.Id = 8;
+            this.btnInDSLTC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDSLTC.ImageOptions.Image")));
+            this.btnInDSLTC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInDSLTC.ImageOptions.LargeImage")));
+            this.btnInDSLTC.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInDSLTC.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnInDSLTC.ItemAppearance.Disabled.Options.UseTextOptions = true;
+            this.btnInDSLTC.ItemAppearance.Disabled.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.btnInDSLTC.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnInDSLTC.ItemAppearance.Normal.Options.UseFont = true;
             this.btnInDSLTC.Name = "btnInDSLTC";
             this.btnInDSLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSLTC_ItemClick);
             // 
-            // btnPhieuNV
-            // 
-            this.btnPhieuNV.Caption = "Phiếu các NV lập trong năm";
-            this.btnPhieuNV.Id = 9;
-            this.btnPhieuNV.Name = "btnPhieuNV";
-            // 
             // btnMoLTC
             // 
-            this.btnMoLTC.Caption = "Mở LTC";
+            this.btnMoLTC.Caption = "MỞ LỚP TÍN CHỈ";
             this.btnMoLTC.Enabled = false;
             this.btnMoLTC.Id = 10;
-            this.btnMoLTC.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1066146;
+            this.btnMoLTC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMoLTC.ImageOptions.Image")));
+            this.btnMoLTC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMoLTC.ImageOptions.LargeImage")));
+            this.btnMoLTC.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoLTC.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnMoLTC.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnMoLTC.ItemAppearance.Normal.Options.UseFont = true;
             this.btnMoLTC.Name = "btnMoLTC";
             this.btnMoLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMoLTC_ItemClick);
             // 
             // btnDangKyLTC
             // 
-            this.btnDangKyLTC.Caption = "Đăng Ký LTC";
+            this.btnDangKyLTC.Caption = "ĐĂNG KÝ LỚP TÍN CHỈ";
             this.btnDangKyLTC.Enabled = false;
             this.btnDangKyLTC.Id = 12;
-            this.btnDangKyLTC.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._942748;
+            this.btnDangKyLTC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangKyLTC.ImageOptions.Image")));
+            this.btnDangKyLTC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDangKyLTC.ImageOptions.LargeImage")));
+            this.btnDangKyLTC.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangKyLTC.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnDangKyLTC.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDangKyLTC.ItemAppearance.Normal.Options.UseFont = true;
             this.btnDangKyLTC.Name = "btnDangKyLTC";
             this.btnDangKyLTC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKyLTC_ItemClick);
             // 
             // btnHocPhi
             // 
-            this.btnHocPhi.Caption = "Học Phí";
+            this.btnHocPhi.Caption = "HỌC PHÍ";
             this.btnHocPhi.Enabled = false;
             this.btnHocPhi.Id = 13;
-            this.btnHocPhi.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources.hocphi;
+            this.btnHocPhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHocPhi.ImageOptions.Image")));
+            this.btnHocPhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHocPhi.ImageOptions.LargeImage")));
+            this.btnHocPhi.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnHocPhi.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnHocPhi.ItemAppearance.Normal.Options.UseFont = true;
             this.btnHocPhi.Name = "btnHocPhi";
             this.btnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHocPhi_ItemClick);
             // 
             // btnDsDongHPLop
             // 
-            this.btnDsDongHPLop.Caption = "DS Đóng HP của Lớp";
+            this.btnDsDongHPLop.Caption = "DANH SÁCH ĐÓNG HỌC PHÍ CỦA LỚP";
             this.btnDsDongHPLop.Id = 15;
+            this.btnDsDongHPLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDsDongHPLop.ImageOptions.Image")));
+            this.btnDsDongHPLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDsDongHPLop.ImageOptions.LargeImage")));
+            this.btnDsDongHPLop.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDsDongHPLop.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnDsDongHPLop.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDsDongHPLop.ItemAppearance.Normal.Options.UseFont = true;
             this.btnDsDongHPLop.Name = "btnDsDongHPLop";
             this.btnDsDongHPLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDsDongHPLop_ItemClick);
             // 
             // btnBangDiemMonHoc
             // 
-            this.btnBangDiemMonHoc.Caption = "Bảng Điểm Môn Học";
+            this.btnBangDiemMonHoc.Caption = "BẢNG ĐIỂM MÔN HỌC";
             this.btnBangDiemMonHoc.Id = 16;
+            this.btnBangDiemMonHoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBangDiemMonHoc.ImageOptions.Image")));
+            this.btnBangDiemMonHoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBangDiemMonHoc.ImageOptions.LargeImage")));
+            this.btnBangDiemMonHoc.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBangDiemMonHoc.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnBangDiemMonHoc.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBangDiemMonHoc.ItemAppearance.Normal.Options.UseFont = true;
             this.btnBangDiemMonHoc.Name = "btnBangDiemMonHoc";
             this.btnBangDiemMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemMonHoc_ItemClick);
             // 
             // btnPhieuDiemSinhVien
             // 
-            this.btnPhieuDiemSinhVien.Caption = "Phiếu Điểm Sinh Viên";
+            this.btnPhieuDiemSinhVien.Caption = "PHIẾU ĐIỂM SINH VIÊN";
             this.btnPhieuDiemSinhVien.Id = 17;
+            this.btnPhieuDiemSinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPhieuDiemSinhVien.ImageOptions.Image")));
+            this.btnPhieuDiemSinhVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPhieuDiemSinhVien.ImageOptions.LargeImage")));
+            this.btnPhieuDiemSinhVien.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPhieuDiemSinhVien.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnPhieuDiemSinhVien.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPhieuDiemSinhVien.ItemAppearance.Normal.Options.UseFont = true;
             this.btnPhieuDiemSinhVien.Name = "btnPhieuDiemSinhVien";
             this.btnPhieuDiemSinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuDiemSinhVien_ItemClick);
             // 
-            // btnBangDiemTongKet
-            // 
-            this.btnBangDiemTongKet.Caption = "Bảng Điểm Tổng Kết";
-            this.btnBangDiemTongKet.Id = 18;
-            this.btnBangDiemTongKet.Name = "btnBangDiemTongKet";
-            this.btnBangDiemTongKet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemTongKet_ItemClick);
-            // 
             // btnMonHoc
             // 
-            this.btnMonHoc.Caption = "Môn Học";
+            this.btnMonHoc.Caption = "MÔN HỌC";
             this.btnMonHoc.Enabled = false;
             this.btnMonHoc.Id = 19;
-            this.btnMonHoc.ImageOptions.Image = global::qlsv_tc.Properties.Resources._1116589;
-            this.btnMonHoc.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1116589;
+            this.btnMonHoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMonHoc.ImageOptions.Image")));
+            this.btnMonHoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMonHoc.ImageOptions.LargeImage")));
+            this.btnMonHoc.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMonHoc.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnMonHoc.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnMonHoc.ItemAppearance.Normal.Options.UseFont = true;
             this.btnMonHoc.Name = "btnMonHoc";
             this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
             // 
             // btnLop
             // 
-            this.btnLop.Caption = "Lớp";
+            this.btnLop.Caption = "   LỚP            ";
             this.btnLop.Enabled = false;
             this.btnLop.Id = 22;
-            this.btnLop.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._3442161;
+            this.btnLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLop.ImageOptions.Image")));
+            this.btnLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLop.ImageOptions.LargeImage")));
+            this.btnLop.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLop.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnLop.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLop.ItemAppearance.Normal.Options.UseFont = true;
             this.btnLop.Name = "btnLop";
             this.btnLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLop_ItemClick);
             // 
             // btnDiemSV
             // 
-            this.btnDiemSV.Caption = "Nhập Điểm";
+            this.btnDiemSV.Caption = "NHẬP ĐIỂM";
+            this.btnDiemSV.Enabled = false;
             this.btnDiemSV.Id = 23;
-            this.btnDiemSV.ImageOptions.Image = global::qlsv_tc.Properties.Resources._1310388;
-            this.btnDiemSV.ImageOptions.LargeImage = global::qlsv_tc.Properties.Resources._1310388;
+            this.btnDiemSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDiemSV.ImageOptions.Image")));
+            this.btnDiemSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDiemSV.ImageOptions.LargeImage")));
+            this.btnDiemSV.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiemSV.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnDiemSV.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDiemSV.ItemAppearance.Normal.Options.UseFont = true;
             this.btnDiemSV.Name = "btnDiemSV";
             this.btnDiemSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDiemSV_ItemClick);
             // 
+            // btnBangDiemTK
+            // 
+            this.btnBangDiemTK.Caption = "BẢNG ĐIỂM TỔNG KẾT";
+            this.btnBangDiemTK.Id = 24;
+            this.btnBangDiemTK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBangDiemTK.ImageOptions.Image")));
+            this.btnBangDiemTK.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBangDiemTK.ImageOptions.LargeImage")));
+            this.btnBangDiemTK.ItemAppearance.Disabled.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBangDiemTK.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnBangDiemTK.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBangDiemTK.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnBangDiemTK.Name = "btnBangDiemTK";
+            this.btnBangDiemTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemTK_ItemClick);
+            // 
             // ribbonPage1
             // 
+            this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ribbonPage1.Appearance.Options.UseFont = true;
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Hệ thống";
             // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDangNhap);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnTaoTaiKhoan);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangXuat);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnTaoTaiKhoan, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangXuat, true);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // rb_quantri
             // 
+            this.rb_quantri.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.rb_quantri.Appearance.Options.UseFont = true;
             this.rb_quantri.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup10,
-            this.ribbonPageGroup12,
-            this.ribbonPageGroup11,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup6,
-            this.rb_hocphi});
+            this.ribbonPageGroup10});
+            this.rb_quantri.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("rb_quantri.ImageOptions.Image")));
             this.rb_quantri.Name = "rb_quantri";
             this.rb_quantri.Text = "Quản trị";
             this.rb_quantri.Visible = false;
@@ -280,36 +354,19 @@ namespace qlsv_tc
             // 
             this.ribbonPageGroup10.ImageOptions.Image = global::qlsv_tc.Properties.Resources._1116589;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnMonHoc, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnDiemSV, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnLop, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnSinhVien, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnMoLTC, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnDangKyLTC, true);
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnHocPhi, true);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btnLop);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnSinhVien, true);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnMoLTC, true);
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnDangKyLTC, true);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
-            // rb_hocphi
-            // 
-            this.rb_hocphi.ItemLinks.Add(this.btnHocPhi, true);
-            this.rb_hocphi.Name = "rb_hocphi";
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btnDiemSV);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup10.Text = "QUẢN LÝ DỮ LIỆU";
             // 
             // rb_baocao
             // 
+            this.rb_baocao.Appearance.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.rb_baocao.Appearance.Options.UseFont = true;
             this.rb_baocao.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4,
             this.ribbonPageGroup5,
@@ -317,12 +374,14 @@ namespace qlsv_tc
             this.ribbonPageGroup8,
             this.ribbonPageGroup3,
             this.ribbonPageGroup9});
+            this.rb_baocao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("rb_baocao.ImageOptions.Image")));
             this.rb_baocao.Name = "rb_baocao";
             this.rb_baocao.Text = "Báo cáo";
             this.rb_baocao.Visible = false;
             // 
             // ribbonPageGroup4
             // 
+            this.ribbonPageGroup4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup4.ImageOptions.Image")));
             this.ribbonPageGroup4.ItemLinks.Add(this.btnInDSLTC, true);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             // 
@@ -333,22 +392,22 @@ namespace qlsv_tc
             // 
             // ribbonPageGroup7
             // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnBangDiemMonHoc);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnBangDiemMonHoc, true);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
             // ribbonPageGroup8
             // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnPhieuDiemSinhVien);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnPhieuDiemSinhVien, true);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnBangDiemTongKet, true);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnBangDiemTK, true);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // ribbonPageGroup9
             // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.btnDsDongHPLop);
+            this.ribbonPageGroup9.ItemLinks.Add(this.btnDsDongHPLop, true);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             // 
             // xtraTabbedMdiManager1
@@ -364,7 +423,7 @@ namespace qlsv_tc
             this.NHOM});
             this.statusStrip1.Location = new System.Drawing.Point(0, 494);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1137, 32);
+            this.statusStrip1.Size = new System.Drawing.Size(1772, 32);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -390,7 +449,7 @@ namespace qlsv_tc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1137, 526);
+            this.ClientSize = new System.Drawing.Size(1772, 526);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
@@ -421,9 +480,7 @@ namespace qlsv_tc
         private DevExpress.XtraBars.BarButtonItem btnSinhVien;
         private DevExpress.XtraBars.BarButtonItem btnLapNhapXuatNV;
         private DevExpress.XtraBars.BarButtonItem btnInDSLTC;
-        private DevExpress.XtraBars.BarButtonItem btnPhieuNV;
         private DevExpress.XtraBars.Ribbon.RibbonPage rb_quantri;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPage rb_baocao;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
@@ -432,24 +489,20 @@ namespace qlsv_tc
         public System.Windows.Forms.ToolStripStatusLabel HOTEN;
         public System.Windows.Forms.ToolStripStatusLabel NHOM;
         private DevExpress.XtraBars.BarButtonItem btnMoLTC;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnDangKyLTC;
         private DevExpress.XtraBars.BarButtonItem btnHocPhi;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rb_hocphi;
         private DevExpress.XtraBars.BarButtonItem btnDsDongHPLop;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btnBangDiemMonHoc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem btnPhieuDiemSinhVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
-        private DevExpress.XtraBars.BarButtonItem btnBangDiemTongKet;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem btnMonHoc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.BarButtonItem btnLop;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem btnDiemSV;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraBars.BarButtonItem btnBangDiemTK;
     }
 }
 
