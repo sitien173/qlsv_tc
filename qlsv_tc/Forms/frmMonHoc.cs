@@ -36,19 +36,13 @@ namespace qlsv_tc.Forms
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
             error.ClearErrors();
-
-            Program.bds_dspm.Filter = "TENKHOA LIKE 'KHOA%'";
-            Ultils.BindingDataToComBo(cboxKhoa, Program.bds_dspm.DataSource);
-
+            loadInitializeData();
             pnMonHoc.Enabled = false;
             MonHocGridControl.Enabled = true;
 
             // TODO : Role Action
             if (Program.mGroup == Program.role.PGV.ToString())// PGV
             {
-                cboxKhoa.Visible = true;
-                cboxKhoa.Enabled = true;
-
                 btnThem.Enabled
                    = btnXoa.Enabled
                    = btnHieuChinh.Enabled
@@ -58,38 +52,14 @@ namespace qlsv_tc.Forms
             }
             else if (Program.mGroup == Program.role.KHOA.ToString()) // KHOA
             {
-                cboxKhoa.Visible = false;
-
                 btnThem.Enabled
                    = btnXoa.Enabled
                    = btnHieuChinh.Enabled
                    = btnUndo.Enabled
                    = btnGhi.Enabled
-                   = true;
-
-                cboxKhoa.Visible = true;
-                cboxKhoa.Enabled = false;
-
+                   = false;
             }
             btnGhi.Enabled = btnHuy.Enabled = false;
-        }
-
-        private void cboxKhoa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // TODO : Chuyển Bộ Phận
-
-            Ultils.ComboboxHelper(this.cboxKhoa);
-
-            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
-            // thoát.
-            if (Program.KetNoi() == 0)
-            {
-                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                loadInitializeData();
-            }
         }
 
         private void loadInitializeData()
@@ -104,7 +74,6 @@ namespace qlsv_tc.Forms
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _flag = "ADD";
-            cboxKhoa.Enabled = false;
             btnThem.Enabled = btnHieuChinh.Enabled = btnXoa.Enabled = btnUndo.Enabled = btnReload.Enabled = false;
             btnGhi.Enabled = btnHuy.Enabled = true;
 
@@ -133,7 +102,6 @@ namespace qlsv_tc.Forms
                 = btnHieuChinh.Enabled
                 = btnUndo.Enabled
                 = btnReload.Enabled = false;
-            cboxKhoa.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -267,9 +235,8 @@ namespace qlsv_tc.Forms
 
                         this.bdsMonHoc.EndEdit();
                         this.bdsMonHoc.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
-                        int check1 = this.tableAdapterMonHoc.Update(this.dS1.MONHOC);
-                        if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
-                        XtraMessageBox.Show($"Ghi Thành Công {check1} row updated");
+                        this.tableAdapterMonHoc.Update(this.dS1.MONHOC);
+                        XtraMessageBox.Show("Ghi Thành Công");
 
                     }
                     catch (Exception ex)
@@ -292,7 +259,6 @@ namespace qlsv_tc.Forms
             {
                 bdsMonHoc.Position = _position;
             }
-            if (Program.mGroup.Equals(Program.role.PGV.ToString())) cboxKhoa.Enabled = true;
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

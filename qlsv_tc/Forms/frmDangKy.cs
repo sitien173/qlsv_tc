@@ -15,8 +15,7 @@ namespace qlsv_tc.Forms
     public partial class frmDangKy : DevExpress.XtraEditors.XtraForm
     {
         private static string MASV = "";
-
-        public frmDangKy()
+       public frmDangKy()
         {
             InitializeComponent();
         }
